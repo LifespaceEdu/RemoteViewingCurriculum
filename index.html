@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stage I: The Fast Mark - Teacher's Guide</title>
+  
+  <!-- React and ReactDOM from CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  
+  <!-- Babel Standalone for JSX transformation -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Georgia, serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+    const { BookOpen, Lightbulb, Target, MessageCircle, Pause, CheckCircle, ChevronDown, ChevronUp } = lucideReact;
+
+    function StageOneGuide() {
+      const [expandedSections, setExpandedSections] = useState(['explaining', 'sequence']);
+      const [activeTab, setActiveTab] = useState('understanding');
+
+      const toggleSection = (section) => {
+        setExpandedSections(prev => 
+          prev.includes(section) 
+            ? prev.filter(s => s !== section)
+            : [...prev, section]
+        );
+      };
+
+      const renderUnderstanding = () => (
+        <div className="content-section">
+          <div className="intro-card">
+            <div className="icon-header">
+              <Lightbulb size={32} />
+              <h2>Understanding Stage I</h2>
+            </div>
+            <p className="lead">Stage I teaches children to notice and describe their first spontaneous response to a hidden target, before analytical thinking takes over. It's about learning to catch the signal before the mind starts making up stories.</p>
+          </div>
+
+          <div className="concept-section">
+            <h3>What is This Teaching?</h3>
+            <div className="concept-grid">
+              <div className="concept-card">
+                <h4>The Fast Mark</h4>
+                <p>When we hear the target number, something happens in our awareness before we start thinking about it. A quick gesture, a movement impulse. Stage I teaches the child to let that impulse show up on paper without planning it.</p>
+                <p className="why"><strong>Why it matters:</strong> This unplanned mark often contains information about the target's physical character—its shape, orientation, or movement quality—that the conscious mind hasn't yet processed.</p>
+              </div>
+
+              <div className="concept-card">
+                <h4>Simple Descriptors</h4>
+                <p>After the mark appears, we describe it with the simplest possible words: how it moved (up, down, across, curved) and how it would feel physically (hard, soft, rough, smooth). Not what it might BE, just how it IS.</p>
+                <p className="why"><strong>Why it matters:</strong> By keeping descriptions simple and physical, we avoid jumping to analytical guesses. "It went up and feels hard" is data. "It's a mountain" is a guess that can blind us to what's actually there.</p>
+              </div>
+
+              <div className="concept-card">
+                <h4>The Helper Word</h4>
+                <p>Sometimes a tiny category word pops up with the mark: land, water, building, air. We only take it if it arrives spontaneously, and we immediately write "none" if nothing comes.</p>
+                <p className="why"><strong>Why it matters:</strong> This teaches the child to distinguish between something that "just appeared" versus something they're thinking about or trying to figure out. It's the beginning of recognizing signal versus noise.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="concept-section">
+            <h3>Why This Structure?</h3>
+            <div className="explanation-block">
+              <p>The child's mind naturally wants to jump to conclusions: "It's a house! It's a car! It's a dragon!" This is normal and human. But those conclusions often miss accurate information that came in the first instant.</p>
+              <p>Stage I creates a simple ritual that lets the child capture that first instant before analysis takes over:</p>
+              <ol className="explanation-list">
+                <li><strong>Number → Mark:</strong> Something spontaneous happens before thinking begins</li>
+                <li><strong>Mark → Movement:</strong> Describe the physical action, not the meaning</li>
+                <li><strong>Movement → Feeling:</strong> Notice the physical quality, not what it represents</li>
+                <li><strong>Maybe a tiny word:</strong> If something popped up by itself, capture it. If not, that's fine.</li>
+              </ol>
+              <p>This structure becomes automatic with practice. Eventually, the child knows: "I make a mark, I say how it moved and felt, I check for a tiny word, then I'm done." That automaticity is what allows genuine signal to come through.</p>
+            </div>
+          </div>
+
+          <div className="concept-section">
+            <h3>What You're Really Teaching</h3>
+            <div className="teaching-points">
+              <div className="teaching-point">
+                <div className="point-number">1</div>
+                <div className="point-content">
+                  <h4>Trust the First Response</h4>
+                  <p>The first mark, the first word that comes—those often contain real information. The child learns that their immediate response has value, even when it doesn't make obvious sense.</p>
+                </div>
+              </div>
+
+              <div className="teaching-point">
+                <div className="point-number">2</div>
+                <div className="point-content">
+                  <h4>Separate Data from Story</h4>
+                  <p>A story feels different from a descriptor. "Up, hard, land" is different from "It's a tall mountain with snow on top." The child learns to feel this difference in their own experience.</p>
+                </div>
+              </div>
+
+              <div className="teaching-point">
+                <div className="point-number">3</div>
+                <div className="point-content">
+                  <h4>It's Okay to Not Know</h4>
+                  <p>Writing "none" for the helper word, taking a Miss break—these teach that not forcing an answer is a valid response. This is crucial. Trying too hard actually blocks the signal.</p>
+                </div>
+              </div>
+
+              <div className="teaching-point">
+                <div className="point-number">4</div>
+                <div className="point-content">
+                  <h4>Repetition Reveals Patterns</h4>
+                  <p>Running the same target multiple times shows the child that some elements repeat (real signal) while others change randomly (mental noise). This is how they begin to recognize the difference.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="concept-section">
+            <h3>About the Target Number</h3>
+            <div className="explanation-block">
+              <p>The target number (like "101" or "204-3") is just a neutral reference. It's not a code or a hint. It's simply a way to point the child's attention toward a specific target without giving away what that target is.</p>
+              <p>Think of it like a library call number: it uniquely identifies something without describing it. This neutrality is important—it means the child's response is truly spontaneous, not influenced by the cue itself.</p>
+            </div>
+          </div>
+        </div>
+      );
+
+      const renderSessionGuide = () => (
+        <div className="content-section">
+          <div className="intro-card">
+            <div className="icon-header">
+              <Target size={32} />
+              <h2>Running a Stage I Session</h2>
+            </div>
+            <p className="lead">A typical session takes 15-25 minutes and involves 2-4 target numbers, each run 2-4 times. Here's how to structure it.</p>
+            <p className="note" style={{marginTop: '1rem', fontSize: '1.1rem'}}>→ First time teaching Stage I? Start with "Explaining Stage I to the Child" below for the exact words to use.</p>
+          </div>
+
+          <div className="session-structure">
+            <h3>Before You Begin</h3>
+            <div className="prep-section">
+              <h4>Materials Needed</h4>
+              <ul>
+                <li>Blank paper (one sheet per session)</li>
+                <li>Pencil or pen</li>
+                <li>Target images with assigned numbers (keep these hidden)</li>
+                <li>Comfortable, quiet space</li>
+              </ul>
+
+              <h4>Paper Setup</h4>
+              <p>At the top of the page, write or have the child write:</p>
+              <div className="example-box">
+                <p><strong>Name:</strong> [child's name]</p>
+                <p><strong>Place:</strong> [e.g., "home," "classroom"]</p>
+                <p><strong>Date/Time:</strong> [today's date and time]</p>
+              </div>
+              <p className="note">This simple header grounds the session as a specific event in time and place. It's part of the ritual.</p>
+
+              <h4>Body Check</h4>
+              <p>Ask: "Is anything in your body or feelings bothering you a lot right now? Are you really tired, or hungry, or do you have a headache, or feel really upset?"</p>
+              <p className="note">If they mention something but want to continue, write a small note: "Body note: tired" or similar. If they're very unwell or upset, reschedule—their body isn't a good receiver today.</p>
+            </div>
+          </div>
+
+          <div className="collapsible-section">
+            <button 
+              className="section-header"
+              onClick={() => toggleSection('explaining')}
+            >
+              <h3>Explaining Stage I to the Child</h3>
+              {expandedSections.includes('explaining') ? <ChevronUp /> : <ChevronDown />}
+            </button>
+            {expandedSections.includes('explaining') && (
+              <div className="section-content">
+                <p><strong>Keep your explanation simple and direct.</strong> You might say:</p>
+                <div className="script-box" style={{background: '#2d1b4e', borderLeft: '4px solid #9d7fd4'}}>
+                  <p style={{fontSize: '1.2rem', color: '#ffffff'}}>"We're going to learn a very quiet skill. I have some secret numbers. Each number is connected to a picture that I'm not showing you yet."</p>
+                  <p style={{fontSize: '1.2rem', color: '#ffffff'}}>"When I give you a number, you'll write it down (or I'll write it for you). Then your hand will make a fast little squiggle on the paper, all in one go."</p>
+                  <p style={{fontSize: '1.2rem', color: '#ffffff', marginBottom: 0}}>"After that, we'll put a few tiny words next to it: one for how it moved, one for how it felt, and maybe one tiny helper word if one pops into your head."</p>
+                </div>
+                <p className="note">Don't explain what remote viewing "is" or promise any specific results. The child only needs to know what they'll be doing in the next few minutes.</p>
+              </div>
+            )}
+          </div>
+
+          <div className="collapsible-section">
+            <button 
+              className="section-header"
+              onClick={() => toggleSection('sequence')}
+            >
+              <h3>The Stage I Sequence (Step by Step)</h3>
+              {expandedSections.includes('sequence') ? <ChevronUp /> : <ChevronDown />}
+            </button>
+            {expandedSections.includes('sequence') && (
+              <div className="section-content">
+                
+                <div className="step-detail">
+                  <div className="step-label">Step 1: Say the Number</div>
+                  <p className="say-this">Say: "Write this secret number: 101"</p>
+                  <p className="guidance">If they can write, let them. If not, write it while they watch. They should both see and hear the number.</p>
+                </div>
+
+                <div className="step-detail">
+                  <div className="step-label">Step 2: The Fast Mark</div>
+                  <p className="say-this">Say: "Now put your pen just under the number. Relax your arm and fingers. Let your hand make a fast mark by itself and then stop."</p>
+                  <div className="what-to-watch">
+                    <p><strong>Look for:</strong> One quick stroke—curvy, jagged, up, down, across—that appears and is over in a moment.</p>
+                    <p><strong>Common issue:</strong> Child pauses to think about what to draw.</p>
+                    <p><strong>Redirect:</strong> "Don't plan it. Let your hand jump once, quickly, and see what it does."</p>
+                    <p><strong>If they slowly draw a house or object:</strong> This becomes either a Miss or a Story (see Breaks section).</p>
+                  </div>
+                </div>
+
+                <div className="step-detail">
+                  <div className="step-label">Step 3: The "Move" Word</div>
+                  <p className="say-this">Say: "How did your pen move when it made that? Did it go mostly up, mostly down, across, or did it wiggle?"</p>
+                  <div className="word-options">
+                    <span className="word-example">up</span>
+                    <span className="word-example">down</span>
+                    <span className="word-example">across</span>
+                    <span className="word-example">curved</span>
+                    <span className="word-example">wiggly</span>
+                    <span className="word-example">sharp</span>
+                  </div>
+                  <p className="guidance">Write it as <strong>"Move: [word]"</strong></p>
+                  <p className="important">Keep it to ONE short movement description. If they give a long explanation, help them shorten it: "Let's give it a short name. Does 'up-down' sound right?"</p>
+                </div>
+
+                <div className="step-detail">
+                  <div className="step-label">Step 4: The "Feel" Word</div>
+                  <p className="say-this">Say: "If you were standing inside that mark, would it feel more hard or more soft?"</p>
+                  <div className="contrast-examples">
+                    <span className="contrast">hard vs soft</span>
+                    <span className="contrast">heavy vs light</span>
+                    <span className="contrast">smooth vs bumpy</span>
+                    <span className="contrast">warm vs cold</span>
+                  </div>
+                  <p className="guidance">Write it as <strong>"Feel: [word]"</strong></p>
+                  <p className="important">If they say "It feels like a mountain," redirect: "That sounds like what the thing might be. For 'Feel' here, let's pick just a body-word like hard, soft, rough, or smooth."</p>
+                </div>
+
+                <div className="step-detail">
+                  <div className="step-label">Step 5: The Tiny "Helper" Word</div>
+                  <p className="say-this">Say: "Sometimes, when you made that fast mark, a tiny word kind of jumps into your head by itself. Not a whole story, just a small word like land, water, building, air, or nothing. Did a tiny word pop up this time?"</p>
+                  <div className="helper-examples">
+                    <span className="helper">land</span>
+                    <span className="helper">water</span>
+                    <span className="helper">building</span>
+                    <span className="helper">air</span>
+                    <span className="helper">none</span>
+                  </div>
+                  <p className="guidance">If they hesitate: "If nothing jumps in quickly, we just write 'none' and that's okay."</p>
+                  <p className="important">If they start telling a detailed story, take a Story Break (see Breaks section).</p>
+                </div>
+
+                <div className="repeat-note">
+                  <h4>Repeat the Sequence</h4>
+                  <p>After completing one run, say: "We're going to listen to the same number again and see what your hand does this time."</p>
+                  <p>Then run through all five steps again on the same target number. Do this 2-4 times per target, depending on the child's attention span.</p>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="collapsible-section">
+            <button 
+              className="section-header"
+              onClick={() => toggleSection('feedback')}
+            >
+              <h3>Giving Feedback</h3>
+              {expandedSections.includes('feedback') ? <ChevronUp /> : <ChevronDown />}
+            </button>
+            {expandedSections.includes('feedback') && (
+              <div className="section-content">
+                <p>After completing your runs on a target number, show the child what that number was pointing to.</p>
+                
+                <h4>Choose Clear Targets</h4>
+                <p>For Stage I, use targets with strong overall character:</p>
+                <ul>
+                  <li>Open ocean scenes</li>
+                  <li>Large mountain ranges</li>
+                  <li>Big city skylines</li>
+                  <li>Wide deserts</li>
+                  <li>Dense forests</li>
+                </ul>
+
+                <h4>Point Out Connections</h4>
+                <p className="important">Your job is NOT to judge correct vs. incorrect. Your job is to point out meaningful connections between their words and what's visible.</p>
+
+                <div className="feedback-examples">
+                  <div className="feedback-example">
+                    <p className="scenario">If they wrote "Helper: water" and the target is an ocean:</p>
+                    <p className="response">"This little word 'water' fits this place really well, doesn't it?"</p>
+                  </div>
+
+                  <div className="feedback-example">
+                    <p className="scenario">If they wrote "Move: up" and the target has a tall mountain:</p>
+                    <p className="response">"This 'up' fits the tall mountain here."</p>
+                  </div>
+
+                  <div className="feedback-example">
+                    <p className="scenario">If they wrote "Feel: hard" and the target shows rocks or buildings:</p>
+                    <p className="response">"This 'hard' fits the rocks and buildings we can see."</p>
+                  </div>
+
+                  <div className="feedback-example">
+                    <p className="scenario">If a word doesn't match anything visible:</p>
+                    <p className="response">"This one we can't really match to anything in this picture."</p>
+                    <p className="note">Stay neutral. Don't say it's "wrong." Just acknowledge that this particular word doesn't have an obvious connection you can see.</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+
+      const renderBreaks = () => (
+        <div className="content-section">
+          <div className="intro-card">
+            <div className="icon-header">
+              <Pause size={32} />
+              <h2>Understanding Breaks</h2>
+            </div>
+            <p className="lead">Breaks are named ways to pause when the structure stops working. They teach the child that not forcing an answer is a valid and important response.</p>
+          </div>
+
+          <div className="concept-section">
+            <h3>Why Breaks Matter</h3>
+            <div className="explanation-block">
+              <p>When a child can't make a mark, or starts telling elaborate stories, or feels confused—these aren't failures. They're signals that something different is happening in their awareness. By naming these moments and taking specific breaks, we teach the child to recognize different mental states and respond appropriately.</p>
+              <p>This is a crucial skill: knowing when to push forward and when to pause is as important as the remote viewing itself.</p>
+            </div>
+          </div>
+
+          <div className="breaks-detail">
+            <div className="break-card">
+              <div className="break-header miss">
+                <h3>Miss Break</h3>
+              </div>
+              <div className="break-content">
+                <h4>When to Use</h4>
+                <ul>
+                  <li>Child says "I don't feel anything" right after the number</li>
+                  <li>They stare at the page and can't make a mark</li>
+                  <li>They slowly, deliberately draw a recognizable picture instead of making a quick stroke</li>
+                </ul>
+
+                <h4>What to Say</h4>
+                <div className="script-box">
+                  <p>"Let's call that a Miss. That just means we didn't catch the first quick thing this time. I'll write 'Miss' here on the side. Shake your hands out, look around the room, take a breath, and we'll try the same number again."</p>
+                </div>
+
+                <h4>What to Do</h4>
+                <p>Write "Miss" in the margin of the paper. Take a brief pause—literally have them shake their hands, look around, take a breath. Then repeat the number and start fresh.</p>
+
+                <h4>Why This Works</h4>
+                <p>Naming it as a "Miss" removes judgment and pressure. It's not "you failed" or "you did it wrong." It's "we didn't catch it that time." This keeps the experience light and allows them to try again without anxiety.</p>
+              </div>
+            </div>
+
+            <div className="break-card">
+              <div className="break-header story">
+                <h3>Story Break</h3>
+              </div>
+              <div className="break-content">
+                <h4>When to Use</h4>
+                <ul>
+                  <li>Child gives long, detailed stories instead of simple descriptors</li>
+                  <li>Example: "It's a big red castle with dragons flying around and flags on top and a moat"</li>
+                </ul>
+
+                <h4>What to Say</h4>
+                <div className="script-box">
+                  <p>"That's a story. Stories are fine, but they're different from the little clue words we're practicing. I'm going to write 'Story: big red castle' over here on the side so it has its own place. Then we'll go back to a new fast mark and our little words."</p>
+                </div>
+
+                <h4>What to Do</h4>
+                <p>Write "Story:" and a brief summary in the margin. Then start a fresh line with the same target number and guide them through the sequence again: fast mark, Move, Feel, Helper.</p>
+
+                <h4>Why This Works</h4>
+                <p>It validates that stories are interesting and real experiences, but it also clearly distinguishes them from the descriptive data we're collecting. The child learns that different kinds of mental content have different places in the process.</p>
+              </div>
+            </div>
+
+            <div className="break-card">
+              <div className="break-header confused">
+                <h3>Confused Break</h3>
+              </div>
+              <div className="break-content">
+                <h4>When to Use</h4>
+                <ul>
+                  <li>Child says "It's all mixed up" or "I don't know what I'm doing"</li>
+                  <li>You see clear frustration or signs of being overwhelmed</li>
+                </ul>
+
+                <h4>What to Say</h4>
+                <div className="script-box">
+                  <p>"Let's take a Confused break. I'll write 'Confused' here. Let's stand up and stretch, maybe get a drink. Then we can decide if we want to try this number again or save it for another day."</p>
+                </div>
+
+                <h4>What to Do</h4>
+                <p>Write "Confused" in the margin. Actually stand up and move—stretch, get water, walk around briefly. After the reset, evaluate together: do they want to try again, or is it time to end this session?</p>
+
+                <h4>Why This Works</h4>
+                <p>Confusion is a real experience that deserves acknowledgment. Sometimes the signal gets muddy, or the child's analytical mind is working too hard, or they're just tired. Naming it and taking a real break often clears things up. If it doesn't, that's information too—maybe today isn't the day.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+
+      const renderProgression = () => (
+        <div className="content-section">
+          <div className="intro-card">
+            <div className="icon-header">
+              <CheckCircle size={32} />
+              <h2>Session Progression</h2>
+            </div>
+            <p className="lead">Stage I typically takes 3-6 sessions to become natural. Here's how to build skill over time.</p>
+          </div>
+
+          <div className="progression-timeline">
+            <div className="timeline-card">
+              <div className="timeline-marker">1</div>
+              <div className="timeline-content">
+                <h3>First Session</h3>
+                <p className="duration">15-20 minutes</p>
+                <ul>
+                  <li><strong>Explain what you'll be doing:</strong> "We're going to learn a very quiet skill. I have some secret numbers. Each number is connected to a picture. When I give you a number, your hand will make a fast little squiggle on the paper. Then we'll put a few tiny words next to it: one for how it moved, one for how it felt, and maybe one tiny helper word." (See the "Running Sessions" tab for more detail on this introduction)</li>
+                  <li>Demonstrate 1-2 fast marks yourself on scrap paper so they see the speed and simplicity</li>
+                  <li>Run <strong>two target numbers</strong> (like 101 and 202)</li>
+                  <li>For each number, guide through the full sequence <strong>twice</strong></li>
+                  <li>Show the pictures and point out clear connections</li>
+                </ul>
+                <p className="goal"><strong>Goal:</strong> Child understands the basic structure and has experienced it successfully at least once.</p>
+              </div>
+            </div>
+
+            <div className="timeline-card">
+              <div className="timeline-marker">2</div>
+              <div className="timeline-content">
+                <h3>Second Session</h3>
+                <p className="duration">20-25 minutes</p>
+                <ul>
+                  <li>Brief reminder of what you're doing (they probably remember)</li>
+                  <li>Run <strong>three target numbers</strong></li>
+                  <li>For each number, aim for <strong>2-3 full runs</strong></li>
+                  <li><strong>Introduce breaks:</strong> Start naming Miss, Story, and Confused breaks when they naturally occur</li>
+                  <li>If the child is ready, let them write the numbers and Move/Feel words themselves</li>
+                </ul>
+                <p className="goal"><strong>Goal:</strong> Child begins to recognize the difference between spontaneous marks and planned drawings, between descriptors and stories.</p>
+              </div>
+            </div>
+
+            <div className="timeline-card">
+              <div className="timeline-marker">3+</div>
+              <div className="timeline-content">
+                <h3>Third and Later Sessions</h3>
+                <p className="duration">20-30 minutes</p>
+                <ul>
+                  <li>Use <strong>3-4 target numbers</strong> per session</li>
+                  <li>Vary the number of runs per target based on engagement (2-4 runs)</li>
+                  <li>Maintain consistent structure: header, body check, sequence, feedback, breaks</li>
+                  <li>Child increasingly manages their own paper and writing</li>
+                  <li>You focus more on timing and gentle corrections than on scripting every word</li>
+                </ul>
+                <p className="goal"><strong>Goal:</strong> The pattern becomes automatic. Child knows what comes next without being told.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mastery-section">
+            <h3>When is Stage I "In Place"?</h3>
+            <div className="mastery-content">
+              <p>You'll know Stage I is working when, over several sessions, the child naturally expects this pattern:</p>
+              <div className="mastery-pattern">
+                <p>"We write the number. My hand makes a fast squiggle. I say one move word and one feel word. I say one tiny helper word or 'none.' Then later I see the picture."</p>
+              </div>
+              <p>When that pattern is stable and automatic—when the child doesn't need you to explain each step—you can begin adding Stage II (quiet sensory words) directly underneath Stage I in the same session.</p>
+              <p className="important">Don't rush this. Stage I is the foundation for everything else. If it's not solid, later stages won't work well.</p>
+            </div>
+          </div>
+
+          <div className="tips-section">
+            <h3>Teaching Tips</h3>
+            <div className="tips-grid">
+              <div className="tip-card">
+                <h4>Keep Sessions Short</h4>
+                <p>20-25 minutes is plenty for most 6-9 year olds. Better to end with energy left than to push until they're exhausted.</p>
+              </div>
+
+              <div className="tip-card">
+                <h4>Consistency Matters</h4>
+                <p>Same paper header, same sequence, same language for breaks. The ritual helps the child relax into the structure.</p>
+              </div>
+
+              <div className="tip-card">
+                <h4>Stay Neutral</h4>
+                <p>Don't get excited when they "get it right" or disappointed when they miss. Treat all responses as interesting data, nothing more.</p>
+              </div>
+
+              <div className="tip-card">
+                <h4>Model the Behavior</h4>
+                <p>If you want them to make fast, spontaneous marks, occasionally demonstrate one yourself. Show don't just tell.</p>
+              </div>
+
+              <div className="tip-card">
+                <h4>Trust the Process</h4>
+                <p>Some sessions will feel more successful than others. That's normal. The skill develops through repetition, not through trying harder.</p>
+              </div>
+
+              <div className="tip-card">
+                <h4>Celebrate Progress</h4>
+                <p>Notice when they catch themselves starting to tell a story and self-correct. Notice when they write "none" without hesitation. These are signs of real learning.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+
+      return (
+        <div className="guide-container">
+          <header className="guide-header">
+            <div className="header-content">
+              <BookOpen size={36} />
+              <div className="header-text">
+                <h1>Stage I: The Fast Mark</h1>
+                <p>A Teacher's Guide to Remote Viewing Fundamentals</p>
+              </div>
+            </div>
+          </header>
+
+          <nav className="guide-nav">
+            <button 
+              className={activeTab === 'understanding' ? 'active' : ''}
+              onClick={() => setActiveTab('understanding')}
+            >
+              <Lightbulb size={20} />
+              Understanding
+            </button>
+            <button 
+              className={activeTab === 'sessions' ? 'active' : ''}
+              onClick={() => setActiveTab('sessions')}
+            >
+              <Target size={20} />
+              Running Sessions
+            </button>
+            <button 
+              className={activeTab === 'breaks' ? 'active' : ''}
+              onClick={() => setActiveTab('breaks')}
+            >
+              <Pause size={20} />
+              Breaks
+            </button>
+            <button 
+              className={activeTab === 'progression' ? 'active' : ''}
+              onClick={() => setActiveTab('progression')}
+            >
+              <CheckCircle size={20} />
+              Progression
+            </button>
+          </nav>
+
+          <main className="guide-main">
+            {activeTab === 'understanding' && renderUnderstanding()}
+            {activeTab === 'sessions' && renderSessionGuide()}
+            {activeTab === 'breaks' && renderBreaks()}
+            {activeTab === 'progression' && renderProgression()}
+          </main>
+
+          <style jsx>{`
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+            }
+
+            .guide-container {
+              min-height: 100vh;
+              background: #1a1a1a;
+              color: #e8e8e8;
+              font-family: 'Georgia', serif;
+            }
+
+            .guide-header {
+              background: linear-gradient(135deg, #2d1b4e 0%, #1a1a3e 100%);
+              padding: 2.5rem 2rem;
+              border-bottom: 3px solid #6b4ba5;
+            }
+
+            .header-content {
+              max-width: 1200px;
+              margin: 0 auto;
+              display: flex;
+              align-items: center;
+              gap: 1.5rem;
+            }
+
+            .header-content svg {
+              color: #9d7fd4;
+            }
+
+            .header-text h1 {
+              font-size: 2.5rem;
+              color: #ffffff;
+              margin-bottom: 0.5rem;
+              font-weight: 400;
+              letter-spacing: -0.02em;
+            }
+
+            .header-text p {
+              font-size: 1.2rem;
+              color: #b8a4d4;
+              font-style: italic;
+            }
+
+            .guide-nav {
+              background: #252525;
+              padding: 0;
+              display: flex;
+              max-width: 1200px;
+              margin: 0 auto;
+              border-bottom: 1px solid #3a3a3a;
+              position: sticky;
+              top: 0;
+              z-index: 100;
+            }
+
+            .guide-nav button {
+              flex: 1;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 0.5rem;
+              padding: 1.25rem 1.5rem;
+              background: transparent;
+              border: none;
+              color: #a0a0a0;
+              font-family: 'Georgia', serif;
+              font-size: 1.05rem;
+              cursor: pointer;
+              transition: all 0.2s ease;
+              border-bottom: 3px solid transparent;
+            }
+
+            .guide-nav button:hover {
+              background: #2d2d2d;
+              color: #d0d0d0;
+            }
+
+            .guide-nav button.active {
+              background: #1a1a1a;
+              color: #9d7fd4;
+              border-bottom-color: #6b4ba5;
+            }
+
+            .guide-main {
+              max-width: 1200px;
+              margin: 0 auto;
+              padding: 3rem 2rem;
+            }
+
+            .content-section {
+              animation: fadeIn 0.4s ease;
+            }
+
+            @keyframes fadeIn {
+              from { opacity: 0; transform: translateY(15px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+
+            .intro-card {
+              background: #252525;
+              padding: 2.5rem;
+              border-radius: 12px;
+              margin-bottom: 3rem;
+              border-left: 4px solid #6b4ba5;
+            }
+
+            .icon-header {
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              margin-bottom: 1.5rem;
+            }
+
+            .icon-header svg {
+              color: #9d7fd4;
+            }
+
+            .icon-header h2 {
+              font-size: 2rem;
+              color: #ffffff;
+              font-weight: 400;
+            }
+
+            .lead {
+              font-size: 1.25rem;
+              line-height: 1.8;
+              color: #d0d0d0;
+            }
+
+            .concept-section {
+              margin-bottom: 3rem;
+            }
+
+            .concept-section h3 {
+              font-size: 1.8rem;
+              color: #9d7fd4;
+              margin-bottom: 1.5rem;
+              font-weight: 400;
+            }
+
+            .concept-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+              gap: 1.5rem;
+              margin-bottom: 2rem;
+            }
+
+            .concept-card {
+              background: #252525;
+              padding: 2rem;
+              border-radius: 8px;
+              border: 1px solid #3a3a3a;
+            }
+
+            .concept-card h4 {
+              font-size: 1.4rem;
+              color: #b8a4d4;
+              margin-bottom: 1rem;
+              font-weight: 400;
+            }
+
+            .concept-card p {
+              font-size: 1.05rem;
+              line-height: 1.7;
+              color: #c0c0c0;
+              margin-bottom: 1rem;
+            }
+
+            .concept-card p:last-child {
+              margin-bottom: 0;
+            }
+
+            .why {
+              padding-top: 1rem;
+              border-top: 1px solid #3a3a3a;
+              font-style: italic;
+            }
+
+            .explanation-block {
+              background: #252525;
+              padding: 2rem;
+              border-radius: 8px;
+              border-left: 3px solid #6b4ba5;
+            }
+
+            .explanation-block p {
+              font-size: 1.1rem;
+              line-height: 1.8;
+              color: #d0d0d0;
+              margin-bottom: 1rem;
+            }
+
+            .explanation-block p:last-child {
+              margin-bottom: 0;
+            }
+
+            .explanation-list {
+              margin: 1.5rem 0 1.5rem 2rem;
+            }
+
+            .explanation-list li {
+              font-size: 1.1rem;
+              line-height: 1.8;
+              color: #d0d0d0;
+              margin-bottom: 0.75rem;
+            }
+
+            .teaching-points {
+              display: flex;
+              flex-direction: column;
+              gap: 1.5rem;
+            }
+
+            .teaching-point {
+              display: flex;
+              gap: 1.5rem;
+              background: #252525;
+              padding: 2rem;
+              border-radius: 8px;
+              border: 1px solid #3a3a3a;
+            }
+
+            .point-number {
+              flex-shrink: 0;
+              width: 48px;
+              height: 48px;
+              background: #6b4ba5;
+              color: #ffffff;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.5rem;
+              font-weight: 600;
+            }
+
+            .point-content h4 {
+              font-size: 1.4rem;
+              color: #b8a4d4;
+              margin-bottom: 0.75rem;
+              font-weight: 400;
+            }
+
+            .point-content p {
+              font-size: 1.05rem;
+              line-height: 1.7;
+              color: #c0c0c0;
+            }
+
+            .session-structure h3 {
+              font-size: 1.8rem;
+              color: #9d7fd4;
+              margin-bottom: 1.5rem;
+              font-weight: 400;
+            }
+
+            .prep-section {
+              background: #252525;
+              padding: 2rem;
+              border-radius: 8px;
+              margin-bottom: 2rem;
+            }
+
+            .prep-section h4 {
+              font-size: 1.3rem;
+              color: #b8a4d4;
+              margin: 1.5rem 0 1rem 0;
+              font-weight: 400;
+            }
+
+            .prep-section h4:first-child {
+              margin-top: 0;
+            }
+
+            .prep-section ul {
+              margin-left: 1.5rem;
+            }
+
+            .prep-section li {
+              font-size: 1.05rem;
+              line-height: 1.7;
+              color: #c0c0c0;
+              margin-bottom: 0.5rem;
+            }
+
+            .prep-section p {
+              font-size: 1.05rem;
+              line-height: 1.7;
+              color: #c0c0c0;
+              margin-bottom: 1rem;
+            }
+
+            .example-box {
+              background: #1a1a1a;
+              padding: 1.5rem;
+              border-radius: 6px;
+              border-left: 3px solid #6b4ba5;
+              margin: 1rem 0;
+            }
+
+            .example-box p {
+              font-size: 1.05rem;
+              color: #d0d0d0;
+              margin-bottom: 0.5rem;
+              font-family: 'Courier New', monospace;
+            }
+
+            .example-box p:last-child {
+              margin-bottom: 0;
+            }
+
+            .note {
+              font-size: 1rem;
+              color: #9d7fd4;
+              font-style: italic;
+              margin-top: 0.75rem;
+            }
+
+            .collapsible-section {
+              margin-bottom: 1.5rem;
+              background: #252525;
+              border-radius: 8px;
+              overflow: hidden;
+              border: 1px solid #3a3a3a;
+            }
+
+            .section-header {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 1.5rem 2rem;
+              background: transparent;
+              border: none;
+              cursor: pointer;
+              transition: all 0.2s ease;
+            }
+
+            .section-header:hover {
+              background: #2d2d2d;
+            }
+
+            .section-header h3 {
+              font-size: 1.5rem;
+              color: #b8a4d4;
+              margin: 0;
+              font-weight: 400;
+            }
+
+            .section-header svg {
+              color: #9d7fd4;
+            }
+
+            .section-content {
+              padding: 0 2rem 2rem 2rem;
+              animation: slideDown 0.3s ease;
+            }
+
+            @keyframes slideDown {
+              from { opacity: 0; transform: translateY(-10px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+
+            .script-box {
+              background: #1a1a1a;
+              padding: 1.5rem;
+              border-left: 4px solid #6b4ba5;
+              border-radius: 6px;
+              margin: 1rem 0;
+            }
+
+            .script-box p {
+              font-size: 1.15rem;
+              line-height: 1.8;
+              color: #d0d0d0;
+              margin-bottom: 0.75rem;
+            }
+
+            .script-box p:last-child {
+              margin-bottom: 0;
+            }
+
+            .step-detail {
+              background: #2d2d2d;
+              padding: 1.5rem;
+              border-radius: 8px;
+              margin-bottom: 1.5rem;
+              border-left: 3px solid #6b4ba5;
+            }
+
+            .step-label {
+              font-size: 1.3rem;
+              color: #9d7fd4;
+              margin-bottom: 1rem;
+              font-weight: 600;
+            }
+
+            .say-this {
+              background: #1a1a1a;
+              padding: 1.25rem;
+              border-left: 3px solid #6b4ba5;
+              border-radius: 6px;
+              font-size: 1.15rem;
+              line-height: 1.7;
+              color: #e8e8e8;
+              margin-bottom: 1rem;
+            }
+
+            .guidance {
+              font-size: 1.05rem;
+              line-height: 1.7;
+              color: #b0b0b0;
+              margin-bottom: 0.75rem;
+            }
+
+            .what-to-watch {
+              background: #252525;
+              padding: 1.25rem;
+              border-radius: 6px;
+              margin-top: 1rem;
+            }
+
+            .what-to-watch p {
+              font-size: 1.05rem;
+              line-height: 1.7;
+              color: #c0c0c0;
+              margin-bottom: 0.75rem;
+            }
+
+            .what-to-watch p:last-child {
+              margin-bottom: 0;
+            }
+
+            .important {
+              color: #9d7fd4;
+              font-weight: 600;
+              margin-top: 0.75rem;
+            }
+
+            .word-options,
+            .helper-examples {
+              display: flex;
+              gap: 0.75rem;
+              flex-wrap: wrap;
+              margin: 1rem 0;
+            }
+
+            .word-example,
+            .helper {
+              padding: 0.5rem 1rem;
+              background: #6b4ba5;
+              color: #ffffff;
+              border-radius: 20px;
+              font-size: 1rem;
+            }
+
+            .contrast-examples {
+              display: flex;
+              flex-direction: column;
+              gap: 0.75rem;
+              margin: 1rem 0;
+            }
+
+            .contrast {
+              padding: 0.75rem 1.25rem;
+              background: #2d2d2d;
+              border-radius: 6px;
+              font-size: 1.1rem;
+              text-align: center;
+              color: #d0d0d0;
+            }
+
+            .repeat-note {
+              background: #1a1a1a;
+              padding: 1.5rem;
+              border-radius: 8px;
+              border: 2px solid #6b4ba5;
+              margin-top: 1.5rem;
+            }
+
+            .repeat-note h4 {
+              font-size: 1.3rem;
+              color: #9d7fd4;
+              margin-bottom: 1rem;
+            }
+
+            .repeat-note p {
+              font-size: 1.05rem;
+              line-height: 1.7;
+              color: #d0d0d0;
+              margin-bottom: 0.75rem;
+            }
+
+            .repeat-note p:last-child {
+              margin-bottom: 0;
+            }
+
+            .feedback-examples {
+              margin-top: 1.5rem;
+            }
+
+            .feedback-example {
+              background: #2d2d2d;
+              padding: 1.25rem;
+              border-radius: 6px;
+              margin-bottom: 1rem;
+              border-left: 3px solid #6b4ba5;
+            }
+
+            .scenario {
+              font-size: 1.05rem;
+              color: #b8a4d4;
+              margin-bottom: 0.5rem;
+            }
+
+            .response {
+              font-size: 1.1rem;
+              color: #e8e8e8;
+              font-style: italic;
+              padding-left: 1rem;
+            }
+
+            .breaks-detail {
+              display: flex;
+              flex-direction: column;
+              gap: 2rem;
+            }
+
+            .break-card {
+              background: #252525;
+              border-radius: 12px;
+              overflow: hidden;
+              border: 1px solid #3a3a3a;
+            }
+
+            .break-header {
+              padding: 1.5rem 2rem;
+              border-left: 4px solid #6b4ba5;
+            }
+
+            .break-header.miss {
+              background: linear-gradient(135deg, #3a2a2a 0%, #2a1a1a 100%);
+              border-left-color: #c75050;
+            }
+
+            .break-header.story {
+              background: linear-gradient(135deg, #2a2a3a 0%, #1a1a2a 100%);
+              border-left-color: #5080c7;
+            }
+
+            .break-header.confused {
+              background: linear-gradient(135deg, #3a3a2a 0%, #2a2a1a 100%);
+              border-left-color: #c7a050;
+            }
+
+            .break-header h3 {
+              font-size: 1.8rem;
+              color: #ffffff;
+              margin: 0;
+              font-weight: 400;
+            }
+
+            .break-content {
+              padding: 2rem;
+            }
+
+            .break-content h4 {
+              font-size: 1.3rem;
+              color: #b8a4d4;
+              margin: 1.5rem 0 1rem 0;
+              font-weight: 400;
+            }
+
+            .break-content h4:first-child {
+              margin-top: 0;
+            }
+
+            .break-content ul {
+              margin-left: 1.5rem;
+            }
+
+            .break-content li {
+              font-size: 1.05rem;
+              line-height: 1.7;
+              color: #c0c0c0;
+              margin-bottom: 0.5rem;
+            }
+
+            .break-content p {
+              font-size: 1.05rem;
+              line-height: 1.7;
+              color: #c0c0c0;
+            }
+
+            .progression-timeline {
+              display: flex;
+              flex-direction: column;
+              gap: 2rem;
+              margin-bottom: 3rem;
+            }
+
+            .timeline-card {
+              display: flex;
+              gap: 2rem;
+              background: #252525;
+              padding: 2rem;
+              border-radius: 12px;
+              border: 1px solid #3a3a3a;
+            }
+
+            .timeline-marker {
+              flex-shrink: 0;
+              width: 64px;
+              height: 64px;
+              background: #6b4ba5;
+              color: #ffffff;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 2rem;
+              font-weight: 600;
+            }
+
+            .timeline-content h3 {
+              font-size: 1.6rem;
+              color: #b8a4d4;
+              margin-bottom: 0.5rem;
+              font-weight: 400;
+            }
+
+            .duration {
+              font-size: 1.05rem;
+              color: #9d7fd4;
+              font-style: italic;
+              margin-bottom: 1rem;
+            }
+
+            .timeline-content ul {
+              margin: 1rem 0 1rem 1.5rem;
+            }
+
+            .timeline-content li {
+              font-size: 1.05rem;
+              line-height: 1.7;
+              color: #c0c0c0;
+              margin-bottom: 0.75rem;
+            }
+
+            .goal {
+              margin-top: 1rem;
+              padding: 1rem;
+              background: #2d2d2d;
+              border-left: 3px solid #6b4ba5;
+              border-radius: 6px;
+              font-size: 1.05rem;
+              color: #d0d0d0;
+            }
+
+            .mastery-section {
+              background: #252525;
+              padding: 2.5rem;
+              border-radius: 12px;
+              border: 3px solid #6b4ba5;
+              margin-bottom: 3rem;
+            }
+
+            .mastery-section h3 {
+              font-size: 1.8rem;
+              color: #9d7fd4;
+              margin-bottom: 1.5rem;
+              font-weight: 400;
+            }
+
+            .mastery-content p {
+              font-size: 1.1rem;
+              line-height: 1.8;
+              color: #d0d0d0;
+              margin-bottom: 1rem;
+            }
+
+            .mastery-pattern {
+              background: #1a1a1a;
+              padding: 2rem;
+              border-left: 4px solid #6b4ba5;
+              border-radius: 8px;
+              margin: 1.5rem 0;
+            }
+
+            .mastery-pattern p {
+              font-size: 1.25rem;
+              line-height: 1.8;
+              color: #e8e8e8;
+              font-style: italic;
+              margin: 0;
+            }
+
+            .tips-section {
+              margin-top: 3rem;
+            }
+
+            .tips-section h3 {
+              font-size: 1.8rem;
+              color: #9d7fd4;
+              margin-bottom: 1.5rem;
+              font-weight: 400;
+            }
+
+            .tips-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+              gap: 1.5rem;
+            }
+
+            .tip-card {
+              background: #252525;
+              padding: 1.5rem;
+              border-radius: 8px;
+              border: 1px solid #3a3a3a;
+            }
+
+            .tip-card h4 {
+              font-size: 1.3rem;
+              color: #b8a4d4;
+              margin-bottom: 0.75rem;
+              font-weight: 400;
+            }
+
+            .tip-card p {
+              font-size: 1.05rem;
+              line-height: 1.7;
+              color: #c0c0c0;
+            }
+
+            @media (max-width: 768px) {
+              .header-content {
+                flex-direction: column;
+                text-align: center;
+              }
+
+              .header-text h1 {
+                font-size: 2rem;
+              }
+
+              .guide-nav {
+                flex-wrap: wrap;
+              }
+
+              .guide-nav button {
+                flex: 1 1 50%;
+              }
+
+              .concept-grid,
+              .tips-grid {
+                grid-template-columns: 1fr;
+              }
+
+              .teaching-point,
+              .timeline-card {
+                flex-direction: column;
+              }
+
+              .timeline-marker {
+                width: 48px;
+                height: 48px;
+                font-size: 1.5rem;
+              }
+            }
+          `}</style>
+        </div>
+      );
+    }
+
+    // Render the app
+    ReactDOM.render(<StageOneGuide />, document.getElementById('root'));
+  </script>
+
+  <!-- Lucide React Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script>
+    // Initialize lucide icons
+    const lucideReact = {
+      BookOpen: (props) => React.createElement('svg', {
+        ...props,
+        xmlns: "http://www.w3.org/2000/svg",
+        width: props.size || 24,
+        height: props.size || 24,
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: "2",
+        strokeLinecap: "round",
+        strokeLinejoin: "round"
+      }, [
+        React.createElement('path', { key: 1, d: "M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" }),
+        React.createElement('path', { key: 2, d: "M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" })
+      ]),
+      Lightbulb: (props) => React.createElement('svg', {
+        ...props,
+        xmlns: "http://www.w3.org/2000/svg",
+        width: props.size || 24,
+        height: props.size || 24,
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: "2",
+        strokeLinecap: "round",
+        strokeLinejoin: "round"
+      }, [
+        React.createElement('path', { key: 1, d: "M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" }),
+        React.createElement('path', { key: 2, d: "M9 18h6" }),
+        React.createElement('path', { key: 3, d: "M10 22h4" })
+      ]),
+      Target: (props) => React.createElement('svg', {
+        ...props,
+        xmlns: "http://www.w3.org/2000/svg",
+        width: props.size || 24,
+        height: props.size || 24,
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: "2",
+        strokeLinecap: "round",
+        strokeLinejoin: "round"
+      }, [
+        React.createElement('circle', { key: 1, cx: "12", cy: "12", r: "10" }),
+        React.createElement('circle', { key: 2, cx: "12", cy: "12", r: "6" }),
+        React.createElement('circle', { key: 3, cx: "12", cy: "12", r: "2" })
+      ]),
+      Pause: (props) => React.createElement('svg', {
+        ...props,
+        xmlns: "http://www.w3.org/2000/svg",
+        width: props.size || 24,
+        height: props.size || 24,
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: "2",
+        strokeLinecap: "round",
+        strokeLinejoin: "round"
+      }, [
+        React.createElement('rect', { key: 1, x: "6", y: "4", width: "4", height: "16" }),
+        React.createElement('rect', { key: 2, x: "14", y: "4", width: "4", height: "16" })
+      ]),
+      CheckCircle: (props) => React.createElement('svg', {
+        ...props,
+        xmlns: "http://www.w3.org/2000/svg",
+        width: props.size || 24,
+        height: props.size || 24,
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: "2",
+        strokeLinecap: "round",
+        strokeLinejoin: "round"
+      }, [
+        React.createElement('path', { key: 1, d: "M22 11.08V12a10 10 0 1 1-5.93-9.14" }),
+        React.createElement('polyline', { key: 2, points: "22 4 12 14.01 9 11.01" })
+      ]),
+      ChevronDown: (props) => React.createElement('svg', {
+        ...props,
+        xmlns: "http://www.w3.org/2000/svg",
+        width: props.size || 24,
+        height: props.size || 24,
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: "2",
+        strokeLinecap: "round",
+        strokeLinejoin: "round"
+      }, [
+        React.createElement('polyline', { key: 1, points: "6 9 12 15 18 9" })
+      ]),
+      ChevronUp: (props) => React.createElement('svg', {
+        ...props,
+        xmlns: "http://www.w3.org/2000/svg",
+        width: props.size || 24,
+        height: props.size || 24,
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: "2",
+        strokeLinecap: "round",
+        strokeLinejoin: "round"
+      }, [
+        React.createElement('polyline', { key: 1, points: "18 15 12 9 6 15" })
+      ])
+    };
+  </script>
+</body>
+</html>
