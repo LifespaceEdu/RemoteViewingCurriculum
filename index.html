@@ -66,7 +66,7 @@
 
     .toggle-btn {
       flex: 1;
-      padding: 0.75rem 2rem;
+      padding: 0.75rem 1rem;
       background: transparent;
       border: 2px solid #333;
       color: #888;
@@ -75,6 +75,7 @@
       font-size: 1.1rem;
       transition: all 0.2s ease;
       font-weight: 600;
+      border-right: none;
     }
 
     .toggle-btn:first-child {
@@ -83,7 +84,7 @@
 
     .toggle-btn:last-child {
       border-radius: 0 8px 8px 0;
-      border-left: none;
+      border-right: 2px solid #333;
     }
 
     .toggle-btn:hover {
@@ -99,6 +100,26 @@
     #toggle-stage2.active {
       background: #4ba587;
       border-color: #4ba587;
+    }
+
+    #toggle-stage3.active {
+      background: #5080c7;
+      border-color: #5080c7;
+    }
+
+    #toggle-stage4.active {
+      background: #c7a050;
+      border-color: #c7a050;
+    }
+
+    #toggle-stage5.active {
+      background: #c75050;
+      border-color: #c75050;
+    }
+
+    #toggle-stage6.active {
+      background: #7f7fd4;
+      border-color: #7f7fd4;
     }
 
     .nav-container {
@@ -542,14 +563,18 @@
   <header class="main-header">
     <div class="header-content">
       <h1 class="main-title">Remote Viewing for Kids: Teacher's Guide</h1>
-      <p class="main-subtitle">Stages I & II</p>
+      <p class="main-subtitle">Six-Stage Progressive Training System</p>
     </div>
   </header>
 
   <nav class="main-nav">
     <div class="stage-toggle">
-      <button class="toggle-btn active" id="toggle-stage1" onclick="switchStage('stage1')">Stage I</button>
-      <button class="toggle-btn" id="toggle-stage2" onclick="switchStage('stage2')">Stage II</button>
+      <button class="toggle-btn active" id="toggle-stage1" onclick="switchStage('stage1')">I</button>
+      <button class="toggle-btn" id="toggle-stage2" onclick="switchStage('stage2')">II</button>
+      <button class="toggle-btn" id="toggle-stage3" onclick="switchStage('stage3')">III</button>
+      <button class="toggle-btn" id="toggle-stage4" onclick="switchStage('stage4')">IV</button>
+      <button class="toggle-btn" id="toggle-stage5" onclick="switchStage('stage5')">V</button>
+      <button class="toggle-btn" id="toggle-stage6" onclick="switchStage('stage6')">VI</button>
     </div>
     <div class="nav-container" id="nav-stage1">
       <button class="nav-btn active" onclick="showSection('stage1-overview')">Overview</button>
@@ -560,6 +585,30 @@
     <div class="nav-container hidden" id="nav-stage2">
       <button class="nav-btn" onclick="showSection('stage2-overview')">Overview</button>
       <button class="nav-btn" onclick="showSection('stage2-sessions')">Sessions</button>
+      <button class="nav-btn" onclick="showSection('breaks')">Breaks</button>
+      <button class="nav-btn" onclick="showSection('progression')">Progression</button>
+    </div>
+    <div class="nav-container hidden" id="nav-stage3">
+      <button class="nav-btn" onclick="showSection('stage3-overview')">Overview</button>
+      <button class="nav-btn" onclick="showSection('stage3-sessions')">Sessions</button>
+      <button class="nav-btn" onclick="showSection('breaks')">Breaks</button>
+      <button class="nav-btn" onclick="showSection('progression')">Progression</button>
+    </div>
+    <div class="nav-container hidden" id="nav-stage4">
+      <button class="nav-btn" onclick="showSection('stage4-overview')">Overview</button>
+      <button class="nav-btn" onclick="showSection('stage4-sessions')">Sessions</button>
+      <button class="nav-btn" onclick="showSection('breaks')">Breaks</button>
+      <button class="nav-btn" onclick="showSection('progression')">Progression</button>
+    </div>
+    <div class="nav-container hidden" id="nav-stage5">
+      <button class="nav-btn" onclick="showSection('stage5-overview')">Overview</button>
+      <button class="nav-btn" onclick="showSection('stage5-sessions')">Sessions</button>
+      <button class="nav-btn" onclick="showSection('breaks')">Breaks</button>
+      <button class="nav-btn" onclick="showSection('progression')">Progression</button>
+    </div>
+    <div class="nav-container hidden" id="nav-stage6">
+      <button class="nav-btn" onclick="showSection('stage6-overview')">Overview</button>
+      <button class="nav-btn" onclick="showSection('stage6-sessions')">Sessions</button>
       <button class="nav-btn" onclick="showSection('breaks')">Breaks</button>
       <button class="nav-btn" onclick="showSection('progression')">Progression</button>
     </div>
@@ -1106,6 +1155,752 @@
       </div>
     </div>
 
+
+    <!-- STAGE III OVERVIEW -->
+    <div id="stage3-overview" class="section">
+      <div class="intro-card stage2">
+        <h2>Stage III: Size, Shape, and Simple Sketches</h2>
+        <p class="lead">Stage III teaches the child to add basic size and shape information to their Stage I–II data and then to make a simple sketch of the place—a quick "little map" built from the words they've already said.</p>
+      </div>
+
+      <div class="warning-box">
+        <h3>Stage III Builds On Stages I & II</h3>
+        <p>You never drop Stage I or II. Stage III is added underneath. The child still does the complete Stage I–II sequence, then adds Shapes, whole-place feeling, and sketch.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>What You Want by End of Stage III</h2>
+        <p>By the end of Stage III, you want a child who can:</p>
+        <ul>
+          <li>Run the full Stage I–II sequence for a target (number, fast mark, Move, Feel, Helper, Senses)</li>
+          <li>Say two or three simple size/shape words (tall/low, wide/narrow, flat/sloping, big/small)</li>
+          <li>Say one short "whole-place feeling" phrase (lonely, busy, peaceful, "don't like it")</li>
+          <li>Use those words to make a simple sketch that shows where the big parts of the place go</li>
+        </ul>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>The Complete Structure (Stages I-III)</h2>
+        <p>For each target number, the work now appears in this order:</p>
+        <div class="layout-example">
+          <div class="layout-line">Number</div>
+          <div class="layout-line">Fast mark</div>
+          <div class="layout-line stage1-color">Move: ...</div>
+          <div class="layout-line stage1-color">Feel: ...</div>
+          <div class="layout-line stage1-color">Helper: ...</div>
+          <div class="layout-line stage2-color">Senses: (3-5 words)</div>
+          <div class="layout-line stage2-color">Shapes: (2-3 words)</div>
+          <div class="layout-line stage2-color">Whole-place feeling: ...</div>
+          <div class="layout-line stage2-color">Sketch</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE III SESSIONS -->
+    <div id="stage3-sessions" class="section">
+      <div class="intro-card stage2">
+        <h2>Running Stage III Sessions</h2>
+        <p class="lead">Stage III sessions add Shape words, whole-place feeling, and a sketch after the Stage II Senses block.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Introducing Stage III to the Child</h2>
+        <div class="script-box stage2">
+          <p>"Now that you can do the number, fast squiggle, little words, and body-words, we're going to add a new step."</p>
+          <p>"After your body-words, we'll ask about size and shape: does the place feel tall or low, wide or narrow, flat or sloping, big or small?"</p>
+          <p>"Then you'll draw a little map of the place using those words. Not a fancy picture—just lines and blobs that show where the big things are."</p>
+        </div>
+
+        <h3>Demonstrate First</h3>
+        <p>Show a very simple example on scrap paper:</p>
+        <div class="example-box">
+          <p><strong>Say:</strong> "Shapes: tall, narrow, flat"</p>
+          <p><strong>Draw:</strong> A tall rectangle in the center and a flat area under it</p>
+        </div>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Teaching Shape Words</h2>
+        <p>After finishing the Senses list for a target, write "Shapes:" and lead with clear either/or prompts:</p>
+
+        <div class="prompt-grid">
+          <div class="prompt-card">
+            <div class="prompt-question">"Does this place feel more tall, or more low?"</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-question">"Does it seem more wide, or more narrow?"</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-question">"Is it more flat, or more sloping or angled?"</div>
+          </div>
+
+          <div class="prompt-card">
+            <div class="prompt-question">"Does it feel more big, or more small?"</div>
+          </div>
+        </div>
+
+        <p>You don't need all four prompts every time. <strong>Aim for 2-3 clear answers.</strong></p>
+
+        <h3>Writing Shape Words</h3>
+        <p>Each answer becomes one short word:</p>
+        <div class="layout-example">
+          <div class="layout-line stage2-color">Shapes:</div>
+          <div class="layout-line stage2-color indent">tall</div>
+          <div class="layout-line stage2-color indent">wide</div>
+          <div class="layout-line stage2-color indent">flat</div>
+        </div>
+
+        <h3>If They Give Longer Sentences</h3>
+        <div class="example-box">
+          <p><strong>Child says:</strong> "It's like a big tall building with lots of levels"</p>
+          <p><strong>You say:</strong> "That's helpful. For Shapes we will only write the most important words. Let's write 'tall' and 'big' this time."</p>
+        </div>
+
+        <p class="important">You are teaching that the Shapes line holds short size/shape words only, not detailed descriptions.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Teaching Whole-Place Feeling</h2>
+        <p>Before you sketch, you ask for the child's overall feeling about the place. This is where the child notices how the whole site makes them feel, not just one part.</p>
+
+        <p>After the Shapes words, say:</p>
+        <div class="script-box stage2">
+          <p>"Now think about the whole place. How does it feel to you inside? Does it feel fun, scary, calm, lonely, busy, peaceful, or something else?"</p>
+        </div>
+
+        <p>Encourage a single short phrase, then write it as:</p>
+        <div class="example-box">
+          <p>Whole-place feeling: lonely</p>
+          <p>Whole-place feeling: busy</p>
+          <p>Whole-place feeling: calm</p>
+          <p>Whole-place feeling: don't like it</p>
+        </div>
+
+        <p class="important">If the feeling is clearly uncomfortable—"scary-no," "I really don't like it"—take note. You can decide to proceed but keep it light, or choose to stop after the sketch and switch to a more neutral target next time. The key is to acknowledge the feeling and give it one line on the page.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Teaching the Sketch</h2>
+        <p>The sketch is built FROM the Stage I–III words, not from a fully imagined picture. You need to tell the child that explicitly.</p>
+
+        <div class="script-box stage2">
+          <p>"Now we'll make a little map of this place. We are not trying to draw a perfect picture."</p>
+          <p>"We're going to let your shape words turn into lines and blobs. If you said something is tall, we'll draw a tall line or block. If you said flat, we'll draw a flat area. If you said wide, we'll draw something wide."</p>
+          <p>"We use our words to decide what to draw."</p>
+        </div>
+
+        <h3>Model It First</h3>
+        <p>It helps to demonstrate once:</p>
+        <div class="example-box">
+          <p><strong>Write:</strong> "Shapes: tall, narrow, flat"</p>
+          <p><strong>Draw:</strong> A tall narrow block in the center and a flat area under it</p>
+          <p><strong>Say:</strong> "The word 'tall' made me draw this tall block. 'Flat' made me draw this flat bit here. That's all we need."</p>
+        </div>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Guiding the Child to Sketch from Words</h2>
+        <p>Once Shapes and whole-place feeling are written for a secret number, guide the sketch step-by-step:</p>
+
+        <div class="step-cards">
+          <div class="step-card stage2">
+            <div class="step-number">1</div>
+            <div class="step-title">First Shape Word</div>
+            <p>Point to the first Shapes word and ask:</p>
+            <p><strong>"You wrote 'tall.' Where does the tall thing belong on your map? More in the middle, to the left, to the right?"</strong></p>
+            <p>Let them choose, then have them draw a tall vertical line or block there.</p>
+          </div>
+
+          <div class="step-card stage2">
+            <div class="step-number">2</div>
+            <div class="step-title">Second Shape Word</div>
+            <p>Point to the next Shapes word:</p>
+            <p><strong>"You wrote 'flat.' Is that flat part under the tall thing, beside it, or all around it?"</strong></p>
+            <p>They draw a flat area accordingly—like a horizontal rectangle or line.</p>
+          </div>
+
+          <div class="step-card stage2">
+            <div class="step-number">3</div>
+            <div class="step-title">Additional Shapes</div>
+            <p>Repeat for any additional Shapes words:</p>
+            <p><strong>"You wrote 'wide.' Is the wide part here or here?"</strong></p>
+          </div>
+        </div>
+
+        <p>Encourage them to keep the sketch simple:</p>
+        <div class="script-box stage2">
+          <p>"We only need the big pieces. No windows or tiny details—just where the big parts go."</p>
+        </div>
+
+        <h3>If They Add Details from Mental Images</h3>
+        <p>If they begin adding specific landmarks, people, or decorations, gently redirect:</p>
+        <div class="script-box stage2">
+          <p>"That's an interesting detail. Let's first make sure our map shows your 'tall', 'flat', and 'wide' parts. Once that is on the page, you can add a small detail if you still feel like it."</p>
+        </div>
+
+        <p class="important">If a strong inner picture is clearly driving the drawing, you can treat it as a "story picture," write "Story picture: ..." in the margin, and bring them back to using their words as instructions.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Practice Pattern for Stage III</h2>
+        <p>For the first few Stage III sessions, keep things light:</p>
+        <ul>
+          <li>Use <strong>2-3 secret numbers</strong> per session</li>
+          <li>For each number:
+            <ul>
+              <li>Run the full Stage I–II sequence</li>
+              <li>Add Shapes words</li>
+              <li>Record a whole-place feeling</li>
+              <li>Guide a quick sketch</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p class="important">Do not worry about how "accurate" the sketches are at first. Your aim is to make the Stage III pattern automatic: Number → fast mark → Move → Feel → Helper → Senses → Shapes → whole-place feeling → sketch.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Feedback with Stage III</h2>
+        <p>When you reveal the target picture, after your Stage I–II feedback you can now point out any useful Stage III connections:</p>
+
+        <div class="example-box">
+          <p>"You wrote 'tall' and drew this tall block. Do we see anything tall in this picture?"</p>
+          <p>"You wrote 'flat.' Is there a flat area in the picture like in your sketch?"</p>
+          <p>"Your whole-place feeling word was 'busy.' Does this scene look busy or quiet?"</p>
+        </div>
+
+        <p>Sometimes the sketch will match the basic layout nicely. Sometimes parts will match, and sometimes it will not be obvious. You keep feedback gentle and specific, focusing on "This part fits" and "This part we can't really tell from this picture," instead of judging.</p>
+      </div>
+    </div>
+
+    <!-- STAGE IV OVERVIEW -->
+    <div id="stage4-overview" class="section">
+      <div class="intro-card stage2">
+        <h2>Stage IV: Kinds of Place and Soft Meaning</h2>
+        <p class="lead">Stage IV lets the child begin to talk about what kind of place the target is and what happens there in very general terms. It uses simple classifications and one or two soft "might" statements.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>What You Want by End of Stage IV</h2>
+        <p>By the end of Stage IV, you want a child who can:</p>
+        <ul>
+          <li>Run the full Stage I–III sequence</li>
+          <li>Say whether the place feels more like nature or more like buildings</li>
+          <li>Say whether it feels more quiet or more busy</li>
+          <li>Say whether it feels mostly like a play place, work place, learning place, or resting place</li>
+          <li>Write one or two "It might be a place where..." or "It might be a place that feels..." sentences</li>
+        </ul>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>The Complete Structure (Stages I-IV)</h2>
+        <div class="layout-example">
+          <div class="layout-line">Number</div>
+          <div class="layout-line stage1-color">Stage I (Move, Feel, Helper)</div>
+          <div class="layout-line stage2-color">Stage II (Senses: 3-5 words)</div>
+          <div class="layout-line stage2-color">Stage III (Shapes, whole-place feeling, sketch)</div>
+          <div class="layout-line stage2-color">Stage IV:</div>
+          <div class="layout-line stage2-color indent">Kind of place: Nature / Buildings</div>
+          <div class="layout-line stage2-color indent">Quiet / Busy</div>
+          <div class="layout-line stage2-color indent">Mostly: Play / Work / Learn / Rest</div>
+          <div class="layout-line stage2-color indent">"Might" sentences (1-2)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE IV SESSIONS -->
+    <div id="stage4-sessions" class="section">
+      <div class="intro-card stage2">
+        <h2>Running Stage IV Sessions</h2>
+        <p class="lead">Stage IV sessions add "Kind of place" classifications and "might" sentences after the Stage III sketch.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Introducing Stage IV to the Child</h2>
+        <div class="script-box stage2">
+          <p>"Now we're going to add a part where we ask what kind of place this feels like. We won't try to name it exactly. We'll use simple choices."</p>
+          <p>"Does it feel more like nature or more like buildings? More quiet or more busy? More like a place to play, to work, to learn, or to rest?"</p>
+          <p>"Then we'll write one or two sentences that start with 'It might be a place where...' or 'It might be a place that feels...' because we are using our clues, not saying for sure."</p>
+        </div>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Teaching "Kind of Place" Classifications</h2>
+        <p>After the Stage III sketch, add this section. You can structure it as text lines or choices:</p>
+
+        <div class="layout-example">
+          <div class="layout-line stage2-color">Kind of place:</div>
+          <div class="layout-line stage2-color indent">Nature / Buildings</div>
+          <div class="layout-line stage2-color indent">Quiet / Busy</div>
+          <div class="layout-line stage2-color indent">Mostly: Play / Work / Learn / Rest</div>
+        </div>
+
+        <p>For each line, you guide the child to choose one.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>The Three Classification Questions</h2>
+
+        <div class="step-cards">
+          <div class="step-card stage2">
+            <div class="step-number">1</div>
+            <div class="step-title">Nature vs. Buildings</div>
+            <p><strong>Ask:</strong> "Does this place feel more like nature—like forests, fields, mountains, the sea—or more like buildings and man-made stuff—like cities, roads, factories?"</p>
+            <p>Let them choose "Nature" or "Buildings." Mark or circle their choice.</p>
+          </div>
+
+          <div class="step-card stage2">
+            <div class="step-number">2</div>
+            <div class="step-title">Quiet vs. Busy</div>
+            <p><strong>Ask:</strong> "Does it feel more quiet, or more busy and full of activity?"</p>
+            <p>They choose "Quiet" or "Busy" and you note it.</p>
+          </div>
+
+          <div class="step-card stage2">
+            <div class="step-number">3</div>
+            <div class="step-title">Mostly: Play / Work / Learn / Rest</div>
+            <p><strong>Ask:</strong> "Does it feel more like a place where people mostly play, mostly work, mostly learn, or mostly rest?"</p>
+            <p><strong>Offer examples if unsure:</strong></p>
+            <p>"Play might be a playground or park. Work might be a farm, factory, or office. Learn might be a school or museum. Rest might be a bedroom, a beach, or a quiet garden."</p>
+            <p>They choose one: <strong>Play, Work, Learn,</strong> or <strong>Rest</strong></p>
+          </div>
+        </div>
+
+        <p class="important">You are helping them turn a vague impression into a few simple qualitative tags without forcing them to name the exact target.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Teaching "Might" Sentences</h2>
+        <p>The last part of Stage IV is to gather one or two short sentences that wrap up their feeling of the place, using the word "might" on purpose.</p>
+
+        <div class="script-box stage2">
+          <p>"Now let's write one or two sentences that start with 'It might be a place where...' or 'It might be a place that feels...'. Remember, we say 'might' because we are just using clues."</p>
+        </div>
+
+        <h3>Prompting the Sentences</h3>
+        <p><strong>Ask:</strong> "Based on your clues, what might people do there?" or "How might it feel to be there?"</p>
+
+        <p>Help them turn their answers into short sentences:</p>
+        <div class="example-box">
+          <p>"It might be a place where people work with machines."</p>
+          <p>"It might be a place where kids play outside."</p>
+          <p>"It might be a place that feels very quiet and peaceful."</p>
+          <p>"It might be a place that feels busy and loud."</p>
+        </div>
+
+        <h3>Correcting "IS" to "MIGHT"</h3>
+        <p>If they say "It IS a place where..." gently correct:</p>
+        <div class="script-box stage2">
+          <p>"Let's use 'might' here, because we're not saying for sure. Try: 'It might be a place where...'"</p>
+        </div>
+
+        <p class="note">You can write the sentences for them if writing is hard; what matters is that they choose the words and hear the soft framing.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Handling Overly Specific Guesses</h2>
+        <p>Children often jump to specific identifications: "It's Disneyland," "It's Grandma's house." Stage IV should acknowledge this without letting the whole output collapse into that guess.</p>
+
+        <div class="example-box">
+          <p><strong>Child says:</strong> "It's Disneyland!"</p>
+          <p><strong>You respond:</strong> "That's a strong guess. Let's write that as 'Story: Disneyland' on the side. For our 'might' sentence, use your clues instead. From what you wrote, it feels like a busy play place. How about, 'It might be a place where people go to play outside and it's very busy'?"</p>
+        </div>
+
+        <p class="important">You are reinforcing that the structured Stage IV language is about general kind-of-place meaning, while specific guesses are labeled clearly as stories.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Practice Pattern for Stage IV</h2>
+        <p>Introduce Stage IV after the child is comfortable with Stages I–III.</p>
+
+        <p>In the first few Stage IV sessions:</p>
+        <ul>
+          <li>Use <strong>2-3 secret numbers</strong> per session</li>
+          <li>For each number:
+            <ul>
+              <li>Run full Stage I–III</li>
+              <li>Add the three "Kind of place" choices</li>
+              <li>Co-construct one or two "might" sentences</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>As They Gain Confidence</h3>
+        <ul>
+          <li>Allow them to propose their own "kind of place" words beyond your menu, as long as they stay general ("farm place," "city place," "water place")</li>
+          <li>Gradually shift from heavy prompting to lighter prompting ("Now write an 'It might be...' sentence using your words")</li>
+        </ul>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Feedback with Stage IV</h2>
+        <p>When you reveal the target, you can now include Stage IV in your feedback.</p>
+
+        <div class="example-box">
+          <p>"They picked 'Nature'—does this picture show mostly nature or mostly buildings?"</p>
+          <p>"They picked 'Busy'—does this look like a busy place?"</p>
+          <p>"They wrote 'It might be a place where people work with machines'—do we see machines here? Does that fit?"</p>
+        </div>
+
+        <p>Sometimes their classifications and sentences will fit the main site closely; sometimes they fit the surrounding area; sometimes they do not fit at all. You treat all three with the same neutral commentary:</p>
+        <ul>
+          <li>"This fits the place well."</li>
+          <li>"This fits something near the place."</li>
+          <li>"This one we can't really match from the picture."</li>
+        </ul>
+
+        <p class="important">They keep learning that the job is to follow the structure and express impressions clearly, not to be perfect.</p>
+      </div>
+    </div>
+
+    <!-- STAGE V OVERVIEW -->
+    <div id="stage5-overview" class="section">
+      <div class="intro-card stage2">
+        <h2>Stage V: One Question at a Time</h2>
+        <p class="lead">Stage V introduces "asking the place a question" and listening for one short answer without sliding into a long story. It's a gentle children's version of interrogating the signal: one focused question, one brief answer.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>What You Want by End of Stage V</h2>
+        <p>By the end of Stage V, you want a child who can:</p>
+        <ul>
+          <li>Run the full Stage I–IV sequence for a target, then</li>
+          <li>Listen for one small answer to a simple question like "What do people mostly do here?" or "What is most important here?"</li>
+          <li>Give that answer in one to three words, stopping before it turns into a story</li>
+        </ul>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>The Complete Structure (Stages I-V)</h2>
+        <div class="layout-example">
+          <div class="layout-line">Stages I → II → III → IV (as before)</div>
+          <div class="layout-line stage2-color">Question: What do people mostly do here?</div>
+          <div class="layout-line stage2-color">Answer: grow food</div>
+        </div>
+
+        <p class="important">You only ask ONE Stage V question per target with children. That keeps things focused and prevents fatigue.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Good Stage V Questions</h2>
+        <p>Keep questions simple and about general function or mood, not about names:</p>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <p>"What do people mostly do here?"</p>
+          </div>
+          <div class="info-card">
+            <p>"What is the main thing that happens here?"</p>
+          </div>
+          <div class="info-card">
+            <p>"What is the strongest feeling here?"</p>
+          </div>
+          <div class="info-card">
+            <p>"What is the most important thing here?"</p>
+          </div>
+        </div>
+
+        <p class="important">Avoid questions like "What is this place called?" or "What country is this in?" which invite guessing rather than sensing.</p>
+      </div>
+    </div>
+
+    <!-- STAGE V SESSIONS -->
+    <div id="stage5-sessions" class="section">
+      <div class="intro-card stage2">
+        <h2>Running Stage V Sessions</h2>
+        <p class="lead">Stage V sessions add one focused question with a short answer after Stage IV.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Introducing Stage V to the Child</h2>
+        <div class="script-box stage2">
+          <p>"Now we're going to learn one more move. After you do all your clues and sentences, you get to ask the place a tiny question, like 'What do people mostly do here?' or 'What is the most important thing here?'"</p>
+          <p>"Then we listen quietly and write down just a very short answer. If your brain starts telling a long story, we'll call it a story and park it like before."</p>
+        </div>
+
+        <p>The words "tiny question" and "very short answer" are important. They signal the scale of what you want.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Choosing Stage V Questions</h2>
+        <p>As the adult, you choose the Stage V question for each target. Keep questions simple and always about general function or mood, not about names.</p>
+
+        <h3>Good Examples:</h3>
+        <ul>
+          <li>"What do people mostly do here?"</li>
+          <li>"What is the main thing that happens here?"</li>
+          <li>"What is the strongest feeling here?"</li>
+          <li>"What is the most important thing here?"</li>
+        </ul>
+
+        <h3>Avoid:</h3>
+        <ul>
+          <li>"What is this place called?"</li>
+          <li>"What country is this in?"</li>
+        </ul>
+        <p class="note">These invite guessing rather than sensing.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Teaching the Stage V Move</h2>
+        <p>After the Stage IV "might" sentences for a target, pause and say:</p>
+
+        <div class="script-box stage2">
+          <p>"Now we'll do our tiny question. For this one, the question is: 'What do people mostly do here?'"</p>
+          <p>"Close your eyes for a moment. Think of the place your number is pointing to. Just once, very softly in your mind, ask, 'What do people mostly do here?' Then notice the first small answer that pops up, like a word or tiny phrase. We only want one little answer, not a whole story."</p>
+        </div>
+
+        <p>Give them a few seconds in silence.</p>
+        <p>Then ask: <strong>"What little answer popped up?"</strong></p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Shaping the Stage V Answer</h2>
+        <p>When the child replies, your job is to keep the answer short and to separate short answers from stories.</p>
+
+        <h3>If They Give a Simple Answer:</h3>
+        <div class="example-box">
+          <p><strong>Child says:</strong> "grow food"</p>
+          <p><strong>You write:</strong></p>
+          <p>Question: What do people mostly do here?<br>Answer: grow food</p>
+        </div>
+
+        <div class="example-box">
+          <p><strong>Other examples:</strong> drive cars, pray, swim, rest</p>
+        </div>
+
+        <h3>If They Give a Sentence:</h3>
+        <div class="example-box">
+          <p><strong>Child says:</strong> "They walk around and buy food from stands"</p>
+          <p><strong>You say:</strong> "That's helpful. Let's capture that as two words: 'buy food'"</p>
+          <p><strong>You write:</strong> Answer: buy food</p>
+        </div>
+
+        <h3>If They Launch into a Story:</h3>
+        <div class="example-box">
+          <p><strong>Child says:</strong> "It's a big city where people run around and there are shops and cars and lights and my friend is there..."</p>
+          <p><strong>You respond:</strong> "That's turning into a story. Stories are okay; let's park that as 'Story' on the side. For our tiny question, we just pick one small answer, like 'shop' or 'run' or 'busy.' Which word feels most right?"</p>
+          <p><strong>You write:</strong> Story: big city with shops and cars (margin)<br>Answer: shop</p>
+        </div>
+
+        <p class="important">You are teaching that Stage V answers are brief and must stop before they unfold into a long scene.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Practice Pattern for Stage V</h2>
+        <p>Stage V works best if you keep it very light:</p>
+
+        <ul>
+          <li><strong>Don't use Stage V on every target in the beginning.</strong> In early sessions, choose 1-2 targets per session to add Stage V to, after the child has done Stage I–IV.</li>
+          <li><strong>Use only ONE question per target.</strong></li>
+          <li><strong>Keep questions consistent for a while</strong> (for example, use "What do people mostly do here?" across several sessions) so the child understands the pattern.</li>
+        </ul>
+
+        <h3>A Simple First Stage V Session Might Look Like:</h3>
+        <ul>
+          <li>Two secret numbers with full Stage I–IV, no Stage V</li>
+          <li>One secret number with full Stage I–IV, plus Stage V question "What do people mostly do here?" and a short answer</li>
+        </ul>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Feedback with Stage V</h2>
+        <p>When you reveal the target, Stage V gives you one more small point of comparison. After Stage I–IV feedback, look at the Stage V question and answer:</p>
+
+        <div class="example-box">
+          <p>"Your question was 'What do people mostly do here?' and you answered 'grow food.' Does this picture look like a place where people grow food?"</p>
+        </div>
+
+        <p>If it fits, you say so; if it fits something nearby; or if you cannot tell, you say that. You keep the same neutral style:</p>
+        <ul>
+          <li>"This fits what we see here."</li>
+          <li>"This could fit something near this place."</li>
+          <li>"This one we can't really check in this picture."</li>
+        </ul>
+
+        <p class="important">You do not weigh Stage V more heavily than the other stages. It is just one more small piece of data.</p>
+      </div>
+    </div>
+
+    <!-- STAGE VI OVERVIEW -->
+    <div id="stage6-overview" class="section">
+      <div class="intro-card stage2">
+        <h2>Stage VI: Building the Place</h2>
+        <p class="lead">Stage VI invites the child to build a simple 3D model of the place using clay, blocks, or cardboard, based on what they've already written and drawn. The hands-on building anchors impressions physically and can bring out additional observations.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>What You Want by End of Stage VI</h2>
+        <p>By the end of Stage VI, you want a child who can:</p>
+        <ul>
+          <li>Run the full Stage I–V sequence for a target, then</li>
+          <li>Use a few basic materials to build a very rough model of the site (a tall block for a building, a slope for a hill, a flat base for ground or water)</li>
+          <li>Optionally add 1-2 extra words that arise while building, still keeping them short and concrete</li>
+        </ul>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>When to Use Stage VI</h2>
+        <p>Stage VI is not needed for every target. It is best used occasionally as a capstone for a target that produced a rich Stage I–V session.</p>
+
+        <p>You might:</p>
+        <ul>
+          <li>Use Stage VI on <strong>one target per session</strong>, or</li>
+          <li>Reserve it for "special" targets when you want a deeper dive</li>
+        </ul>
+
+        <p class="important">Stage VI works best when: the child has given a decent set of Stage I–III words, the sketch is reasonably clear, and the child is still engaged and not tired.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Materials Needed</h2>
+        <p>You don't need fancy materials. A simple kit can include:</p>
+        <ul>
+          <li>A tray or sheet of cardboard as a base</li>
+          <li>Modeling clay or play-dough</li>
+          <li>A handful of small blocks or boxes</li>
+          <li>Strips of paper or pipe cleaners for rivers, roads, or boundaries</li>
+          <li>Crayons or markers if needed to mark areas</li>
+        </ul>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>The Complete Structure (Stages I-VI)</h2>
+        <div class="layout-example">
+          <div class="layout-line">Stages I → II → III → IV → V (as before)</div>
+          <div class="layout-line stage2-color">Stage VI: Build 3D model from words and sketch</div>
+          <div class="layout-line stage2-color">Extra impressions while building: (1-2 optional)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE VI SESSIONS -->
+    <div id="stage6-sessions" class="section">
+      <div class="intro-card stage2">
+        <h2>Running Stage VI Sessions</h2>
+        <p class="lead">Stage VI sessions add 3D building after Stage V (or Stage IV). This is occasional, not for every target.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Introducing Stage VI to the Child</h2>
+        <div class="script-box stage2">
+          <p>"Now we're going to try building this place. We're not making a perfect model. We're going to use clay and blocks to show the big shapes from your words and your map."</p>
+          <p>"If you wrote 'tall,' we'll build a tall thing. If you wrote 'flat,' we'll make a flat part. Your hands will follow your clues."</p>
+        </div>
+
+        <p class="important">Disconnect this from the idea of "craft time." It's brief and focused, not an open-ended art project.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Teaching the Building Move</h2>
+        <p>For a chosen target (one that has a Stage III sketch and Stage IV notes you like), set out the materials and the child's paper. Work on a tray or base so you can refer to "left" and "right."</p>
+
+        <div class="step-cards">
+          <div class="step-card stage2">
+            <div class="step-number">1</div>
+            <div class="step-title">Identify the Biggest Shape</div>
+            <p>Place the paper with the sketch visible.</p>
+            <p><strong>Say:</strong> "Look at your Shapes and your map. What is the biggest shape here?"</p>
+            <p>They might say "The tall thing in the middle," "The flat ground," or "The wide area on the left."</p>
+          </div>
+
+          <div class="step-card stage2">
+            <div class="step-number">2</div>
+            <div class="step-title">Build the First Piece</div>
+            <p><strong>Say:</strong> "Use a block or clay to make that tall thing. Put it on the tray where it is on your map."</p>
+          </div>
+
+          <div class="step-card stage2">
+            <div class="step-number">3</div>
+            <div class="step-title">Add the Next Biggest Piece</div>
+            <p><strong>Ask:</strong> "What is the next biggest piece?"</p>
+            <p>They might say "the flat," "the slope," or "the wide part."</p>
+            <p>Help them build that around the first piece, using clay or paper.</p>
+          </div>
+
+          <div class="step-card stage2">
+            <div class="step-number">4</div>
+            <div class="step-title">Complete Main Elements</div>
+            <p>Continue until they've represented:</p>
+            <ul>
+              <li>Tall vs. low</li>
+              <li>Wide vs. narrow</li>
+              <li>Slopes vs. flat areas</li>
+              <li>Perhaps a strip for a road or river</li>
+            </ul>
+            <p class="note">The model should stay simple. A few shapes are enough.</p>
+          </div>
+        </div>
+
+        <h3>If They Start Adding Small Details</h3>
+        <div class="script-box stage2">
+          <p>"Okay, you added a little thing there. Remember our main job is to show the big shapes from your words. Do we still see your 'tall', your 'flat', your 'wide' in this model?"</p>
+        </div>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Allowing Extra Words During Building</h2>
+        <p>Sometimes while they build, the child may say things like:</p>
+        <ul>
+          <li>"Now it feels more closed in"</li>
+          <li>"It feels higher than I thought"</li>
+          <li>"I think there's water behind this"</li>
+        </ul>
+
+        <p>You can choose to capture 1-2 of these as extra notes, as long as you keep them short and do not let them turn into stories.</p>
+
+        <p>You might write:</p>
+        <div class="example-box">
+          <p><strong>Extra impressions while building:</strong></p>
+          <p>feels higher</p>
+          <p>more closed in</p>
+          <p>water behind</p>
+        </div>
+
+        <p class="important">If the comments drift into long imaginative stories, you treat them as Story in the same way as before: "That's a story; let's park it on the side," and bring them back to the main shapes.</p>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>How Often to Use Stage VI</h2>
+        <p>Stage VI takes more time and energy than the other stages. You do not need to use it for every target.</p>
+
+        <p>You might:</p>
+        <ul>
+          <li>Use Stage VI on <strong>one target per session</strong>, or</li>
+          <li>Reserve it for <strong>"special" targets</strong> when you want a deeper dive</li>
+        </ul>
+
+        <p>Stage VI works best when:</p>
+        <ul>
+          <li>The child has given a decent set of Stage I–III words</li>
+          <li>The sketch is reasonably clear</li>
+          <li>The child is still engaged and not tired</li>
+        </ul>
+      </div>
+
+      <div class="content-block stage2">
+        <h2>Feedback with Stage VI</h2>
+        <p>When you finally show the target picture, you can now look at:</p>
+        <ul>
+          <li>Stage I–IV notes</li>
+          <li>Stage V answer, if used</li>
+          <li>The Stage III sketch and Stage VI model</li>
+        </ul>
+
+        <p>You can ask:</p>
+        <div class="example-box">
+          <p>"How does your model match this picture?"</p>
+          <p>"Do we see a tall thing where you built one?"</p>
+          <p>"Is this flat or sloping like you made it?"</p>
+          <p>"Does this feel more closed in or open, like you said?"</p>
+        </div>
+
+        <p>Again, you highlight what fits, what fits nearby, and what cannot be checked, without turning it into a scored test.</p>
+      </div>
+    </div>
+
   </div>
 
   <script>
@@ -1115,13 +1910,15 @@
       currentStage = stage;
 
       // Update toggle buttons
-      document.getElementById('toggle-stage1').classList.remove('active');
-      document.getElementById('toggle-stage2').classList.remove('active');
+      ['stage1', 'stage2', 'stage3', 'stage4', 'stage5', 'stage6'].forEach(s => {
+        document.getElementById('toggle-' + s).classList.remove('active');
+      });
       document.getElementById('toggle-' + stage).classList.add('active');
 
       // Update nav containers
-      document.getElementById('nav-stage1').classList.add('hidden');
-      document.getElementById('nav-stage2').classList.add('hidden');
+      ['stage1', 'stage2', 'stage3', 'stage4', 'stage5', 'stage6'].forEach(s => {
+        document.getElementById('nav-' + s).classList.add('hidden');
+      });
       document.getElementById('nav-' + stage).classList.remove('hidden');
 
       // Remove active from all nav buttons
@@ -1129,13 +1926,8 @@
       navButtons.forEach(button => button.classList.remove('active'));
 
       // Show default section for that stage and activate its button
-      if (stage === 'stage1') {
-        showSectionDirect('stage1-overview');
-        document.querySelector('#nav-stage1 .nav-btn:first-child').classList.add('active');
-      } else {
-        showSectionDirect('stage2-overview');
-        document.querySelector('#nav-stage2 .nav-btn:first-child').classList.add('active');
-      }
+      showSectionDirect(stage + '-overview');
+      document.querySelector('#nav-' + stage + ' .nav-btn:first-child').classList.add('active');
     }
 
     function showSectionDirect(sectionId) {
