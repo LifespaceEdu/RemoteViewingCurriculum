@@ -1,1965 +1,1286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Non-Local Sensing for Kids: Teacher's Guide</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Georgia', serif;
-      background: #0f0f0f;
-      color: #e8e8e8;
-      line-height: 1.7;
-    }
-
-    /* HEADER */
-    .main-header {
-      background: linear-gradient(135deg, #1a1a3e 0%, #2d1b4e 50%, #1b4e3a 100%);
-      padding: 2.5rem 2rem;
-      border-bottom: 4px solid #6b4ba5;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-
-    .header-content {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .main-title {
-      font-size: 2.5rem;
-      color: #ffffff;
-      margin-bottom: 0.5rem;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-    }
-
-    .main-subtitle {
-      font-size: 1.3rem;
-      color: #b8a4d4;
-      font-style: italic;
-    }
-
-    /* NAVIGATION */
-    .main-nav {
-      background: #1a1a1a;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid #333;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-
-    .stage-toggle {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      gap: 0;
-      background: #0f0f0f;
-      padding: 0.5rem;
-    }
-
-    .toggle-btn {
-      flex: 1;
-      padding: 0.75rem 1rem;
-      background: transparent;
-      border: 2px solid #333;
-      color: #888;
-      cursor: pointer;
-      font-family: 'Georgia', serif;
-      font-size: 1.1rem;
-      transition: all 0.2s ease;
-      font-weight: 600;
-      border-right: none;
-    }
-
-    .toggle-btn:first-child {
-      border-radius: 8px 0 0 8px;
-    }
-
-    .toggle-btn:last-child {
-      border-radius: 0 8px 8px 0;
-      border-right: 2px solid #333;
-    }
-
-    .toggle-btn:hover {
-      color: #ccc;
-    }
-
-    .toggle-btn.active {
-      background: #6b4ba5;
-      color: white;
-      border-color: #6b4ba5;
-    }
-
-    #toggle-stage2.active {
-      background: #4ba587;
-      border-color: #4ba587;
-    }
-
-    #toggle-stage3.active {
-      background: #5080c7;
-      border-color: #5080c7;
-    }
-
-    #toggle-stage4.active {
-      background: #c7a050;
-      border-color: #c7a050;
-    }
-
-    #toggle-stage5.active {
-      background: #c75050;
-      border-color: #c75050;
-    }
-
-    #toggle-stage6.active {
-      background: #7f7fd4;
-      border-color: #7f7fd4;
-    }
-
-    .nav-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      overflow-x: auto;
-    }
-
-    .nav-container.hidden {
-      display: none;
-    }
-
-    .nav-btn {
-      padding: 1rem 1.5rem;
-      background: transparent;
-      border: none;
-      color: #888;
-      cursor: pointer;
-      font-family: 'Georgia', serif;
-      font-size: 1rem;
-      white-space: nowrap;
-      transition: all 0.2s ease;
-      border-bottom: 3px solid transparent;
-    }
-
-    .nav-btn:hover {
-      background: #252525;
-      color: #ccc;
-    }
-
-    .nav-btn.active {
-      color: #9d7fd4;
-      border-bottom-color: #6b4ba5;
-      background: #0f0f0f;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    /* CONTENT */
-    .content-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 3rem 2rem;
-    }
-
-    .section {
-      display: none;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .section.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* CARDS & BLOCKS */
-    .intro-card {
-      background: linear-gradient(135deg, #252525 0%, #1a1a1a 100%);
-      padding: 2.5rem;
-      border-radius: 12px;
-      margin-bottom: 2.5rem;
-      border-left: 5px solid #6b4ba5;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-
-    .intro-card.stage2 {
-      border-left-color: #4ba587;
-    }
-
-    .intro-card h2 {
-      font-size: 2rem;
-      color: #9d7fd4;
-      margin-bottom: 1rem;
-      font-weight: 400;
-    }
-
-    .intro-card.stage2 h2 {
-      color: #7fd4b0;
-    }
-
-    .lead {
-      font-size: 1.25rem;
-      line-height: 1.8;
-      color: #d8d8d8;
-    }
-
-    .warning-box {
-      background: linear-gradient(135deg, #3a2a1a 0%, #2a1a1a 100%);
-      padding: 2rem;
-      border-radius: 10px;
-      border: 3px solid #c7a050;
-      margin: 2rem 0;
-      box-shadow: 0 4px 15px rgba(199, 160, 80, 0.1);
-    }
-
-    .warning-box h3 {
-      color: #ffb74d;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-
-    .content-block {
-      background: #1a1a1a;
-      padding: 2.5rem;
-      border-radius: 10px;
-      margin-bottom: 2rem;
-      border-left: 4px solid #333;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    }
-
-    .content-block h2 {
-      font-size: 1.8rem;
-      color: #9d7fd4;
-      margin-bottom: 1.5rem;
-      font-weight: 400;
-    }
-
-    .content-block.stage2 h2 {
-      color: #7fd4b0;
-    }
-
-    h3 {
-      font-size: 1.4rem;
-      color: #b8a4d4;
-      margin: 2rem 0 1rem 0;
-      font-weight: 400;
-    }
-
-    .stage2 h3 {
-      color: #a4d4bb;
-    }
-
-    h4 {
-      font-size: 1.2rem;
-      color: #9d7fd4;
-      margin: 1.5rem 0 0.75rem 0;
-      font-weight: 400;
-    }
-
-    .stage2 h4 {
-      color: #7fd4b0;
-    }
-
-    p {
-      margin-bottom: 1rem;
-      color: #d0d0d0;
-      font-size: 1.05rem;
-    }
-
-    /* SCRIPT BOXES */
-    .script-box {
-      background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
-      padding: 2rem;
-      border-left: 5px solid #6b4ba5;
-      border-radius: 8px;
-      margin: 1.5rem 0;
-      box-shadow: 0 4px 15px rgba(107, 75, 165, 0.1);
-    }
-
-    .script-box.stage2 {
-      border-left-color: #4ba587;
-      box-shadow: 0 4px 15px rgba(75, 165, 135, 0.1);
-    }
-
-    .script-box p {
-      font-size: 1.15rem;
-      line-height: 1.8;
-      color: #e8e8e8;
-      margin-bottom: 1rem;
-    }
-
-    .script-box p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* STEP CARDS */
-    .step-cards {
-      display: grid;
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .step-card {
-      background: linear-gradient(135deg, #252525 0%, #1a1a1a 100%);
-      padding: 2rem;
-      border-radius: 10px;
-      border-left: 4px solid #6b4ba5;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.2);
-      transition: transform 0.2s ease;
-    }
-
-    .step-card:hover {
-      transform: translateX(5px);
-    }
-
-    .step-card.stage2 {
-      border-left-color: #4ba587;
-    }
-
-    .step-number {
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      background: #6b4ba5;
-      color: white;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 40px;
-      font-size: 1.3rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
-    }
-
-    .step-card.stage2 .step-number {
-      background: #4ba587;
-    }
-
-    .step-title {
-      font-size: 1.3rem;
-      color: #b8a4d4;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
-
-    .step-card.stage2 .step-title {
-      color: #a4d4bb;
-    }
-
-    /* PROMPT CARDS */
-    .prompt-grid {
-      display: grid;
-      gap: 1rem;
-      margin: 2rem 0;
-    }
-
-    .prompt-card {
-      background: #252525;
-      padding: 1.5rem;
-      border-radius: 8px;
-      border-left: 4px solid #4ba587;
-    }
-
-    .prompt-question {
-      font-size: 1.15rem;
-      color: #7fd4b0;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-    }
-
-    .prompt-answer {
-      font-size: 1rem;
-      color: #d0d0d0;
-    }
-
-    /* EXAMPLES */
-    .example-box {
-      background: #252525;
-      padding: 1.5rem;
-      border-radius: 8px;
-      margin: 1.5rem 0;
-      border-left: 3px solid #666;
-    }
-
-    .example-label {
-      color: #9d7fd4;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .stage2 .example-label {
-      color: #7fd4b0;
-    }
-
-    /* LISTS */
-    ul, ol {
-      margin: 1rem 0 1.5rem 2rem;
-    }
-
-    li {
-      margin-bottom: 0.75rem;
-      color: #d0d0d0;
-      font-size: 1.05rem;
-      line-height: 1.7;
-    }
-
-    li strong {
-      color: #9d7fd4;
-    }
-
-    .stage2 li strong {
-      color: #7fd4b0;
-    }
-
-    /* GRIDS */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .info-card {
-      background: #1a1a1a;
-      padding: 2rem;
-      border-radius: 8px;
-      border: 1px solid #333;
-      transition: all 0.2s ease;
-    }
-
-    .info-card:hover {
-      border-color: #6b4ba5;
-      box-shadow: 0 4px 15px rgba(107, 75, 165, 0.2);
-    }
-
-    .stage2 .info-card:hover {
-      border-color: #4ba587;
-      box-shadow: 0 4px 15px rgba(75, 165, 135, 0.2);
-    }
-
-    .info-card h4 {
-      margin-top: 0;
-    }
-
-    /* BREAK CARDS */
-    .break-grid {
-      display: grid;
-      gap: 2rem;
-      margin: 2rem 0;
-    }
-
-    .break-card {
-      background: #1a1a1a;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    }
-
-    .break-header {
-      padding: 1.5rem;
-      font-size: 1.5rem;
-      color: white;
-      font-weight: 400;
-    }
-
-    .break-header.miss {
-      background: linear-gradient(135deg, #4a2a2a 0%, #2a1a1a 100%);
-      border-left: 5px solid #c75050;
-    }
-
-    .break-header.story {
-      background: linear-gradient(135deg, #2a2a4a 0%, #1a1a2a 100%);
-      border-left: 5px solid #5080c7;
-    }
-
-    .break-header.confused {
-      background: linear-gradient(135deg, #4a4a2a 0%, #2a2a1a 100%);
-      border-left: 5px solid #c7a050;
-    }
-
-    .break-content {
-      padding: 2rem;
-    }
-
-    /* NOTES */
-    .note {
-      color: #9d7fd4;
-      font-style: italic;
-      font-size: 1rem;
-      margin-top: 0.5rem;
-    }
-
-    .stage2 .note {
-      color: #7fd4b0;
-    }
-
-    .important {
-      color: #ffb74d;
-      font-weight: 600;
-    }
-
-    /* LAYOUT EXAMPLE */
-    .layout-example {
-      background: #0f0f0f;
-      padding: 2rem;
-      border-radius: 8px;
-      font-family: 'Courier New', monospace;
-      margin: 1.5rem 0;
-      border: 2px solid #333;
-    }
-
-    .layout-line {
-      padding: 0.4rem 0;
-      font-size: 1.05rem;
-      color: #ccc;
-    }
-
-    .layout-line.stage1-color {
-      color: #b8a4d4;
-    }
-
-    .layout-line.stage2-color {
-      color: #7fd4b0;
-    }
-
-    .layout-line.indent {
-      padding-left: 2rem;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .main-title {
-        font-size: 2rem;
-      }
-
-      .nav-container {
-        flex-wrap: wrap;
-      }
-
-      .nav-btn {
-        flex: 1 1 45%;
-      }
-
-      .content-container {
-        padding: 2rem 1rem;
-      }
-
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seeds and Parts: Elementary SEL Curriculum</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --sage: #8B9D83;
+            --deep-green: #4A5D47;
+            --warm-brown: #7D6B5D;
+            --cream: #FAF7F2;
+            --soft-white: #FFFFFF;
+            --earth: #9B8673;
+            --accent-gold: #C9A96E;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #F5F0E8 100%);
+            color: var(--deep-green);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            background: linear-gradient(to bottom, rgba(139, 157, 131, 0.1), transparent);
+            border-radius: 20px 20px 0 0;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--deep-green);
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--sage);
+            font-weight: 400;
+        }
+
+        .tagline {
+            font-size: 0.95rem;
+            color: var(--earth);
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Tabs Navigation */
+        .tabs-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 0 10px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--sage) transparent;
+        }
+
+        .tabs-nav::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .tabs-nav::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .tabs-nav::-webkit-scrollbar-thumb {
+            background: var(--sage);
+            border-radius: 3px;
+        }
+
+        .tab-btn {
+            flex-shrink: 0;
+            padding: 12px 24px;
+            background: var(--soft-white);
+            border: 2px solid var(--sage);
+            color: var(--deep-green);
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 12px 12px 0 0;
+            position: relative;
+        }
+
+        .tab-btn:hover {
+            background: rgba(139, 157, 131, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: var(--sage);
+            color: var(--soft-white);
+            border-color: var(--sage);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--sage);
+        }
+
+        /* Tab Content */
+        .tabs-content {
+            background: var(--soft-white);
+            border-radius: 0 12px 12px 12px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(74, 93, 71, 0.08);
+            min-height: 500px;
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Typography */
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: var(--deep-green);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(139, 157, 131, 0.3);
+        }
+
+        h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            color: var(--sage);
+            margin: 30px 0 15px;
+        }
+
+        h4 {
+            font-weight: 600;
+            color: var(--deep-green);
+            margin: 25px 0 12px;
+            font-size: 1.1rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--deep-green);
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 25px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: var(--deep-green);
+        }
+
+        strong {
+            color: var(--deep-green);
+            font-weight: 600;
+        }
+
+        em {
+            color: var(--earth);
+        }
+
+        /* Lesson Flow Sections */
+        .lesson-section {
+            background: linear-gradient(135deg, rgba(139, 157, 131, 0.05), rgba(201, 169, 110, 0.05));
+            border-left: 4px solid var(--sage);
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .lesson-section h4 {
+            margin-top: 0;
+            color: var(--sage);
+        }
+
+        /* Info Boxes */
+        .info-box {
+            background: rgba(201, 169, 110, 0.1);
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .info-box h4 {
+            margin-top: 0;
+            color: var(--warm-brown);
+        }
+
+        .warning-box {
+            background: rgba(125, 107, 93, 0.1);
+            border: 2px solid var(--warm-brown);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning-box h4 {
+            margin-top: 0;
+            color: var(--warm-brown);
+        }
+
+        /* Printables Section */
+        .printable-card {
+            background: var(--soft-white);
+            border: 2px solid var(--sage);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(74, 93, 71, 0.05);
+        }
+
+        .printable-card h3 {
+            margin-top: 0;
+            color: var(--deep-green);
+        }
+
+        .print-btn {
+            background: var(--sage);
+            color: var(--soft-white);
+            border: none;
+            padding: 12px 28px;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        .print-btn:hover {
+            background: var(--deep-green);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 93, 71, 0.2);
+        }
+
+        /* Printable Templates */
+        .printable-template {
+            display: none;
+            background: white;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .printable-template[style*="display: block"] {
+            display: block !important;
+        }
+
+        .print-header {
+            background: var(--sage);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .back-btn, .print-now-btn {
+            background: var(--soft-white);
+            color: var(--deep-green);
+            border: 2px solid var(--deep-green);
+            padding: 10px 20px;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover, .print-now-btn:hover {
+            background: var(--deep-green);
+            color: var(--soft-white);
+            transform: translateY(-2px);
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .container {
+                display: none !important;
+            }
+            
+            .print-header {
+                display: none !important;
+            }
+            
+            .printable-template {
+                display: block !important;
+            }
+            
+            @page {
+                margin: 0.5in;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .print-header {
+                padding: 15px;
+                gap: 10px;
+            }
+
+            .back-btn, .print-now-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .tabs-content {
+                padding: 25px 20px;
+            }
+
+            .tab-btn {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Learning Targets */
+        .targets {
+            background: rgba(139, 157, 131, 0.08);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .targets h4 {
+            margin-top: 0;
+            color: var(--sage);
+        }
+
+        .targets ul {
+            margin-left: 20px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--earth);
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+
+        .references {
+            font-size: 0.85rem;
+            color: var(--earth);
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(139, 157, 131, 0.3);
+        }
+    </style>
 </head>
 <body>
-  <header class="main-header">
-    <div class="header-content">
-      <h1 class="main-title">Non-Local Sensing for Kids: Teacher's Guide</h1>
-      <p class="main-subtitle">Six-Stage Progressive Training System</p>
-    </div>
-  </header>
+    <div class="container">
+        <header>
+            <h1>Seeds and Parts</h1>
+            <p class="subtitle">A Three-Lesson SEL Curriculum for Children Ages 6–9</p>
+            <p class="tagline">Teaching children to notice emotions as inner experiences they can observe and care for</p>
+        </header>
 
-  <nav class="main-nav">
-    <div class="stage-toggle">
-      <button class="toggle-btn active" id="toggle-stage1" onclick="switchStage('stage1')">I</button>
-      <button class="toggle-btn" id="toggle-stage2" onclick="switchStage('stage2')">II</button>
-      <button class="toggle-btn" id="toggle-stage3" onclick="switchStage('stage3')">III</button>
-      <button class="toggle-btn" id="toggle-stage4" onclick="switchStage('stage4')">IV</button>
-      <button class="toggle-btn" id="toggle-stage5" onclick="switchStage('stage5')">V</button>
-      <button class="toggle-btn" id="toggle-stage6" onclick="switchStage('stage6')">VI</button>
-    </div>
-    <div class="nav-container" id="nav-stage1">
-      <button class="nav-btn active" onclick="showSection('stage1-overview')">Overview</button>
-      <button class="nav-btn" onclick="showSection('stage1-sessions')">Sessions</button>
-      <button class="nav-btn" onclick="showSection('breaks')">Breaks</button>
-      <button class="nav-btn" onclick="showSection('progression')">Progression</button>
-    </div>
-    <div class="nav-container hidden" id="nav-stage2">
-      <button class="nav-btn" onclick="showSection('stage2-overview')">Overview</button>
-      <button class="nav-btn" onclick="showSection('stage2-sessions')">Sessions</button>
-      <button class="nav-btn" onclick="showSection('breaks')">Breaks</button>
-      <button class="nav-btn" onclick="showSection('progression')">Progression</button>
-    </div>
-    <div class="nav-container hidden" id="nav-stage3">
-      <button class="nav-btn" onclick="showSection('stage3-overview')">Overview</button>
-      <button class="nav-btn" onclick="showSection('stage3-sessions')">Sessions</button>
-      <button class="nav-btn" onclick="showSection('breaks')">Breaks</button>
-      <button class="nav-btn" onclick="showSection('progression')">Progression</button>
-    </div>
-    <div class="nav-container hidden" id="nav-stage4">
-      <button class="nav-btn" onclick="showSection('stage4-overview')">Overview</button>
-      <button class="nav-btn" onclick="showSection('stage4-sessions')">Sessions</button>
-      <button class="nav-btn" onclick="showSection('breaks')">Breaks</button>
-      <button class="nav-btn" onclick="showSection('progression')">Progression</button>
-    </div>
-    <div class="nav-container hidden" id="nav-stage5">
-      <button class="nav-btn" onclick="showSection('stage5-overview')">Overview</button>
-      <button class="nav-btn" onclick="showSection('stage5-sessions')">Sessions</button>
-      <button class="nav-btn" onclick="showSection('breaks')">Breaks</button>
-      <button class="nav-btn" onclick="showSection('progression')">Progression</button>
-    </div>
-    <div class="nav-container hidden" id="nav-stage6">
-      <button class="nav-btn" onclick="showSection('stage6-overview')">Overview</button>
-      <button class="nav-btn" onclick="showSection('stage6-sessions')">Sessions</button>
-      <button class="nav-btn" onclick="showSection('breaks')">Breaks</button>
-      <button class="nav-btn" onclick="showSection('progression')">Progression</button>
-    </div>
-  </nav>
+        <nav class="tabs-nav">
+            <button class="tab-btn active" onclick="openTab(event, 'intro')">Introduction</button>
+            <button class="tab-btn" onclick="openTab(event, 'lesson1')">Lesson 1</button>
+            <button class="tab-btn" onclick="openTab(event, 'lesson2')">Lesson 2</button>
+            <button class="tab-btn" onclick="openTab(event, 'lesson3')">Lesson 3</button>
+            <button class="tab-btn" onclick="openTab(event, 'extension')">Extension</button>
+            <button class="tab-btn" onclick="openTab(event, 'printables')">Printables</button>
+            <button class="tab-btn" onclick="openTab(event, 'notes')">Teacher Notes</button>
+        </nav>
 
-  <div class="content-container">
-    
-    <!-- STAGE I OVERVIEW -->
-    <div id="stage1-overview" class="section active">
-      <div class="intro-card">
-        <h2>Stage I: The Fast Mark</h2>
-        <p class="lead">Stage I teaches children to notice and describe their first spontaneous response to a hidden target, before analytical thinking takes over. It's about learning to catch the signal before the mind starts making up stories.</p>
-      </div>
+        <div class="tabs-content">
+            <!-- Introduction Tab -->
+            <div id="intro" class="tab-pane active">
+                <h2>Introduction for Adults</h2>
+                
+                <h3>What This Curriculum Is</h3>
+                <p>This is a three-lesson social–emotional learning sequence for children ages 6–9, plus an optional creative extension. It teaches children to notice emotions as inner experiences they can observe and care for, rather than as fixed identities.</p>
+                
+                <p>The curriculum weaves together two sources:</p>
+                
+                <div class="info-box">
+                    <h4>Thich Nhat Hanh's "Seeds" Metaphor</h4>
+                    <p>Thich Nhat Hanh, a Buddhist teacher and peace activist, described the mind as a garden containing many seeds: seeds of joy, calm, anger, fear, compassion, and so on. When life events "water" these seeds, they sprout as feelings and impulses in the moment. We cannot remove seeds from the garden, but we can learn which ones to water and which to tend with care.</p>
+                </div>
 
-      <div class="content-block">
-        <h2>What Stage I Teaches</h2>
-        <div class="card-grid">
-          <div class="info-card">
-            <h4>The Fast Mark</h4>
-            <p>When we hear the target number, something happens in our awareness before we start thinking. A quick gesture, a movement impulse. Stage I teaches the child to let that impulse show up on paper without planning it.</p>
-            <p class="note">This unplanned mark often contains information about the target's physical character before the conscious mind processes it.</p>
-          </div>
+                <div class="info-box">
+                    <h4>Internal Family Systems (IFS)</h4>
+                    <p>IFS is a psychotherapy model that understands the mind as made up of different "parts"—inner sub-personalities or clusters of feelings that show up in particular situations. Instead of saying "I am angry," a person might say "a part of me is angry." The key idea is that there is also a centered "Self"—a calm, clear, compassionate inner presence—that can listen to and care for any part, even difficult ones. No part is inherently bad; all parts are trying to help in their own way.</p>
+                </div>
 
-          <div class="info-card">
-            <h4>Simple Descriptors</h4>
-            <p>After the mark appears, we describe it with the simplest possible words: how it moved (up, down, across) and how it would feel physically (hard, soft, rough). Not what it might BE, just how it IS.</p>
-            <p class="note">Keeping descriptions simple avoids analytical guessing. "It went up and feels hard" is data. "It's a mountain" is a guess.</p>
-          </div>
+                <p><strong>For children,</strong> this curriculum does not teach therapy. It borrows only the developmentally natural pieces: "I have different sides inside," "none of my parts are bad," and "there is a part of me (Self) that can be kind and listen." These align with standard social–emotional learning goals: identifying emotions, building self-awareness, and developing coping skills.</p>
 
-          <div class="info-card">
-            <h4>The Helper Word</h4>
-            <p>Sometimes a tiny category word pops up: land, water, building, air. We only take it if it arrives spontaneously. If nothing comes, we write "none."</p>
-            <p class="note">This teaches distinguishing between what "just appeared" versus what they're thinking about. Signal versus noise.</p>
-          </div>
-        </div>
-      </div>
+                <h3>Why These Two Together</h3>
+                <p>The seeds metaphor gives children a poetic, natural image (a garden) that is easy to remember and draw. The parts language gives them permission to step back from a big feeling and notice it, as something inside them rather than as all of them. Together, they create space:</p>
+                
+                <p><em>"I am not my anger; I have an angry part, and I also have a Self that can notice and care for it. What seed am I watering right now?"</em></p>
 
-      <div class="content-block">
-        <h2>The Stage I Structure</h2>
-        <p>For each target number, the work appears in this order:</p>
-        <div class="layout-example">
-          <div class="layout-line">Secret number (e.g., 101)</div>
-          <div class="layout-line">Fast mark (quick squiggle)</div>
-          <div class="layout-line stage1-color">Move: up</div>
-          <div class="layout-line stage1-color">Feel: hard</div>
-          <div class="layout-line stage1-color">Helper: land</div>
-        </div>
-        <p>This structure becomes automatic with practice. Eventually the child knows: "I make a mark, I say how it moved and felt, I check for a tiny word, then I'm done."</p>
-      </div>
-    </div>
+                <div class="warning-box">
+                    <h4>What This Is Not</h4>
+                    <ul>
+                        <li>This is not therapy or trauma processing.</li>
+                        <li>This is not a replacement for trained mental health support when a child needs it.</li>
+                        <li>This is not an expectation that children will disclose painful stories or private struggles.</li>
+                        <li>This does not assume prior knowledge of Buddhism, IFS, or any other framework on the part of teachers or parents.</li>
+                    </ul>
+                </div>
 
-    <!-- STAGE I SESSIONS -->
-    <div id="stage1-sessions" class="section">
-      <div class="intro-card">
-        <h2>Running Stage I Sessions</h2>
-        <p class="lead">A typical session takes 15-25 minutes and involves 2-4 target numbers, each run 2-4 times.</p>
-      </div>
+                <h3>What Adults Need to Know</h3>
+                
+                <p><strong>You do not need to be trained in IFS or meditation to teach this.</strong> You need:</p>
+                <ul>
+                    <li>A basic comfort with the language introduced here.</li>
+                    <li>The ability to model a calm, curious attitude toward feelings (yours and children's).</li>
+                    <li>Clear boundaries: practices are light, optional, and always bounded by "you can pass."</li>
+                    <li>Consistency in how you frame these ideas across the three lessons.</li>
+                </ul>
 
-      <div class="content-block">
-        <h2>Before You Begin</h2>
-        <h3>Materials</h3>
-        <ul>
-          <li>Blank paper (one sheet per session)</li>
-          <li>Pencil or pen</li>
-          <li>Target images with assigned numbers (keep hidden)</li>
-          <li>Comfortable, quiet space</li>
-        </ul>
+                <h4>Core Concepts in Plain Language</h4>
 
-        <h3>Paper Setup</h3>
-        <p>At the top of the page, write:</p>
-        <div class="example-box">
-          <p><strong>Name:</strong> [child's name]<br>
-          <strong>Place:</strong> [e.g., "home," "classroom"]<br>
-          <strong>Date/Time:</strong> [today's date and time]</p>
-        </div>
+                <div class="lesson-section">
+                    <h4>The Seeds</h4>
+                    <p>Inside each person is a garden of seeds. These seeds are qualities and emotions: calm, joy, anger, fear, kindness, silliness, worry, courage. When something happens—a friend laughs, we lose a game, we get praise—a seed wakes up and grows into a feeling or impulse in that moment.</p>
+                    
+                    <p>We cannot throw seeds away. We cannot have a garden with only "good" seeds. But we can learn to water some seeds more often (calm, courage, kindness) and to tend other seeds gently so they do less harm (anger, fear). Over time, through small choices about what we pay attention to and what we practice, different seeds grow stronger or quieter.</p>
+                    
+                    <p><strong>For children:</strong> Emotions come and go like seeds sprouting. I can notice them, care for them, and influence what grows.</p>
+                </div>
 
-        <h3>Body Check</h3>
-        <p>Ask: "Is anything in your body or feelings bothering you a lot right now? Are you really tired, or hungry, or do you have a headache, or feel really upset?"</p>
-        <p class="note">If they mention something but want to continue, write: "Body note: tired" or similar. If very unwell or upset, reschedule.</p>
-      </div>
+                <div class="lesson-section">
+                    <h4>Parts and Self</h4>
+                    <p><strong>Everyone has parts.</strong> A part is a cluster of feelings, thoughts, and body sensations that tends to show up in certain situations. For example:</p>
+                    <ul>
+                        <li>"The part of me that worries when I might be wrong."</li>
+                        <li>"The part of me that gets angry when things feel unfair."</li>
+                        <li>"The part of me that gets silly when I'm nervous."</li>
+                    </ul>
+                    
+                    <p>These parts are not problems. They developed because they were trying to help. The anxious part developed to help you be careful. The angry part developed to help you stand up for yourself. The silly part developed to help you feel less alone.</p>
+                    
+                    <p>But sometimes a part takes over, and you feel like that part is all of you. That is where Self comes in.</p>
+                    
+                    <p><strong>Self</strong> is a centered, calm inner presence that can notice any part without being taken over by it. Self is curious, not judgmental. Self can say to a part: "I see you. I hear that you are trying to help. Thank you. I am here now, and I can take it from here."</p>
+                    
+                    <p>When Self is present, parts soften. They relax. They do not have to work so hard.</p>
+                    
+                    <p><strong>For children:</strong> I have different sides inside me. None of them are bad. There is a calm part of me (Self) that can listen and be kind to all of them.</p>
+                </div>
 
-      <div class="content-block">
-        <h2>Introducing Stage I to the Child</h2>
-        <div class="script-box">
-          <p>"We're going to learn a very quiet skill. I have some secret numbers. Each number is connected to a picture that I'm not showing you yet."</p>
-          <p>"When I give you a number, you'll write it down (or I'll write it for you). Then your hand will make a fast little squiggle on the paper, all in one go."</p>
-          <p>"After that, we'll put a few tiny words next to it: one for how it moved, one for how it felt, and maybe one tiny helper word if one pops into your head."</p>
-        </div>
-      </div>
-
-      <div class="content-block">
-        <h2>The Stage I Sequence</h2>
-        <div class="step-cards">
-          <div class="step-card">
-            <div class="step-number">1</div>
-            <div class="step-title">Say the Number</div>
-            <p><strong>Say:</strong> "Write this secret number: 101"</p>
-            <p>If they can write, let them. If not, write it while they watch.</p>
-          </div>
-
-          <div class="step-card">
-            <div class="step-number">2</div>
-            <div class="step-title">The Fast Mark</div>
-            <p><strong>Say:</strong> "Now put your pen just under the number. Relax your arm and fingers. Let your hand make a fast mark by itself and then stop."</p>
-            <p><strong>Look for:</strong> One quick stroke—curvy, jagged, up, down, across—that appears and is over in a moment.</p>
-            <p><strong>If they pause:</strong> "Don't plan it. Let your hand jump once, quickly, and see what it does."</p>
-          </div>
-
-          <div class="step-card">
-            <div class="step-number">3</div>
-            <div class="step-title">The "Move" Word</div>
-            <p><strong>Say:</strong> "How did your pen move when it made that? Did it go mostly up, mostly down, across, or did it wiggle?"</p>
-            <p><strong>Examples:</strong> up, down, across, curved, wiggly, sharp</p>
-            <p><strong>Write:</strong> "Move: [word]" — Keep it to ONE short description</p>
-          </div>
-
-          <div class="step-card">
-            <div class="step-number">4</div>
-            <div class="step-title">The "Feel" Word</div>
-            <p><strong>Say:</strong> "If you were standing inside that mark, would it feel more hard or more soft?"</p>
-            <p><strong>Other contrasts:</strong> heavy/light, smooth/bumpy, warm/cold</p>
-            <p><strong>Write:</strong> "Feel: [word]"</p>
-            <p class="important">If they say "feels like a mountain," redirect: "That sounds like what the thing might be. For 'Feel,' let's pick just a body-word like hard, soft, rough, or smooth."</p>
-          </div>
-
-          <div class="step-card">
-            <div class="step-number">5</div>
-            <div class="step-title">The Tiny "Helper" Word</div>
-            <p><strong>Say:</strong> "Sometimes, when you made that fast mark, a tiny word kind of jumps into your head by itself. Not a whole story, just a small word like land, water, building, air, or nothing. Did a tiny word pop up this time?"</p>
-            <p><strong>Options:</strong> land, water, building, air, none</p>
-            <p><strong>If they hesitate:</strong> "If nothing jumps in quickly, we just write 'none' and that's okay."</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="content-block">
-        <h2>Repeat the Sequence</h2>
-        <p>After completing one run, say: "We're going to listen to the same number again and see what your hand does this time."</p>
-        <p>Repeat the entire sequence 2-4 times on the same target number, depending on attention span.</p>
-      </div>
-
-      <div class="content-block">
-        <h2>Giving Feedback</h2>
-        <p>After completing your runs on a target number, show the child what that number was pointing to.</p>
-        
-        <h3>Choose Clear Targets</h3>
-        <p>Use targets with strong overall character: open ocean, large mountain ranges, big cities, wide deserts, dense forests.</p>
-
-        <h3>Point Out Connections</h3>
-        <p class="important">Your job is NOT to judge correct vs. incorrect. Point out meaningful connections.</p>
-        
-        <div class="example-box">
-          <p class="example-label">If "Helper: water" and target is an ocean:</p>
-          <p>"This little word 'water' fits this place really well, doesn't it?"</p>
-        </div>
-
-        <div class="example-box">
-          <p class="example-label">If "Move: up" and target has a tall mountain:</p>
-          <p>"This 'up' fits the tall mountain here."</p>
-        </div>
-
-        <div class="example-box">
-          <p class="example-label">If a word doesn't match anything visible:</p>
-          <p>"This one we can't really match to anything in this picture."</p>
-          <p class="note">Stay neutral. Don't say it's "wrong."</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- BREAKS -->
-    <div id="breaks" class="section">
-      <div class="intro-card">
-        <h2>Understanding Breaks</h2>
-        <p class="lead">Breaks are named ways to pause when the structure stops working. They teach the child that not forcing an answer is a valid and important response.</p>
-      </div>
-
-      <div class="break-grid">
-        <div class="break-card">
-          <div class="break-header miss">Miss Break</div>
-          <div class="break-content">
-            <h3>When to Use</h3>
-            <ul>
-              <li>Child says "I don't feel anything" right after the number</li>
-              <li>They stare at the page and can't make a mark</li>
-              <li>They slowly draw a picture instead of making a quick stroke</li>
-            </ul>
-
-            <h3>What to Say</h3>
-            <div class="script-box">
-              <p>"Let's call that a Miss. That just means we didn't catch the first quick thing this time. I'll write 'Miss' here on the side. Shake your hands out, look around the room, take a breath, and we'll try the same number again."</p>
+                <h3>How They Work Together in This Curriculum</h3>
+                <ul>
+                    <li><strong>Lesson 1</strong> introduces the garden and names that we have parts.</li>
+                    <li><strong>Lesson 2</strong> teaches children to listen to one part from Self—to step into that calm, curious space and ask a part questions.</li>
+                    <li><strong>Lesson 3</strong> connects caring actions to "watering seeds"—choosing what to practice and pay attention to.</li>
+                    <li><strong>The extension lesson</strong> gives children a structured way to give voice to a part in poetry or song, deepening understanding without over-identifying.</li>
+                </ul>
             </div>
 
-            <h3>What to Do</h3>
-            <p>Write "Miss" in the margin. Take a brief pause—shake hands, look around, breathe. Then repeat the number and start fresh.</p>
+            <!-- Lesson 1 Tab -->
+            <div id="lesson1" class="tab-pane">
+                <h2>Lesson 1: I Have Many Seeds and Parts</h2>
+                
+                <div class="targets">
+                    <h4>Adult Aim</h4>
+                    <p>Introduce the mind-as-garden metaphor. Normalize that we have many inner characters or "parts" linked to different feelings. Build a basic somatic awareness (where in the body do I feel this?).</p>
+                    
+                    <h4>Child Learning Targets</h4>
+                    <ul>
+                        <li>I can name one feeling I have.</li>
+                        <li>I can point to where I feel it in my body.</li>
+                        <li>Feelings are like seeds that come and go; they are not who I am.</li>
+                    </ul>
+                </div>
 
-            <h3>Why This Works</h3>
-            <p>It's not "you failed." It's "we didn't catch it that time." This keeps the experience light and allows them to try again without anxiety.</p>
-          </div>
-        </div>
+                <h3>Lesson Flow (30–35 minutes)</h3>
 
-        <div class="break-card">
-          <div class="break-header story">Story Break</div>
-          <div class="break-content">
-            <h3>When to Use</h3>
-            <ul>
-              <li>Child gives long, detailed stories instead of simple descriptors</li>
-              <li>Example: "It's a big red castle with dragons flying around and flags on top"</li>
-            </ul>
+                <div class="lesson-section">
+                    <h4>1. Opening: Context and Breath (5 minutes)</h4>
+                    
+                    <p><strong>Adult says:</strong></p>
+                    <p>"Today we are going to practice noticing our feelings and our bodies so we can take better care of them. This is not about good feelings or bad feelings. It is about being kind gardeners to everything that grows inside us.</p>
+                    
+                    <p>"We are going to use a slow breath to help our bodies know they can slow down and rest. You can do this with me, or you can just sit and feel your hands. There is no right way."</p>
+                    
+                    <p><strong>Breath with explanation and full choice:</strong></p>
+                    <p>"Breathe in slowly, as if you are gently smelling something sweet. Breathe out slowly, as if you are softly blowing a seed across the air. Let's try it together three times."</p>
+                    
+                    <p><em>(Do this with the group. Keep it simple and unhurried. Offer it as a tool, not a command.)</em></p>
+                </div>
 
-            <h3>What to Say</h3>
-            <div class="script-box">
-              <p>"That's a story. Stories are fine, but they're different from the little clue words we're practicing. I'm going to write 'Story: big red castle' over here on the side so it has its own place. Then we'll go back to a new fast mark and our little words."</p>
+                <div class="lesson-section">
+                    <h4>2. Somatic Check-In (5 minutes)</h4>
+                    
+                    <p><strong>Adult asks:</strong></p>
+                    <p>"Now that you have slowed down a bit, notice your body. What does it feel like right now? Is it tight or soft? Heavy or bouncy? Warm or cool?"</p>
+                    
+                    <p><em>(Pause. Give time for noticing, not answering. Some children will want to share; some will not.)</em></p>
+                    
+                    <p>"Where do you feel your strongest feeling right now? Is it in your tummy, your chest, your throat, your face, your hands, or somewhere else?"</p>
+                    
+                    <p><strong>Activity:</strong></p>
+                    <p>Give each child a simple body outline (head, torso, arms, legs). Ask them to point to or circle the place where they feel something the most. Then ask them to write or tell you one word for what it feels like: tight, hot, wiggly, heavy, calm, buzzy, loose, etc.</p>
+                    
+                    <p><em>(This is not about accuracy. It is about the practice of turning inward and noticing.)</em></p>
+                </div>
+
+                <div class="lesson-section">
+                    <h4>3. Core Teaching: The Mind Garden (8–10 minutes)</h4>
+                    
+                    <p><strong>Adult tells this story, in own words:</strong></p>
+                    <p>"Inside each of us is a garden. In this garden are many seeds. There are seeds of calm, and seeds of joy. There are seeds of anger, seeds of worry, seeds of silliness, seeds of kindness, seeds of courage.</p>
+                    
+                    <p>"When something happens in the day—a friend laughs at you, you win a game, someone is mean—a seed wakes up and grows. That is a feeling.</p>
+                    
+                    <p>"Sometimes a seed grows into a little character, like a part of you. We might call it the Shy Part, or the Angry Part, or the Playful Part. These parts are not bad. They are trying to help you in their own way.</p>
+                    
+                    <p>"For a long time, you might not have noticed all these different parts. But they are always there. And the more you notice them, the kinder you can be to them, and the more you can choose which seeds to water."</p>
+                    
+                    <p><strong>Make it concrete:</strong></p>
+                    <p>Name 3–4 parts that kids experience in daily life. For example:</p>
+                    <ul>
+                        <li>"The part that worries about being wrong."</li>
+                        <li>"The part that gets mad about fairness."</li>
+                        <li>"The part that gets silly when nervous."</li>
+                        <li>"The part that wants to fit in."</li>
+                    </ul>
+                </div>
+
+                <div class="lesson-section">
+                    <h4>4. Activity: Draw Your Feeling Seed or Part (10–15 minutes)</h4>
+                    
+                    <p><strong>Prompt:</strong></p>
+                    <p>"Think of one feeling you had this week. It can be happy, sad, mad, worried, silly, calm—any feeling. Imagine it as a seed or a little character inside you. Draw it. You can give it a name if you want."</p>
+                    
+                    <p><strong>Sentence frames</strong> (children can dictate, fill in, or write, depending on age):</p>
+                    <ul>
+                        <li>"This part shows up when…"</li>
+                        <li>"In my body it feels like…"</li>
+                    </ul>
+                    
+                    <p><em>(Keep it open-ended. Some children will draw. Some will want to talk first. Some will write a lot. Honor all of it.)</em></p>
+                </div>
+
+                <div class="lesson-section">
+                    <h4>5. Closing: Introduce Self (3–5 minutes)</h4>
+                    
+                    <p><strong>Adult says:</strong></p>
+                    <p>"There is also something in you called Self. Self is the you who can notice all your seeds and parts and can be kind to them. Self is never bad, even when a big feeling is here. Self is the gardener.</p>
+                    
+                    <p>"When we come back next time, we will practice listening to one part, from Self."</p>
+                    
+                    <p><strong>Optional check-out:</strong></p>
+                    <p>"Who wants to share one seed or part you noticed today?" <em>(No pressure; this is invitation only.)</em></p>
+                </div>
             </div>
 
-            <h3>What to Do</h3>
-            <p>Write "Story:" and a brief summary in the margin. Start fresh with the same number: fast mark, Move, Feel, Helper.</p>
+            <!-- Lesson 2 Tab -->
+            <div id="lesson2" class="tab-pane">
+                <h2>Lesson 2: Self Listens to One Part</h2>
+                
+                <div class="targets">
+                    <h4>Adult Aim</h4>
+                    <p>Give children a direct experience of stepping into a calm, curious inner presence (Self) and asking a part questions. Begin with a mild, safe feeling. Keep the role-play or conversation boundaried and light.</p>
+                    
+                    <h4>Child Learning Targets</h4>
+                    <ul>
+                        <li>I can remember that I have parts and that I also have Self.</li>
+                        <li>I can ask at least one curious question to a part.</li>
+                        <li>A part can tell me something about when it shows up and what it is trying to do.</li>
+                    </ul>
+                </div>
 
-            <h3>Why This Works</h3>
-            <p>It validates stories as real experiences but clearly distinguishes them from descriptive data. The child learns different mental content has different places.</p>
-          </div>
-        </div>
+                <h3>Lesson Flow (30–35 minutes)</h3>
 
-        <div class="break-card">
-          <div class="break-header confused">Confused Break</div>
-          <div class="break-content">
-            <h3>When to Use</h3>
-            <ul>
-              <li>Child says "It's all mixed up" or "I don't know what I'm doing"</li>
-              <li>You see clear frustration or signs of being overwhelmed</li>
-            </ul>
+                <div class="lesson-section">
+                    <h4>1. Opening: Recap and Breath (5 minutes)</h4>
+                    
+                    <p><strong>Adult says:</strong></p>
+                    <p>"Last time we learned that we have many seeds and parts inside us, like a garden. Who remembers a part they drew?</p>
+                    
+                    <p>"Today we are going to practice listening to one part, from Self. We will use the same slow breath to help our bodies feel safe."</p>
+                    
+                    <p><strong>Breath</strong> (same as before, but now framed differently):</p>
+                    <p>"Breathe in slowly, as if smelling something gentle. Breathe out slowly. This helps our body know it is safe enough to listen inside."</p>
+                    
+                    <p><em>(Do three breaths together.)</em></p>
+                </div>
 
-            <h3>What to Say</h3>
-            <div class="script-box">
-              <p>"Let's take a Confused break. I'll write 'Confused' here. Let's stand up and stretch, maybe get a drink. Then we can decide if we want to try this number again or save it for another day."</p>
+                <div class="lesson-section">
+                    <h4>2. Somatic Check-In (5 minutes)</h4>
+                    
+                    <p><strong>Adult asks:</strong></p>
+                    <p>"Scan your body from head to feet. Where do you feel something the most today? Can you point to that place or just notice it in your mind?"</p>
+                    
+                    <p><em>(Pause for noticing.)</em></p>
+                    
+                    <p>"What does it feel like? Tight? Loose? Hot? Cool? Wiggly?"</p>
+                    
+                    <p><em>(Children name a sensation. Some may also name a feeling; that is a bonus.)</em></p>
+                </div>
+
+                <div class="lesson-section">
+                    <h4>3. Core Teaching: Self and Parts (8–10 minutes)</h4>
+                    
+                    <p><strong>Adult explains:</strong></p>
+                    <p>"Self is the part of you that can be calm, kind, and curious. It is like the gardener in your mind garden. When you are in Self, you can notice your feelings without being taken over by them.</p>
+                    
+                    <p>"A part is a feeling or inner character that might be strong or quiet. Sometimes a part gets loud, and it feels like that is all of you. But Self can say to a part: 'I see you. I hear you. I am listening.'</p>
+                    
+                    <p>"When Self listens, parts often relax. They do not have to work so hard."</p>
+                    
+                    <p><strong>Write three sample questions on the board or chart:</strong></p>
+                    <ul>
+                        <li>"What are you worried/mad/sad about?"</li>
+                        <li>"When do you usually show up?"</li>
+                        <li>"What do you wish I knew?"</li>
+                    </ul>
+                    
+                    <p><em>(Read these aloud. These are the tools children will use.)</em></p>
+                </div>
+
+                <div class="lesson-section">
+                    <h4>4. Role-Play with Clear Options and Boundaries (12–15 minutes)</h4>
+                    
+                    <p><strong>Step 1: Choose a part</strong></p>
+                    <p>Adult says: "Pick a feeling that is safe to explore here today. Not the scariest one, but something real. If a feeling feels too big, pick a different one."</p>
+                    
+                    <p><em>(Children think of one mild-to-moderate part from their life or from their drawing last lesson.)</em></p>
+                    
+                    <p><strong>Step 2: Choose how the part will speak</strong></p>
+                    <p>"Now, you get to choose how your part will speak. You can use:</p>
+                    <ul>
+                        <li>A doll</li>
+                        <li>A puppet</li>
+                        <li>Acting it out with a partner</li>
+                        <li>Speaking as your drawing</li>
+                        <li>Or just telling me in a part voice"</li>
+                    </ul>
+                    
+                    <p><em>(Offer choices. This gives children agency and makes it feel safe and playful.)</em></p>
+                    
+                    <p><strong>Step 3: Dialogue</strong></p>
+                    <p>In pairs or with the adult:</p>
+                    <ul>
+                        <li>One person is "Self" (calm, curious, kind).</li>
+                        <li>One person is "Part" (the feeling or inner character).</li>
+                        <li>Self uses at least one of the three posted questions.</li>
+                        <li>Part answers in first person: "I show up when..." or "I feel like..."</li>
+                    </ul>
+                    
+                    <p><em>(The adult models Self if needed. Keep it short—3–5 minutes per pair. Tone is gentle and curious, not clinical.)</em></p>
+                    
+                    <p><strong>Boundaries the adult restates:</strong></p>
+                    <p>"You do not have to talk about secrets. You do not have to share anything private. You can say 'pass' or 'not ready' at any time. This is practice, not therapy."</p>
+                </div>
+
+                <div class="lesson-section">
+                    <h4>5. Closing (3–5 minutes)</h4>
+                    
+                    <p><strong>Reflection prompts</strong> (children speak or write):</p>
+                    <ul>
+                        <li>"Something my part told Self was…"</li>
+                        <li>"One kind thing Self can say to a part is…"</li>
+                    </ul>
+                    
+                    <p><strong>Final settling:</strong></p>
+                    <p>"Take one slow breath. Put your hand on your heart or your belly. Remember: Self is the you who can listen and be kind to all your parts."</p>
+                </div>
             </div>
 
-            <h3>What to Do</h3>
-            <p>Write "Confused" in the margin. Actually stand up and move. After the reset, evaluate: try again, or end this session?</p>
+            <!-- Lesson 3 Tab -->
+            <div id="lesson3" class="tab-pane">
+                <h2>Lesson 3: Caring for a Part, Watering Seeds</h2>
+                
+                <div class="targets">
+                    <h4>Adult Aim</h4>
+                    <p>Connect the idea of "watering seeds" to concrete, child-friendly coping strategies. Help children see that what they do, what they think, and what they pay attention to all influence which seeds grow stronger.</p>
+                    
+                    <h4>Child Learning Targets</h4>
+                    <ul>
+                        <li>I can name at least one way to care for a part.</li>
+                        <li>I understand that choices (breath, movement, what I do, who I talk to) can help calm or support a part.</li>
+                        <li>I can make a personal "care plan" for one part I know.</li>
+                    </ul>
+                </div>
 
-            <h3>Why This Works</h3>
-            <p>Confusion deserves acknowledgment. Sometimes the signal gets muddy, or they're tired. Naming it and taking a real break often clears things up.</p>
-          </div>
+                <h3>Lesson Flow (30–35 minutes)</h3>
+
+                <div class="lesson-section">
+                    <h4>1. Opening: Recap and Purpose (5 minutes)</h4>
+                    
+                    <p><strong>Adult says:</strong></p>
+                    <p>"We learned that Self can listen to parts. Today we learn what helps a part feel cared for. Remember the garden? When we water seeds of calm, courage, and kindness, those seeds grow stronger. Today we will make a plan for how to water good seeds when a part needs care."</p>
+                    
+                    <p><strong>Breath or mindful movement:</strong></p>
+                    <p>"Let's do three slow breaths" or "Let's take three mindful steps in place. Feel your feet on the ground. Each step says, 'I am here.'"</p>
+                    
+                    <p><em>(Offer choice: breathe or step, or just sit and feel.)</em></p>
+                </div>
+
+                <div class="lesson-section">
+                    <h4>2. Somatic Check-In (5 minutes)</h4>
+                    
+                    <p><strong>Adult asks:</strong></p>
+                    <p>"Notice your body now. Is it more awake, sleepy, tight, soft than before?"</p>
+                    
+                    <p><em>(Pause.)</em></p>
+                    
+                    <p>"Where in your body does a part need care right now? Point to it, or just know it in your mind."</p>
+                </div>
+
+                <div class="lesson-section">
+                    <h4>3. Core Teaching: Watering Seeds (8–10 minutes)</h4>
+                    
+                    <p><strong>Adult explains:</strong></p>
+                    <p>"Remember, in the garden, seeds grow when they are watered. When we speak kindly, breathe slowly, move our bodies, ask for help, or spend time with people we trust, we water seeds of calm, courage, and understanding.</p>
+                    
+                    <p>"When we say mean things to ourselves, stay stuck in fights, or spend a lot of time on things that make us more upset, we water seeds of anger and fear.</p>
+                    
+                    <p>"Self can choose which seeds to water, even when parts are loud and big."</p>
+                    
+                    <p><em>(Make it concrete with an example from daily life: "If the Worried Part is loud about a test or a challenge, we can water the Calm Seed by talking to a trusted adult, taking three slow breaths, or remembering one time we did okay.")</em></p>
+                    
+                    <p><strong>Group brainstorm:</strong></p>
+                    <p>"Let's think about different parts and what helps them. I will write our ideas on the board."</p>
+                    
+                    <p>Ask:</p>
+                    <ul>
+                        <li><strong>"What might help a Worried Part?"</strong> (Children answer: slow breaths, talking to an adult, naming 5 things in the room, hugging a toy, remembering something good.)</li>
+                        <li><strong>"What might help an Angry Part?"</strong> (Children answer: stomping safely outside, squeezing a pillow, drawing the anger, saying, "You are angry because you care about fairness.")</li>
+                        <li><strong>"What might help a Sad Part?"</strong> (Children answer: talking to someone, listening to soft music, cuddling a toy, drawing, crying.)</li>
+                    </ul>
+                    
+                    <p><em>(Write all ideas without judgment. They do not have to be "healthy"; they just have to be safe and appropriate for the setting.)</em></p>
+                </div>
+
+                <div class="lesson-section">
+                    <h4>4. Activity: Care Plan Card (12–15 minutes)</h4>
+                    
+                    <p><strong>Individual Care Plan Card:</strong></p>
+                    <p>Give each child a card or paper divided into three sections:</p>
+                    
+                    <p><strong>Front:</strong></p>
+                    <ul>
+                        <li>Picture or name of one part they want to care for.</li>
+                    </ul>
+                    
+                    <p><strong>Back:</strong></p>
+                    <ul>
+                        <li>"This part shows up when…" (one sentence)</li>
+                        <li>"In my body it feels like…" (one or two words)</li>
+                        <li>"It feels better when I…" (three choices they will try this week)</li>
+                    </ul>
+                    
+                    <p><em>(Children complete this. They choose one concrete action they are willing to try in real life.)</em></p>
+                </div>
+
+                <div class="lesson-section">
+                    <h4>5. Closing (3–5 minutes)</h4>
+                    
+                    <p><strong>Guided settling image:</strong></p>
+                    <p>"Close your eyes if that feels okay. Imagine your part in a safe place in your garden. Imagine giving it one of the helpful things from your card. Notice what your body feels like now. Is it a little softer? A little calmer?"</p>
+                    
+                    <p><em>(Pause 30 seconds.)</em></p>
+                    
+                    <p><strong>Final words:</strong></p>
+                    <p>"Self is the gardener who can notice seeds, listen to parts, and choose what to water. You get to make those choices."</p>
+                </div>
+            </div>
+
+            <!-- Extension Tab -->
+            <div id="extension" class="tab-pane">
+                <h2>Extension Lesson (Optional): A Part Speaks in a Poem or Song</h2>
+                
+                <div class="targets">
+                    <h4>Adult Aim</h4>
+                    <p>Offer a bounded creative way to give voice to a part and deepen understanding. Use externalizing language (art, poetry, character voice) so children do not over-identify with a difficult feeling. Always end by returning to Self's response.</p>
+                    
+                    <h4>Child Learning Targets</h4>
+                    <ul>
+                        <li>I can express what a part thinks or feels in my own voice or a part's voice.</li>
+                        <li>I can also express how Self responds to that part.</li>
+                    </ul>
+                </div>
+
+                <h3>Lesson Flow (25–30 minutes)</h3>
+
+                <div class="lesson-section">
+                    <h4>1. Safety Frame and Context (3–5 minutes)</h4>
+                    
+                    <p><strong>Adult says:</strong></p>
+                    <p>"Today we will let one part speak in words or song. We will choose a feeling that is safe to explore here today. If a feeling feels too big or uncomfortable, you can pick a different one, or you can write from a helper part instead.</p>
+                    
+                    <p>"We are not trying to get everything out. We are practicing listening and caring."</p>
+                    
+                    <p><strong>Somatic check-in and breath</strong> (same as before):</p>
+                    <p>"Let's take one slow breath together so our bodies know this is safe."</p>
+                </div>
+
+                <div class="lesson-section">
+                    <h4>2. Option A: Part-Voice Poem (10–15 minutes)</h4>
+                    
+                    <p><strong>Write these sentence starters on the board:</strong></p>
+                    <ul>
+                        <li>"I am the part that shows up when…"</li>
+                        <li>"I feel in the body like…"</li>
+                        <li>"I try to help you by…"</li>
+                        <li>"I feel calmer when you…"</li>
+                    </ul>
+                    
+                    <p><strong>Instructions:</strong></p>
+                    <p>"Using these lines, write or tell me what your part would say. You can dictate to an adult, fill in the frames, or write it yourself, depending on what feels right."</p>
+                    
+                    <p><em>(Children work. Adult scribe if needed.)</em></p>
+                    
+                    <p><strong>After the part stanza, add a Self line:</strong></p>
+                    <p>"Now, what would Self say back to this part?"</p>
+                    
+                    <p>Adult writes: "From Self: I hear you. I will try to…"</p>
+                    
+                    <p><em>(Children complete: "I will try to listen better," "I will try to slow down," etc.)</em></p>
+                </div>
+
+                <div class="lesson-section">
+                    <h4>3. Option B: Class Call-and-Response Song (10–15 minutes)</h4>
+                    
+                    <p><strong>Choose one common part as a group:</strong></p>
+                    <p>"Let's pick one part that many of us have. How about the part that worries about doing well? Or the part that gets mad about fairness?"</p>
+                    
+                    <p><em>(Vote or let children choose.)</em></p>
+                    
+                    <p><strong>Create verses in the part's voice:</strong></p>
+                    <p>"What would this part say? How would it describe itself?"</p>
+                    
+                    <p>Example:</p>
+                    <ul>
+                        <li>"Sometimes I twist your tummy when there is a test."</li>
+                        <li>"I show up when you think you might get things wrong."</li>
+                    </ul>
+                    
+                    <p><strong>Create a refrain in Self's voice:</strong></p>
+                    <p>"And what would Self say back?"</p>
+                    
+                    <p>Example:</p>
+                    <ul>
+                        <li>"I hear you. Let's breathe and remember who helps us."</li>
+                        <li>"You care about doing well. That is good. I am here now."</li>
+                    </ul>
+                    
+                    <p><em>(Sing it together a few times. Keep it simple and somewhat playful, not heavy.)</em></p>
+                </div>
+
+                <div class="lesson-section">
+                    <h4>4. Closing: Re-anchor in Self (5 minutes)</h4>
+                    
+                    <p><strong>Reflection:</strong></p>
+                    <ul>
+                        <li>"What did you learn about this part?"</li>
+                        <li>"What did Self say that felt helpful?"</li>
+                    </ul>
+                    
+                    <p><em>(Children answer or pass.)</em></p>
+                    
+                    <p><strong>Final grounding:</strong></p>
+                    <p>"Let's take one slow breath. Now notice one thing in your body that feels calm or okay—maybe your hands, your feet, your back against the chair."</p>
+                    
+                    <p><em>(Let them name it: "My feet on the ground." "My hands are warm.")</em></p>
+                    
+                    <p>"That is Self, noticing and caring. Good work today."</p>
+                </div>
+            </div>
+
+            <!-- Printables Tab -->
+            <div id="printables" class="tab-pane">
+                <h2>Printable Resources</h2>
+                
+                <p>Click the print buttons below to generate worksheets for your children. These are designed to be printed and used during the lessons.</p>
+
+                <div class="printable-card">
+                    <h3>Body Outline Worksheet</h3>
+                    <p>Used in Lesson 1 for somatic check-in. Children circle or mark where they feel emotions in their body.</p>
+                    <button class="print-btn" onclick="showPrintable('bodyOutlinePrint')">View & Print</button>
+                </div>
+
+                <div class="printable-card">
+                    <h3>Feeling Seed Drawing Sheet</h3>
+                    <p>Used in Lesson 1. Space for children to draw their feeling seed or part with sentence frames.</p>
+                    <button class="print-btn" onclick="showPrintable('seedDrawingPrint')">View & Print</button>
+                </div>
+
+                <div class="printable-card">
+                    <h3>Questions for Parts Poster</h3>
+                    <p>Used in Lesson 2. Display these questions to help children practice asking their parts questions from Self.</p>
+                    <button class="print-btn" onclick="showPrintable('questionsPrint')">View & Print</button>
+                </div>
+
+                <div class="printable-card">
+                    <h3>Care Plan Card Template</h3>
+                    <p>Used in Lesson 3. Children create a personal care plan for one part they want to support.</p>
+                    <button class="print-btn" onclick="showPrintable('carePlanPrint')">View & Print</button>
+                </div>
+
+                <div class="printable-card">
+                    <h3>Part-Voice Poem Template</h3>
+                    <p>Used in Extension Lesson. Sentence frames for children to write from a part's perspective.</p>
+                    <button class="print-btn" onclick="showPrintable('poemPrint')">View & Print</button>
+                </div>
+
+                <!-- Hidden printable templates -->
+            </div>
+
+            <!-- Teacher Notes Tab -->
+            <div id="notes" class="tab-pane">
+                <h2>Notes for Teachers</h2>
+                
+                <h3>Scope and Sequence</h3>
+                
+                <div class="info-box">
+                    <h4>Why These Ideas Build Incrementally</h4>
+                    <ul>
+                        <li><strong>Lesson 1</strong> introduces the core metaphor (garden/seeds) and the basic concept (I have parts). It does not ask children to do anything with the parts yet—only to notice and name them.</li>
+                        <li><strong>Lesson 2</strong> adds the idea of Self and asks children to practice one simple dialogue: asking a part one question. This is the first moment of "stepping back" and relating to a feeling, rather than just having it.</li>
+                        <li><strong>Lesson 3</strong> adds the element of action: "If I have a part, what do I do about it?" It connects feeling to concrete strategy and introduces the idea that my choices matter.</li>
+                        <li><strong>Extension</strong> deepens this with creative expression, only after children have already practiced noticing, listening, and caring.</li>
+                    </ul>
+                </div>
+
+                <h3>Differentiation by Age (Within the 6–9 Range)</h3>
+                
+                <div class="lesson-section">
+                    <h4>Ages 6–7:</h4>
+                    <ul>
+                        <li>Shorter role-plays (2–3 minutes).</li>
+                        <li>More visual supports (lots of drawing, fewer words).</li>
+                        <li>Simpler sentence frames; dictation preferred over writing.</li>
+                        <li>Stick to mild emotions (happy, silly, calm, worried about small things).</li>
+                    </ul>
+                </div>
+
+                <div class="lesson-section">
+                    <h4>Ages 8–9:</h4>
+                    <ul>
+                        <li>Longer dialogues (4–5 minutes).</li>
+                        <li>Can write more independently.</li>
+                        <li>Can handle slightly more nuanced feelings (embarrassed, frustrated, left out).</li>
+                        <li>More time for brainstorm and reflection.</li>
+                    </ul>
+                </div>
+
+                <h3>Ongoing Practice Between Lessons</h3>
+                
+                <p>In real moments (not full lessons):</p>
+                <ul>
+                    <li>When a child is upset, an adult might say: "I notice you have an angry part right now. What is it trying to tell you?" or "What would help that part feel better?"</li>
+                    <li>Create a poster: "Questions for parts" (from Lesson 2) or "Care ideas" (from Lesson 3) that you reference regularly.</li>
+                    <li>Brief check-ins during transitions or reflective moments: "Which part of you showed up today?" or "What seed did you water today?"</li>
+                </ul>
+
+                <h3>Guardrails for Adults</h3>
+                
+                <div class="warning-box">
+                    <h4>Important Boundaries</h4>
+                    <ul>
+                        <li>Keep it light and playful, not clinical or therapeutic.</li>
+                        <li>Do not push a child to share. Offer the invitation; respect the pass.</li>
+                        <li>Do not use this framework to process trauma or painful disclosures. If a child shares something serious, listen, thank them, and connect them to a counselor or trusted adult.</li>
+                        <li>Model the language yourself so it becomes normalized: "A part of me is tired today" or "My calm part is strong when I take a walk."</li>
+                        <li>Always include an opt-out: "You can do this, or you can sit and observe."</li>
+                    </ul>
+                </div>
+
+                <div class="references">
+                    <h3>References</h3>
+                    <ol>
+                        <li>World Happiness Foundation. (2021). "Thich Nhat Hanh – The Importance of Planting Seeds." Retrieved from https://worldhappiness.foundation/blog/happiness/thich-nhat-hanh-the-importance-of-planting-seeds/</li>
+                        <li>Psychology Today. "Internal Family Systems Therapy." Retrieved from https://www.psychologytoday.com/us/therapy-types/internal-family-systems-therapy</li>
+                        <li>Durlak, J. A., et al. (2014). "The Core Components of Evidence-Based Social Emotional Learning Programs." Journal of Educational and Psychological Consultation, 24(4), 295-310.</li>
+                    </ol>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <footer>
+            <p>Seeds and Parts • A Lifespace Education Resource</p>
+            <p style="margin-top: 10px; font-size: 0.85rem;">Based on the work of Thich Nhat Hanh and Internal Family Systems</p>
+        </footer>
     </div>
 
-    <!-- STAGE II OVERVIEW -->
-    <div id="stage2-overview" class="section">
-      <div class="intro-card stage2">
-        <h2>Stage II: Quiet Senses</h2>
-        <p class="lead">Stage II adds sensory awareness to the foundation you built in Stage I. The child learns to name simple bodily sensations they would experience at the target location—not what the place is, but what it would feel like to be there.</p>
-      </div>
+    <script>
+        function openTab(evt, tabName) {
+            // Hide all tab panes
+            const tabPanes = document.getElementsByClassName('tab-pane');
+            for (let i = 0; i < tabPanes.length; i++) {
+                tabPanes[i].classList.remove('active');
+            }
+            
+            // Remove active class from all buttons
+            const tabButtons = document.getElementsByClassName('tab-btn');
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+            
+            // Show the selected tab and mark button as active
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+            
+            // Scroll to top of content
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-      <div class="warning-box">
-        <h3>Critical: Stage II Builds On Stage I</h3>
-        <p>Stage II does NOT replace Stage I. The child still does the complete Stage I sequence (number, fast mark, Move, Feel, Helper), and then adds the new "Senses" block immediately after.</p>
-        <p class="important">Stage I must be solid before introducing Stage II.</p>
-      </div>
+        function showPrintable(templateId) {
+            // Hide all templates first
+            const allTemplates = document.querySelectorAll('.printable-template');
+            allTemplates.forEach(t => t.style.display = 'none');
+            
+            // Hide main content
+            const container = document.querySelector('.container');
+            container.style.display = 'none';
+            
+            // Show the selected template with inline style
+            const template = document.getElementById(templateId);
+            template.style.display = 'block';
+            template.style.visibility = 'visible';
+            
+            // Set body background to white for printables
+            document.body.style.background = 'white';
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
 
-      <div class="content-block stage2">
-        <h2>What Stage II Adds</h2>
-        <div class="card-grid">
-          <div class="info-card">
-            <h4>The Senses Block</h4>
-            <p>After completing Stage I, the child adds 3-5 short sensory words: cold, windy, rough, quiet, bright.</p>
-            <p class="note">This deepens sensory contact with the target without requiring analysis. They're noticing physical qualities, not naming the place.</p>
-          </div>
+        function hidePrintable() {
+            // Hide all templates
+            const templates = document.querySelectorAll('.printable-template');
+            templates.forEach(t => {
+                t.style.display = 'none';
+                t.style.visibility = 'hidden';
+            });
+            
+            // Show main content
+            const container = document.querySelector('.container');
+            container.style.display = 'block';
+            
+            // Restore body background
+            document.body.style.background = '';
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
 
-          <div class="info-card">
-            <h4>Contrast Prompts</h4>
-            <p>You guide through specific contrasts: warm or cold? smooth or rough? loud or quiet?</p>
-            <p class="note">Binary choices prevent getting stuck and keep focus on immediate sensory impressions.</p>
-          </div>
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                const activeBtn = document.querySelector('.tab-btn.active');
+                const allBtns = Array.from(document.querySelectorAll('.tab-btn'));
+                const currentIndex = allBtns.indexOf(activeBtn);
+                
+                let newIndex;
+                if (e.key === 'ArrowLeft') {
+                    newIndex = currentIndex > 0 ? currentIndex - 1 : allBtns.length - 1;
+                } else {
+                    newIndex = currentIndex < allBtns.length - 1 ? currentIndex + 1 : 0;
+                }
+                
+                allBtns[newIndex].click();
+            }
+        });
+    </script>
 
-          <div class="info-card">
-            <h4>Shaping Away from Labels</h4>
-            <p>When they say "train station," you park it as a story and extract the sensation: "So should we write 'loud' or 'quiet'?"</p>
-            <p class="note">This teaches the crucial distinction between sensory data and analytical overlay.</p>
-          </div>
+    <!-- Printable Templates (outside container) -->
+    <div id="bodyOutlinePrint" class="printable-template">
+        <div class="print-header">
+            <button class="back-btn" onclick="hidePrintable()">← Back to Curriculum</button>
+            <button class="print-now-btn" onclick="window.print()">Print This Page</button>
         </div>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>The Complete Structure (Stage I + II)</h2>
-        <p>For each target number, the work now appears in this order:</p>
-        <div class="layout-example">
-          <div class="layout-line">Secret number (e.g., 101)</div>
-          <div class="layout-line">Fast mark (squiggle)</div>
-          <div class="layout-line stage1-color">Move: up</div>
-          <div class="layout-line stage1-color">Feel: hard</div>
-          <div class="layout-line stage1-color">Helper: land</div>
-          <div class="layout-line stage2-color">Senses:</div>
-          <div class="layout-line stage2-color indent">cold</div>
-          <div class="layout-line stage2-color indent">windy</div>
-          <div class="layout-line stage2-color indent">rough</div>
-          <div class="layout-line stage2-color indent">bright</div>
+        <div style="padding: 40px; font-family: 'Work Sans', sans-serif;">
+            <h2 style="text-align: center; margin-bottom: 30px;">Where Do I Feel It?</h2>
+            <p style="text-align: center; margin-bottom: 40px;">Circle or mark the place where you feel your strongest feeling.</p>
+            
+            <div style="text-align: center; margin: 60px 0;">
+                <svg width="200" height="400" viewBox="0 0 200 400" style="border: 2px solid #8B9D83;">
+                    <!-- Simple body outline -->
+                    <ellipse cx="100" cy="50" rx="40" ry="50" fill="none" stroke="#4A5D47" stroke-width="2"/>
+                    <rect x="75" y="95" width="50" height="100" rx="10" fill="none" stroke="#4A5D47" stroke-width="2"/>
+                    <line x1="75" y1="100" x2="35" y2="180" stroke="#4A5D47" stroke-width="2"/>
+                    <line x1="125" y1="100" x2="165" y2="180" stroke="#4A5D47" stroke-width="2"/>
+                    <line x1="80" y1="195" x2="70" y2="350" stroke="#4A5D47" stroke-width="2"/>
+                    <line x1="120" y1="195" x2="130" y2="350" stroke="#4A5D47" stroke-width="2"/>
+                </svg>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <p style="font-size: 18px; margin-bottom: 15px;"><strong>My feeling feels like:</strong></p>
+                <div style="border-bottom: 2px solid #8B9D83; width: 100%; height: 40px;"></div>
+                
+                <p style="font-size: 18px; margin: 30px 0 15px;"><strong>One word for this feeling:</strong></p>
+                <div style="border-bottom: 2px solid #8B9D83; width: 100%; height: 40px;"></div>
+            </div>
         </div>
-        <p class="note">Stage I lines stay exactly the same. You simply add the Senses block underneath.</p>
-      </div>
     </div>
 
-    <!-- STAGE II SESSIONS -->
-    <div id="stage2-sessions" class="section">
-      <div class="intro-card stage2">
-        <h2>Running Stage II Sessions</h2>
-        <p class="lead">Stage II sessions follow the same structure as Stage I, with the Senses block added after Helper. Sessions still take 20-25 minutes.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Introducing Stage II to the Child</h2>
-        <p><strong>Begin with a clear explanation before using secret numbers.</strong></p>
-        <div class="script-box stage2">
-          <p>"Now that you've practiced the number, the fast squiggle, and your first little words, we're going to add a new skill."</p>
-          <p>"After we finish your Move, Feel, and Helper words, we'll ask: if you were standing at that place, what would your body feel?"</p>
-          <p>"Not 'what is it,' but things like: cold or warm, rough or smooth, loud or quiet, bright or dark. We'll write down three or four of those body-words."</p>
+    <div id="seedDrawingPrint" class="printable-template">
+        <div class="print-header">
+            <button class="back-btn" onclick="hidePrintable()">← Back to Curriculum</button>
+            <button class="print-now-btn" onclick="window.print()">Print This Page</button>
         </div>
-
-        <h3>Model with a Visible Example First</h3>
-        <p>Before using secret numbers, show a simple photograph (beach, forest, city) and demonstrate:</p>
-        <div class="example-box">
-          <p><strong>You:</strong> "If we were standing here on this beach, what might your body feel?"</p>
-          <p><strong>Child:</strong> "Hot... sandy... windy... loud waves"</p>
-          <p><strong>You write:</strong></p>
-          <p style="margin-left: 2rem; font-family: 'Courier New', monospace;">
-            Senses:<br>
-            hot<br>
-            sandy<br>
-            windy<br>
-            loud
-          </p>
-          <p><strong>You:</strong> "These are the kinds of words we'll add after your fast mark. We won't say 'beach' yet, only the body-words."</p>
+        <div style="padding: 40px; font-family: 'Work Sans', sans-serif;">
+            <h2 style="text-align: center; margin-bottom: 20px;">My Feeling Seed or Part</h2>
+            <p style="text-align: center; margin-bottom: 40px; font-style: italic;">Draw your feeling as a seed or character. Give it a name if you want.</p>
+            
+            <div style="border: 3px solid #8B9D83; min-height: 300px; border-radius: 12px; margin: 30px 0; padding: 20px;">
+                <p style="text-align: center; color: #8B9D83; margin-top: 120px;">Draw here</p>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <p style="font-size: 18px; margin-bottom: 10px;"><strong>This part shows up when:</strong></p>
+                <div style="border-bottom: 2px solid #8B9D83; width: 100%; min-height: 30px; margin-bottom: 25px;"></div>
+                <div style="border-bottom: 2px solid #8B9D83; width: 100%; min-height: 30px; margin-bottom: 25px;"></div>
+                
+                <p style="font-size: 18px; margin: 30px 0 10px;"><strong>In my body it feels like:</strong></p>
+                <div style="border-bottom: 2px solid #8B9D83; width: 100%; min-height: 30px; margin-bottom: 25px;"></div>
+                <div style="border-bottom: 2px solid #8B9D83; width: 100%; min-height: 30px;"></div>
+            </div>
         </div>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>The Five Core Prompts</h2>
-        <p>After Stage I is complete, write "Senses:" then lead through these questions. <strong>Stop when you have 3-5 sense words.</strong></p>
-
-        <div class="prompt-grid">
-          <div class="prompt-card">
-            <div class="prompt-question">1. Temperature</div>
-            <p class="prompt-answer">"If you were standing at that place, would your body feel more warm or more cold?"</p>
-            <p class="prompt-answer">→ Write: "cold" or "warm"</p>
-          </div>
-
-          <div class="prompt-card">
-            <div class="prompt-question">2. Texture</div>
-            <p class="prompt-answer">"Does the ground or surface feel more smooth or more rough?"</p>
-            <p class="prompt-answer">→ Write: "rough" or "smooth"</p>
-          </div>
-
-          <div class="prompt-card">
-            <div class="prompt-question">3. Moisture</div>
-            <p class="prompt-answer">"Does it feel more wet or more dry there?"</p>
-            <p class="prompt-answer">→ Write: "wet" or "dry"</p>
-          </div>
-
-          <div class="prompt-card">
-            <div class="prompt-question">4. Sound</div>
-            <p class="prompt-answer">"Are your ears hearing more loud or more quiet?"</p>
-            <p class="prompt-answer">→ Write: "loud" or "quiet"</p>
-          </div>
-
-          <div class="prompt-card">
-            <div class="prompt-question">5. Light</div>
-            <p class="prompt-answer">"Is the place more bright or more dark?"</p>
-            <p class="prompt-answer">→ Write: "bright" or "dark"</p>
-          </div>
-        </div>
-
-        <p class="note">You don't need all five prompts every time. Keep it light—3-5 words is plenty.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Shaping Away from Labels</h2>
-        <p>Children will naturally offer place-names instead of sensations. Gently reshape this back to body-words.</p>
-
-        <h3>Example: Story Instead of Sensation</h3>
-        <div class="example-box">
-          <p><strong>You:</strong> "Are your ears hearing more loud or more quiet?"</p>
-          <p><strong>Child:</strong> "It sounds like a train station with lots of people."</p>
-          <p><strong>You respond:</strong> "That sounds like a story about what the place might be. Stories are okay, but they go in a different spot. For 'Senses' we only write body-words like loud or quiet."</p>
-          <p><strong>Write in margin:</strong> <span style="color: #c7a050;">Story: train station</span></p>
-          <p><strong>Then ask:</strong> "So for 'Senses' here, should we write 'loud' or 'quiet'?"</p>
-          <p><strong>Child:</strong> "Loud"</p>
-          <p><strong>Write under Senses:</strong> <span style="color: #7fd4b0;">loud</span></p>
-        </div>
-
-        <h3>Example: Full Sentence Instead of Single Word</h3>
-        <div class="example-box">
-          <p><strong>You:</strong> "Would your body feel more warm or more cold?"</p>
-          <p><strong>Child:</strong> "Really cold and windy like on a mountain"</p>
-          <p><strong>You respond:</strong> "That's good. For our list, we'll just write 'cold' right now. The 'windy' we can add next."</p>
-          <p><strong>Write:</strong> <span style="color: #7fd4b0;">cold</span></p>
-          <p><strong>Then ask:</strong> "Does any wind show up—still or windy?"</p>
-          <p><strong>Child:</strong> "Windy"</p>
-          <p><strong>Write:</strong> <span style="color: #7fd4b0;">windy</span></p>
-        </div>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Stage II Feedback</h2>
-        <p>When revealing the target, first point out Stage I fits, then shift to Senses.</p>
-
-        <div class="example-box">
-          <p class="example-label">If they wrote "cold" and picture shows snow:</p>
-          <p>"This sense word fits this picture really well. Can you see what makes it cold?"</p>
-        </div>
-
-        <div class="example-box">
-          <p class="example-label">If they wrote "windy" and picture shows waves with whitecaps:</p>
-          <p>"This 'windy' fits what we can see here—look at these waves."</p>
-        </div>
-
-        <div class="example-box">
-          <p class="example-label">If you can't tell from the picture:</p>
-          <p>"This one we can't really match or check from this picture."</p>
-        </div>
-
-        <p class="note">You're still not scoring. You're showing that body-words sometimes connect directly with the hidden place.</p>
-      </div>
     </div>
 
-    <!-- PROGRESSION -->
-    <div id="progression" class="section">
-      <div class="intro-card">
-        <h2>Session Progression Over Time</h2>
-        <p class="lead">Here's how to build skill session by session, from first introduction through mastery.</p>
-      </div>
-
-      <div class="content-block">
-        <h2>Stage I Progression (3-6 sessions)</h2>
-
-        <h3>First Session (15-20 min)</h3>
-        <ul>
-          <li>Explain the concept and demonstrate 1-2 fast marks yourself</li>
-          <li>Run <strong>two target numbers</strong></li>
-          <li>For each number, guide through full sequence <strong>twice</strong></li>
-          <li>Show pictures and point out clear connections</li>
-        </ul>
-
-        <h3>Second Session (20-25 min)</h3>
-        <ul>
-          <li>Use <strong>three target numbers</strong></li>
-          <li>For each number, aim for <strong>2-3 runs</strong></li>
-          <li>Introduce Miss, Story, and Confused breaks when they occur</li>
-          <li>Let child write numbers and words if ready</li>
-        </ul>
-
-        <h3>Third+ Sessions (20-30 min)</h3>
-        <ul>
-          <li>Use <strong>3-4 target numbers</strong> per session</li>
-          <li>Vary runs per target (2-4) based on engagement</li>
-          <li>Maintain consistent structure every time</li>
-          <li>Child manages most writing; you provide timing and corrections</li>
-        </ul>
-
-        <div class="warning-box">
-          <h3>Stage I is "In Place" When:</h3>
-          <ul>
-            <li>Child naturally expects: "Number → mark → Move → Feel → Helper"</li>
-            <li>Fast marks appear without hesitation</li>
-            <li>Move/Feel words come easily</li>
-            <li>They understand Helper vs. Story distinction</li>
-            <li>Breaks are used appropriately</li>
-          </ul>
-          <p class="important">Don't add Stage II until this pattern is solid and automatic.</p>
+    <div id="questionsPrint" class="printable-template">
+        <div class="print-header">
+            <button class="back-btn" onclick="hidePrintable()">← Back to Curriculum</button>
+            <button class="print-now-btn" onclick="window.print()">Print This Page</button>
         </div>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Stage II Progression (3-5 sessions)</h2>
-
-        <h3>First Stage II Session (20-25 min)</h3>
-        <ul>
-          <li>Explain Stage II and model with visible example</li>
-          <li>Run <strong>two secret numbers</strong></li>
-          <li>Guide through full Stage I + all 5 Senses prompts</li>
-          <li>Write sense words for them if needed</li>
-          <li>Point out Stage I fits, then Senses fits</li>
-        </ul>
-
-        <h3>Second Session (20-25 min)</h3>
-        <ul>
-          <li>Use <strong>2-3 secret numbers</strong></li>
-          <li>Continue contrast prompts but start asking without giving both options</li>
-          <li>If they stall or give labels, fall back to specific prompts</li>
-          <li>Use Story margin consistently</li>
-        </ul>
-
-        <h3>Third+ Sessions (20-30 min)</h3>
-        <ul>
-          <li>Use <strong>3-4 target numbers</strong></li>
-          <li>Prompt with open instruction: "Give me 3-4 body-words"</li>
-          <li>Only use specific contrasts if needed</li>
-          <li>Child manages most of process</li>
-        </ul>
-
-        <div class="warning-box">
-          <h3>Stage II is "In Place" When:</h3>
-          <ul>
-            <li>Child expects Senses after Helper without being told</li>
-            <li>Can give 2-3 body-words without every prompt</li>
-            <li>Accepts reshaping from labels without distress</li>
-            <li>Comfortable with all three breaks</li>
-          </ul>
-          <p class="important">Pattern is now stable: Number → Mark → Move → Feel → Helper → Senses</p>
+        <div style="padding: 60px; font-family: 'Work Sans', sans-serif;">
+            <h1 style="text-align: center; margin-bottom: 50px; font-size: 42px; color: #4A5D47;">Questions for Parts</h1>
+            <p style="text-align: center; margin-bottom: 60px; font-size: 20px; color: #7D6B5D;">When Self listens to a part, try asking:</p>
+            
+            <div style="background: rgba(139, 157, 131, 0.15); border-left: 8px solid #8B9D83; padding: 30px; margin: 40px 0; border-radius: 8px;">
+                <p style="font-size: 28px; margin-bottom: 30px; color: #4A5D47;">What are you worried/mad/sad about?</p>
+            </div>
+            
+            <div style="background: rgba(139, 157, 131, 0.15); border-left: 8px solid #8B9D83; padding: 30px; margin: 40px 0; border-radius: 8px;">
+                <p style="font-size: 28px; margin-bottom: 30px; color: #4A5D47;">When do you usually show up?</p>
+            </div>
+            
+            <div style="background: rgba(139, 157, 131, 0.15); border-left: 8px solid #8B9D83; padding: 30px; margin: 40px 0; border-radius: 8px;">
+                <p style="font-size: 28px; margin-bottom: 30px; color: #4A5D47;">What do you wish I knew?</p>
+            </div>
+            
+            <p style="text-align: center; margin-top: 60px; font-size: 18px; color: #7D6B5D; font-style: italic;">Self is calm, kind, and curious.</p>
         </div>
-      </div>
-
-      <div class="content-block">
-        <h2>Key Teaching Tips</h2>
-        <div class="card-grid">
-          <div class="info-card">
-            <h4>Keep Sessions Short</h4>
-            <p>20-25 minutes is plenty. Better to end with energy left than push until exhausted.</p>
-          </div>
-
-          <div class="info-card">
-            <h4>Consistency Matters</h4>
-            <p>Same header, same sequence, same language. The ritual helps the child relax into the structure.</p>
-          </div>
-
-          <div class="info-card">
-            <h4>Stay Neutral</h4>
-            <p>Don't get excited at "hits" or disappointed at misses. Treat all responses as interesting data.</p>
-          </div>
-
-          <div class="info-card">
-            <h4>Model Occasionally</h4>
-            <p>Show don't just tell. Demonstrate fast marks or sense words when needed.</p>
-          </div>
-
-          <div class="info-card">
-            <h4>Trust the Process</h4>
-            <p>Some sessions feel better than others. The skill develops through repetition, not trying harder.</p>
-          </div>
-
-          <div class="info-card">
-            <h4>Celebrate Self-Correction</h4>
-            <p>When they catch themselves starting a story and self-correct to data—that's real learning.</p>
-          </div>
-        </div>
-      </div>
     </div>
 
-
-    <!-- STAGE III OVERVIEW -->
-    <div id="stage3-overview" class="section">
-      <div class="intro-card stage2">
-        <h2>Stage III: Size, Shape, and Simple Sketches</h2>
-        <p class="lead">Stage III teaches the child to add basic size and shape information to their Stage I–II data and then to make a simple sketch of the place—a quick "little map" built from the words they've already said.</p>
-      </div>
-
-      <div class="warning-box">
-        <h3>Stage III Builds On Stages I & II</h3>
-        <p>You never drop Stage I or II. Stage III is added underneath. The child still does the complete Stage I–II sequence, then adds Shapes, whole-place feeling, and sketch.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>What You Want by End of Stage III</h2>
-        <p>By the end of Stage III, you want a child who can:</p>
-        <ul>
-          <li>Run the full Stage I–II sequence for a target (number, fast mark, Move, Feel, Helper, Senses)</li>
-          <li>Say two or three simple size/shape words (tall/low, wide/narrow, flat/sloping, big/small)</li>
-          <li>Say one short "whole-place feeling" phrase (lonely, busy, peaceful, "don't like it")</li>
-          <li>Use those words to make a simple sketch that shows where the big parts of the place go</li>
-        </ul>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>The Complete Structure (Stages I-III)</h2>
-        <p>For each target number, the work now appears in this order:</p>
-        <div class="layout-example">
-          <div class="layout-line">Number</div>
-          <div class="layout-line">Fast mark</div>
-          <div class="layout-line stage1-color">Move: ...</div>
-          <div class="layout-line stage1-color">Feel: ...</div>
-          <div class="layout-line stage1-color">Helper: ...</div>
-          <div class="layout-line stage2-color">Senses: (3-5 words)</div>
-          <div class="layout-line stage2-color">Shapes: (2-3 words)</div>
-          <div class="layout-line stage2-color">Whole-place feeling: ...</div>
-          <div class="layout-line stage2-color">Sketch</div>
+    <div id="carePlanPrint" class="printable-template">
+        <div class="print-header">
+            <button class="back-btn" onclick="hidePrintable()">← Back to Curriculum</button>
+            <button class="print-now-btn" onclick="window.print()">Print This Page</button>
         </div>
-      </div>
+        <div style="padding: 40px; font-family: 'Work Sans', sans-serif;">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #4A5D47;">My Care Plan Card</h2>
+            
+            <div style="border: 3px solid #8B9D83; border-radius: 12px; padding: 30px; margin: 30px 0;">
+                <h3 style="color: #8B9D83; margin-bottom: 20px;">The part I want to care for:</h3>
+                <div style="border: 2px dashed #8B9D83; min-height: 150px; border-radius: 8px; margin: 20px 0; padding: 15px;">
+                    <p style="text-align: center; color: #8B9D83; margin-top: 50px;">Draw or name your part here</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <p style="font-size: 18px; margin-bottom: 10px;"><strong>This part shows up when:</strong></p>
+                <div style="border-bottom: 2px solid #8B9D83; width: 100%; min-height: 30px; margin-bottom: 30px;"></div>
+                
+                <p style="font-size: 18px; margin-bottom: 10px;"><strong>In my body it feels like:</strong></p>
+                <div style="border-bottom: 2px solid #8B9D83; width: 100%; min-height: 30px; margin-bottom: 30px;"></div>
+                
+                <p style="font-size: 18px; margin-bottom: 15px;"><strong>It feels better when I:</strong></p>
+                <div style="padding-left: 20px;">
+                    <p style="margin: 15px 0;">1. <span style="border-bottom: 2px solid #8B9D83; display: inline-block; width: 80%; min-height: 25px;"></span></p>
+                    <p style="margin: 15px 0;">2. <span style="border-bottom: 2px solid #8B9D83; display: inline-block; width: 80%; min-height: 25px;"></span></p>
+                    <p style="margin: 15px 0;">3. <span style="border-bottom: 2px solid #8B9D83; display: inline-block; width: 80%; min-height: 25px;"></span></p>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 50px; font-style: italic; color: #7D6B5D;">Self is the gardener who can choose what to water.</p>
+        </div>
     </div>
 
-    <!-- STAGE III SESSIONS -->
-    <div id="stage3-sessions" class="section">
-      <div class="intro-card stage2">
-        <h2>Running Stage III Sessions</h2>
-        <p class="lead">Stage III sessions add Shape words, whole-place feeling, and a sketch after the Stage II Senses block.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Introducing Stage III to the Child</h2>
-        <div class="script-box stage2">
-          <p>"Now that you can do the number, fast squiggle, little words, and body-words, we're going to add a new step."</p>
-          <p>"After your body-words, we'll ask about size and shape: does the place feel tall or low, wide or narrow, flat or sloping, big or small?"</p>
-          <p>"Then you'll draw a little map of the place using those words. Not a fancy picture—just lines and blobs that show where the big things are."</p>
+    <div id="poemPrint" class="printable-template">
+        <div class="print-header">
+            <button class="back-btn" onclick="hidePrintable()">← Back to Curriculum</button>
+            <button class="print-now-btn" onclick="window.print()">Print This Page</button>
         </div>
-
-        <h3>Demonstrate First</h3>
-        <p>Show a very simple example on scrap paper:</p>
-        <div class="example-box">
-          <p><strong>Say:</strong> "Shapes: tall, narrow, flat"</p>
-          <p><strong>Draw:</strong> A tall rectangle in the center and a flat area under it</p>
+        <div style="padding: 40px; font-family: 'Work Sans', sans-serif;">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #4A5D47;">A Part Speaks: My Poem</h2>
+            
+            <div style="background: rgba(139, 157, 131, 0.1); border-radius: 12px; padding: 30px; margin: 30px 0;">
+                <h3 style="color: #8B9D83; margin-bottom: 20px;">From My Part:</h3>
+                
+                <p style="margin: 25px 0;"><strong>I am the part that shows up when:</strong></p>
+                <div style="border-bottom: 2px solid #8B9D83; width: 100%; min-height: 30px; margin-bottom: 20px;"></div>
+                <div style="border-bottom: 2px solid #8B9D83; width: 100%; min-height: 30px; margin-bottom: 30px;"></div>
+                
+                <p style="margin: 25px 0;"><strong>I feel in the body like:</strong></p>
+                <div style="border-bottom: 2px solid #8B9D83; width: 100%; min-height: 30px; margin-bottom: 20px;"></div>
+                <div style="border-bottom: 2px solid #8B9D83; width: 100%; min-height: 30px; margin-bottom: 30px;"></div>
+                
+                <p style="margin: 25px 0;"><strong>I try to help you by:</strong></p>
+                <div style="border-bottom: 2px solid #8B9D83; width: 100%; min-height: 30px; margin-bottom: 20px;"></div>
+                <div style="border-bottom: 2px solid #8B9D83; width: 100%; min-height: 30px; margin-bottom: 30px;"></div>
+                
+                <p style="margin: 25px 0;"><strong>I feel calmer when you:</strong></p>
+                <div style="border-bottom: 2px solid #8B9D83; width: 100%; min-height: 30px; margin-bottom: 20px;"></div>
+                <div style="border-bottom: 2px solid #8B9D83; width: 100%; min-height: 30px; margin-bottom: 30px;"></div>
+            </div>
+            
+            <div style="background: rgba(201, 169, 110, 0.15); border-radius: 12px; padding: 30px; margin: 30px 0;">
+                <h3 style="color: #7D6B5D; margin-bottom: 20px;">From Self:</h3>
+                
+                <p style="margin: 25px 0;"><strong>I hear you. I will try to:</strong></p>
+                <div style="border-bottom: 2px solid #7D6B5D; width: 100%; min-height: 30px; margin-bottom: 20px;"></div>
+                <div style="border-bottom: 2px solid #7D6B5D; width: 100%; min-height: 30px; margin-bottom: 20px;"></div>
+                <div style="border-bottom: 2px solid #7D6B5D; width: 100%; min-height: 30px;"></div>
+            </div>
         </div>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Teaching Shape Words</h2>
-        <p>After finishing the Senses list for a target, write "Shapes:" and lead with clear either/or prompts:</p>
-
-        <div class="prompt-grid">
-          <div class="prompt-card">
-            <div class="prompt-question">"Does this place feel more tall, or more low?"</div>
-          </div>
-
-          <div class="prompt-card">
-            <div class="prompt-question">"Does it seem more wide, or more narrow?"</div>
-          </div>
-
-          <div class="prompt-card">
-            <div class="prompt-question">"Is it more flat, or more sloping or angled?"</div>
-          </div>
-
-          <div class="prompt-card">
-            <div class="prompt-question">"Does it feel more big, or more small?"</div>
-          </div>
-        </div>
-
-        <p>You don't need all four prompts every time. <strong>Aim for 2-3 clear answers.</strong></p>
-
-        <h3>Writing Shape Words</h3>
-        <p>Each answer becomes one short word:</p>
-        <div class="layout-example">
-          <div class="layout-line stage2-color">Shapes:</div>
-          <div class="layout-line stage2-color indent">tall</div>
-          <div class="layout-line stage2-color indent">wide</div>
-          <div class="layout-line stage2-color indent">flat</div>
-        </div>
-
-        <h3>If They Give Longer Sentences</h3>
-        <div class="example-box">
-          <p><strong>Child says:</strong> "It's like a big tall building with lots of levels"</p>
-          <p><strong>You say:</strong> "That's helpful. For Shapes we will only write the most important words. Let's write 'tall' and 'big' this time."</p>
-        </div>
-
-        <p class="important">You are teaching that the Shapes line holds short size/shape words only, not detailed descriptions.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Teaching Whole-Place Feeling</h2>
-        <p>Before you sketch, you ask for the child's overall feeling about the place. This is where the child notices how the whole site makes them feel, not just one part.</p>
-
-        <p>After the Shapes words, say:</p>
-        <div class="script-box stage2">
-          <p>"Now think about the whole place. How does it feel to you inside? Does it feel fun, scary, calm, lonely, busy, peaceful, or something else?"</p>
-        </div>
-
-        <p>Encourage a single short phrase, then write it as:</p>
-        <div class="example-box">
-          <p>Whole-place feeling: lonely</p>
-          <p>Whole-place feeling: busy</p>
-          <p>Whole-place feeling: calm</p>
-          <p>Whole-place feeling: don't like it</p>
-        </div>
-
-        <p class="important">If the feeling is clearly uncomfortable—"scary-no," "I really don't like it"—take note. You can decide to proceed but keep it light, or choose to stop after the sketch and switch to a more neutral target next time. The key is to acknowledge the feeling and give it one line on the page.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Teaching the Sketch</h2>
-        <p>The sketch is built FROM the Stage I–III words, not from a fully imagined picture. You need to tell the child that explicitly.</p>
-
-        <div class="script-box stage2">
-          <p>"Now we'll make a little map of this place. We are not trying to draw a perfect picture."</p>
-          <p>"We're going to let your shape words turn into lines and blobs. If you said something is tall, we'll draw a tall line or block. If you said flat, we'll draw a flat area. If you said wide, we'll draw something wide."</p>
-          <p>"We use our words to decide what to draw."</p>
-        </div>
-
-        <h3>Model It First</h3>
-        <p>It helps to demonstrate once:</p>
-        <div class="example-box">
-          <p><strong>Write:</strong> "Shapes: tall, narrow, flat"</p>
-          <p><strong>Draw:</strong> A tall narrow block in the center and a flat area under it</p>
-          <p><strong>Say:</strong> "The word 'tall' made me draw this tall block. 'Flat' made me draw this flat bit here. That's all we need."</p>
-        </div>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Guiding the Child to Sketch from Words</h2>
-        <p>Once Shapes and whole-place feeling are written for a secret number, guide the sketch step-by-step:</p>
-
-        <div class="step-cards">
-          <div class="step-card stage2">
-            <div class="step-number">1</div>
-            <div class="step-title">First Shape Word</div>
-            <p>Point to the first Shapes word and ask:</p>
-            <p><strong>"You wrote 'tall.' Where does the tall thing belong on your map? More in the middle, to the left, to the right?"</strong></p>
-            <p>Let them choose, then have them draw a tall vertical line or block there.</p>
-          </div>
-
-          <div class="step-card stage2">
-            <div class="step-number">2</div>
-            <div class="step-title">Second Shape Word</div>
-            <p>Point to the next Shapes word:</p>
-            <p><strong>"You wrote 'flat.' Is that flat part under the tall thing, beside it, or all around it?"</strong></p>
-            <p>They draw a flat area accordingly—like a horizontal rectangle or line.</p>
-          </div>
-
-          <div class="step-card stage2">
-            <div class="step-number">3</div>
-            <div class="step-title">Additional Shapes</div>
-            <p>Repeat for any additional Shapes words:</p>
-            <p><strong>"You wrote 'wide.' Is the wide part here or here?"</strong></p>
-          </div>
-        </div>
-
-        <p>Encourage them to keep the sketch simple:</p>
-        <div class="script-box stage2">
-          <p>"We only need the big pieces. No windows or tiny details—just where the big parts go."</p>
-        </div>
-
-        <h3>If They Add Details from Mental Images</h3>
-        <p>If they begin adding specific landmarks, people, or decorations, gently redirect:</p>
-        <div class="script-box stage2">
-          <p>"That's an interesting detail. Let's first make sure our map shows your 'tall', 'flat', and 'wide' parts. Once that is on the page, you can add a small detail if you still feel like it."</p>
-        </div>
-
-        <p class="important">If a strong inner picture is clearly driving the drawing, you can treat it as a "story picture," write "Story picture: ..." in the margin, and bring them back to using their words as instructions.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Practice Pattern for Stage III</h2>
-        <p>For the first few Stage III sessions, keep things light:</p>
-        <ul>
-          <li>Use <strong>2-3 secret numbers</strong> per session</li>
-          <li>For each number:
-            <ul>
-              <li>Run the full Stage I–II sequence</li>
-              <li>Add Shapes words</li>
-              <li>Record a whole-place feeling</li>
-              <li>Guide a quick sketch</li>
-            </ul>
-          </li>
-        </ul>
-
-        <p class="important">Do not worry about how "accurate" the sketches are at first. Your aim is to make the Stage III pattern automatic: Number → fast mark → Move → Feel → Helper → Senses → Shapes → whole-place feeling → sketch.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Feedback with Stage III</h2>
-        <p>When you reveal the target picture, after your Stage I–II feedback you can now point out any useful Stage III connections:</p>
-
-        <div class="example-box">
-          <p>"You wrote 'tall' and drew this tall block. Do we see anything tall in this picture?"</p>
-          <p>"You wrote 'flat.' Is there a flat area in the picture like in your sketch?"</p>
-          <p>"Your whole-place feeling word was 'busy.' Does this scene look busy or quiet?"</p>
-        </div>
-
-        <p>Sometimes the sketch will match the basic layout nicely. Sometimes parts will match, and sometimes it will not be obvious. You keep feedback gentle and specific, focusing on "This part fits" and "This part we can't really tell from this picture," instead of judging.</p>
-      </div>
     </div>
 
-    <!-- STAGE IV OVERVIEW -->
-    <div id="stage4-overview" class="section">
-      <div class="intro-card stage2">
-        <h2>Stage IV: Kinds of Place and Soft Meaning</h2>
-        <p class="lead">Stage IV lets the child begin to talk about what kind of place the target is and what happens there in very general terms. It uses simple classifications and one or two soft "might" statements.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>What You Want by End of Stage IV</h2>
-        <p>By the end of Stage IV, you want a child who can:</p>
-        <ul>
-          <li>Run the full Stage I–III sequence</li>
-          <li>Say whether the place feels more like nature or more like buildings</li>
-          <li>Say whether it feels more quiet or more busy</li>
-          <li>Say whether it feels mostly like a play place, work place, learning place, or resting place</li>
-          <li>Write one or two "It might be a place where..." or "It might be a place that feels..." sentences</li>
-        </ul>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>The Complete Structure (Stages I-IV)</h2>
-        <div class="layout-example">
-          <div class="layout-line">Number</div>
-          <div class="layout-line stage1-color">Stage I (Move, Feel, Helper)</div>
-          <div class="layout-line stage2-color">Stage II (Senses: 3-5 words)</div>
-          <div class="layout-line stage2-color">Stage III (Shapes, whole-place feeling, sketch)</div>
-          <div class="layout-line stage2-color">Stage IV:</div>
-          <div class="layout-line stage2-color indent">Kind of place: Nature / Buildings</div>
-          <div class="layout-line stage2-color indent">Quiet / Busy</div>
-          <div class="layout-line stage2-color indent">Mostly: Play / Work / Learn / Rest</div>
-          <div class="layout-line stage2-color indent">"Might" sentences (1-2)</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- STAGE IV SESSIONS -->
-    <div id="stage4-sessions" class="section">
-      <div class="intro-card stage2">
-        <h2>Running Stage IV Sessions</h2>
-        <p class="lead">Stage IV sessions add "Kind of place" classifications and "might" sentences after the Stage III sketch.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Introducing Stage IV to the Child</h2>
-        <div class="script-box stage2">
-          <p>"Now we're going to add a part where we ask what kind of place this feels like. We won't try to name it exactly. We'll use simple choices."</p>
-          <p>"Does it feel more like nature or more like buildings? More quiet or more busy? More like a place to play, to work, to learn, or to rest?"</p>
-          <p>"Then we'll write one or two sentences that start with 'It might be a place where...' or 'It might be a place that feels...' because we are using our clues, not saying for sure."</p>
-        </div>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Teaching "Kind of Place" Classifications</h2>
-        <p>After the Stage III sketch, add this section. You can structure it as text lines or choices:</p>
-
-        <div class="layout-example">
-          <div class="layout-line stage2-color">Kind of place:</div>
-          <div class="layout-line stage2-color indent">Nature / Buildings</div>
-          <div class="layout-line stage2-color indent">Quiet / Busy</div>
-          <div class="layout-line stage2-color indent">Mostly: Play / Work / Learn / Rest</div>
-        </div>
-
-        <p>For each line, you guide the child to choose one.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>The Three Classification Questions</h2>
-
-        <div class="step-cards">
-          <div class="step-card stage2">
-            <div class="step-number">1</div>
-            <div class="step-title">Nature vs. Buildings</div>
-            <p><strong>Ask:</strong> "Does this place feel more like nature—like forests, fields, mountains, the sea—or more like buildings and man-made stuff—like cities, roads, factories?"</p>
-            <p>Let them choose "Nature" or "Buildings." Mark or circle their choice.</p>
-          </div>
-
-          <div class="step-card stage2">
-            <div class="step-number">2</div>
-            <div class="step-title">Quiet vs. Busy</div>
-            <p><strong>Ask:</strong> "Does it feel more quiet, or more busy and full of activity?"</p>
-            <p>They choose "Quiet" or "Busy" and you note it.</p>
-          </div>
-
-          <div class="step-card stage2">
-            <div class="step-number">3</div>
-            <div class="step-title">Mostly: Play / Work / Learn / Rest</div>
-            <p><strong>Ask:</strong> "Does it feel more like a place where people mostly play, mostly work, mostly learn, or mostly rest?"</p>
-            <p><strong>Offer examples if unsure:</strong></p>
-            <p>"Play might be a playground or park. Work might be a farm, factory, or office. Learn might be a school or museum. Rest might be a bedroom, a beach, or a quiet garden."</p>
-            <p>They choose one: <strong>Play, Work, Learn,</strong> or <strong>Rest</strong></p>
-          </div>
-        </div>
-
-        <p class="important">You are helping them turn a vague impression into a few simple qualitative tags without forcing them to name the exact target.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Teaching "Might" Sentences</h2>
-        <p>The last part of Stage IV is to gather one or two short sentences that wrap up their feeling of the place, using the word "might" on purpose.</p>
-
-        <div class="script-box stage2">
-          <p>"Now let's write one or two sentences that start with 'It might be a place where...' or 'It might be a place that feels...'. Remember, we say 'might' because we are just using clues."</p>
-        </div>
-
-        <h3>Prompting the Sentences</h3>
-        <p><strong>Ask:</strong> "Based on your clues, what might people do there?" or "How might it feel to be there?"</p>
-
-        <p>Help them turn their answers into short sentences:</p>
-        <div class="example-box">
-          <p>"It might be a place where people work with machines."</p>
-          <p>"It might be a place where kids play outside."</p>
-          <p>"It might be a place that feels very quiet and peaceful."</p>
-          <p>"It might be a place that feels busy and loud."</p>
-        </div>
-
-        <h3>Correcting "IS" to "MIGHT"</h3>
-        <p>If they say "It IS a place where..." gently correct:</p>
-        <div class="script-box stage2">
-          <p>"Let's use 'might' here, because we're not saying for sure. Try: 'It might be a place where...'"</p>
-        </div>
-
-        <p class="note">You can write the sentences for them if writing is hard; what matters is that they choose the words and hear the soft framing.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Handling Overly Specific Guesses</h2>
-        <p>Children often jump to specific identifications: "It's Disneyland," "It's Grandma's house." Stage IV should acknowledge this without letting the whole output collapse into that guess.</p>
-
-        <div class="example-box">
-          <p><strong>Child says:</strong> "It's Disneyland!"</p>
-          <p><strong>You respond:</strong> "That's a strong guess. Let's write that as 'Story: Disneyland' on the side. For our 'might' sentence, use your clues instead. From what you wrote, it feels like a busy play place. How about, 'It might be a place where people go to play outside and it's very busy'?"</p>
-        </div>
-
-        <p class="important">You are reinforcing that the structured Stage IV language is about general kind-of-place meaning, while specific guesses are labeled clearly as stories.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Practice Pattern for Stage IV</h2>
-        <p>Introduce Stage IV after the child is comfortable with Stages I–III.</p>
-
-        <p>In the first few Stage IV sessions:</p>
-        <ul>
-          <li>Use <strong>2-3 secret numbers</strong> per session</li>
-          <li>For each number:
-            <ul>
-              <li>Run full Stage I–III</li>
-              <li>Add the three "Kind of place" choices</li>
-              <li>Co-construct one or two "might" sentences</li>
-            </ul>
-          </li>
-        </ul>
-
-        <h3>As They Gain Confidence</h3>
-        <ul>
-          <li>Allow them to propose their own "kind of place" words beyond your menu, as long as they stay general ("farm place," "city place," "water place")</li>
-          <li>Gradually shift from heavy prompting to lighter prompting ("Now write an 'It might be...' sentence using your words")</li>
-        </ul>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Feedback with Stage IV</h2>
-        <p>When you reveal the target, you can now include Stage IV in your feedback.</p>
-
-        <div class="example-box">
-          <p>"They picked 'Nature'—does this picture show mostly nature or mostly buildings?"</p>
-          <p>"They picked 'Busy'—does this look like a busy place?"</p>
-          <p>"They wrote 'It might be a place where people work with machines'—do we see machines here? Does that fit?"</p>
-        </div>
-
-        <p>Sometimes their classifications and sentences will fit the main site closely; sometimes they fit the surrounding area; sometimes they do not fit at all. You treat all three with the same neutral commentary:</p>
-        <ul>
-          <li>"This fits the place well."</li>
-          <li>"This fits something near the place."</li>
-          <li>"This one we can't really match from the picture."</li>
-        </ul>
-
-        <p class="important">They keep learning that the job is to follow the structure and express impressions clearly, not to be perfect.</p>
-      </div>
-    </div>
-
-    <!-- STAGE V OVERVIEW -->
-    <div id="stage5-overview" class="section">
-      <div class="intro-card stage2">
-        <h2>Stage V: One Question at a Time</h2>
-        <p class="lead">Stage V introduces "asking the place a question" and listening for one short answer without sliding into a long story. It's a gentle children's version of interrogating the signal: one focused question, one brief answer.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>What You Want by End of Stage V</h2>
-        <p>By the end of Stage V, you want a child who can:</p>
-        <ul>
-          <li>Run the full Stage I–IV sequence for a target, then</li>
-          <li>Listen for one small answer to a simple question like "What do people mostly do here?" or "What is most important here?"</li>
-          <li>Give that answer in one to three words, stopping before it turns into a story</li>
-        </ul>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>The Complete Structure (Stages I-V)</h2>
-        <div class="layout-example">
-          <div class="layout-line">Stages I → II → III → IV (as before)</div>
-          <div class="layout-line stage2-color">Question: What do people mostly do here?</div>
-          <div class="layout-line stage2-color">Answer: grow food</div>
-        </div>
-
-        <p class="important">You only ask ONE Stage V question per target with children. That keeps things focused and prevents fatigue.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Good Stage V Questions</h2>
-        <p>Keep questions simple and about general function or mood, not about names:</p>
-
-        <div class="card-grid">
-          <div class="info-card">
-            <p>"What do people mostly do here?"</p>
-          </div>
-          <div class="info-card">
-            <p>"What is the main thing that happens here?"</p>
-          </div>
-          <div class="info-card">
-            <p>"What is the strongest feeling here?"</p>
-          </div>
-          <div class="info-card">
-            <p>"What is the most important thing here?"</p>
-          </div>
-        </div>
-
-        <p class="important">Avoid questions like "What is this place called?" or "What country is this in?" which invite guessing rather than sensing.</p>
-      </div>
-    </div>
-
-    <!-- STAGE V SESSIONS -->
-    <div id="stage5-sessions" class="section">
-      <div class="intro-card stage2">
-        <h2>Running Stage V Sessions</h2>
-        <p class="lead">Stage V sessions add one focused question with a short answer after Stage IV.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Introducing Stage V to the Child</h2>
-        <div class="script-box stage2">
-          <p>"Now we're going to learn one more move. After you do all your clues and sentences, you get to ask the place a tiny question, like 'What do people mostly do here?' or 'What is the most important thing here?'"</p>
-          <p>"Then we listen quietly and write down just a very short answer. If your brain starts telling a long story, we'll call it a story and park it like before."</p>
-        </div>
-
-        <p>The words "tiny question" and "very short answer" are important. They signal the scale of what you want.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Choosing Stage V Questions</h2>
-        <p>As the adult, you choose the Stage V question for each target. Keep questions simple and always about general function or mood, not about names.</p>
-
-        <h3>Good Examples:</h3>
-        <ul>
-          <li>"What do people mostly do here?"</li>
-          <li>"What is the main thing that happens here?"</li>
-          <li>"What is the strongest feeling here?"</li>
-          <li>"What is the most important thing here?"</li>
-        </ul>
-
-        <h3>Avoid:</h3>
-        <ul>
-          <li>"What is this place called?"</li>
-          <li>"What country is this in?"</li>
-        </ul>
-        <p class="note">These invite guessing rather than sensing.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Teaching the Stage V Move</h2>
-        <p>After the Stage IV "might" sentences for a target, pause and say:</p>
-
-        <div class="script-box stage2">
-          <p>"Now we'll do our tiny question. For this one, the question is: 'What do people mostly do here?'"</p>
-          <p>"Close your eyes for a moment. Think of the place your number is pointing to. Just once, very softly in your mind, ask, 'What do people mostly do here?' Then notice the first small answer that pops up, like a word or tiny phrase. We only want one little answer, not a whole story."</p>
-        </div>
-
-        <p>Give them a few seconds in silence.</p>
-        <p>Then ask: <strong>"What little answer popped up?"</strong></p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Shaping the Stage V Answer</h2>
-        <p>When the child replies, your job is to keep the answer short and to separate short answers from stories.</p>
-
-        <h3>If They Give a Simple Answer:</h3>
-        <div class="example-box">
-          <p><strong>Child says:</strong> "grow food"</p>
-          <p><strong>You write:</strong></p>
-          <p>Question: What do people mostly do here?<br>Answer: grow food</p>
-        </div>
-
-        <div class="example-box">
-          <p><strong>Other examples:</strong> drive cars, pray, swim, rest</p>
-        </div>
-
-        <h3>If They Give a Sentence:</h3>
-        <div class="example-box">
-          <p><strong>Child says:</strong> "They walk around and buy food from stands"</p>
-          <p><strong>You say:</strong> "That's helpful. Let's capture that as two words: 'buy food'"</p>
-          <p><strong>You write:</strong> Answer: buy food</p>
-        </div>
-
-        <h3>If They Launch into a Story:</h3>
-        <div class="example-box">
-          <p><strong>Child says:</strong> "It's a big city where people run around and there are shops and cars and lights and my friend is there..."</p>
-          <p><strong>You respond:</strong> "That's turning into a story. Stories are okay; let's park that as 'Story' on the side. For our tiny question, we just pick one small answer, like 'shop' or 'run' or 'busy.' Which word feels most right?"</p>
-          <p><strong>You write:</strong> Story: big city with shops and cars (margin)<br>Answer: shop</p>
-        </div>
-
-        <p class="important">You are teaching that Stage V answers are brief and must stop before they unfold into a long scene.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Practice Pattern for Stage V</h2>
-        <p>Stage V works best if you keep it very light:</p>
-
-        <ul>
-          <li><strong>Don't use Stage V on every target in the beginning.</strong> In early sessions, choose 1-2 targets per session to add Stage V to, after the child has done Stage I–IV.</li>
-          <li><strong>Use only ONE question per target.</strong></li>
-          <li><strong>Keep questions consistent for a while</strong> (for example, use "What do people mostly do here?" across several sessions) so the child understands the pattern.</li>
-        </ul>
-
-        <h3>A Simple First Stage V Session Might Look Like:</h3>
-        <ul>
-          <li>Two secret numbers with full Stage I–IV, no Stage V</li>
-          <li>One secret number with full Stage I–IV, plus Stage V question "What do people mostly do here?" and a short answer</li>
-        </ul>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Feedback with Stage V</h2>
-        <p>When you reveal the target, Stage V gives you one more small point of comparison. After Stage I–IV feedback, look at the Stage V question and answer:</p>
-
-        <div class="example-box">
-          <p>"Your question was 'What do people mostly do here?' and you answered 'grow food.' Does this picture look like a place where people grow food?"</p>
-        </div>
-
-        <p>If it fits, you say so; if it fits something nearby; or if you cannot tell, you say that. You keep the same neutral style:</p>
-        <ul>
-          <li>"This fits what we see here."</li>
-          <li>"This could fit something near this place."</li>
-          <li>"This one we can't really check in this picture."</li>
-        </ul>
-
-        <p class="important">You do not weigh Stage V more heavily than the other stages. It is just one more small piece of data.</p>
-      </div>
-    </div>
-
-    <!-- STAGE VI OVERVIEW -->
-    <div id="stage6-overview" class="section">
-      <div class="intro-card stage2">
-        <h2>Stage VI: Building the Place</h2>
-        <p class="lead">Stage VI invites the child to build a simple 3D model of the place using clay, blocks, or cardboard, based on what they've already written and drawn. The hands-on building anchors impressions physically and can bring out additional observations.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>What You Want by End of Stage VI</h2>
-        <p>By the end of Stage VI, you want a child who can:</p>
-        <ul>
-          <li>Run the full Stage I–V sequence for a target, then</li>
-          <li>Use a few basic materials to build a very rough model of the site (a tall block for a building, a slope for a hill, a flat base for ground or water)</li>
-          <li>Optionally add 1-2 extra words that arise while building, still keeping them short and concrete</li>
-        </ul>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>When to Use Stage VI</h2>
-        <p>Stage VI is not needed for every target. It is best used occasionally as a capstone for a target that produced a rich Stage I–V session.</p>
-
-        <p>You might:</p>
-        <ul>
-          <li>Use Stage VI on <strong>one target per session</strong>, or</li>
-          <li>Reserve it for "special" targets when you want a deeper dive</li>
-        </ul>
-
-        <p class="important">Stage VI works best when: the child has given a decent set of Stage I–III words, the sketch is reasonably clear, and the child is still engaged and not tired.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Materials Needed</h2>
-        <p>You don't need fancy materials. A simple kit can include:</p>
-        <ul>
-          <li>A tray or sheet of cardboard as a base</li>
-          <li>Modeling clay or play-dough</li>
-          <li>A handful of small blocks or boxes</li>
-          <li>Strips of paper or pipe cleaners for rivers, roads, or boundaries</li>
-          <li>Crayons or markers if needed to mark areas</li>
-        </ul>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>The Complete Structure (Stages I-VI)</h2>
-        <div class="layout-example">
-          <div class="layout-line">Stages I → II → III → IV → V (as before)</div>
-          <div class="layout-line stage2-color">Stage VI: Build 3D model from words and sketch</div>
-          <div class="layout-line stage2-color">Extra impressions while building: (1-2 optional)</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- STAGE VI SESSIONS -->
-    <div id="stage6-sessions" class="section">
-      <div class="intro-card stage2">
-        <h2>Running Stage VI Sessions</h2>
-        <p class="lead">Stage VI sessions add 3D building after Stage V (or Stage IV). This is occasional, not for every target.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Introducing Stage VI to the Child</h2>
-        <div class="script-box stage2">
-          <p>"Now we're going to try building this place. We're not making a perfect model. We're going to use clay and blocks to show the big shapes from your words and your map."</p>
-          <p>"If you wrote 'tall,' we'll build a tall thing. If you wrote 'flat,' we'll make a flat part. Your hands will follow your clues."</p>
-        </div>
-
-        <p class="important">Disconnect this from the idea of "craft time." It's brief and focused, not an open-ended art project.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Teaching the Building Move</h2>
-        <p>For a chosen target (one that has a Stage III sketch and Stage IV notes you like), set out the materials and the child's paper. Work on a tray or base so you can refer to "left" and "right."</p>
-
-        <div class="step-cards">
-          <div class="step-card stage2">
-            <div class="step-number">1</div>
-            <div class="step-title">Identify the Biggest Shape</div>
-            <p>Place the paper with the sketch visible.</p>
-            <p><strong>Say:</strong> "Look at your Shapes and your map. What is the biggest shape here?"</p>
-            <p>They might say "The tall thing in the middle," "The flat ground," or "The wide area on the left."</p>
-          </div>
-
-          <div class="step-card stage2">
-            <div class="step-number">2</div>
-            <div class="step-title">Build the First Piece</div>
-            <p><strong>Say:</strong> "Use a block or clay to make that tall thing. Put it on the tray where it is on your map."</p>
-          </div>
-
-          <div class="step-card stage2">
-            <div class="step-number">3</div>
-            <div class="step-title">Add the Next Biggest Piece</div>
-            <p><strong>Ask:</strong> "What is the next biggest piece?"</p>
-            <p>They might say "the flat," "the slope," or "the wide part."</p>
-            <p>Help them build that around the first piece, using clay or paper.</p>
-          </div>
-
-          <div class="step-card stage2">
-            <div class="step-number">4</div>
-            <div class="step-title">Complete Main Elements</div>
-            <p>Continue until they've represented:</p>
-            <ul>
-              <li>Tall vs. low</li>
-              <li>Wide vs. narrow</li>
-              <li>Slopes vs. flat areas</li>
-              <li>Perhaps a strip for a road or river</li>
-            </ul>
-            <p class="note">The model should stay simple. A few shapes are enough.</p>
-          </div>
-        </div>
-
-        <h3>If They Start Adding Small Details</h3>
-        <div class="script-box stage2">
-          <p>"Okay, you added a little thing there. Remember our main job is to show the big shapes from your words. Do we still see your 'tall', your 'flat', your 'wide' in this model?"</p>
-        </div>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Allowing Extra Words During Building</h2>
-        <p>Sometimes while they build, the child may say things like:</p>
-        <ul>
-          <li>"Now it feels more closed in"</li>
-          <li>"It feels higher than I thought"</li>
-          <li>"I think there's water behind this"</li>
-        </ul>
-
-        <p>You can choose to capture 1-2 of these as extra notes, as long as you keep them short and do not let them turn into stories.</p>
-
-        <p>You might write:</p>
-        <div class="example-box">
-          <p><strong>Extra impressions while building:</strong></p>
-          <p>feels higher</p>
-          <p>more closed in</p>
-          <p>water behind</p>
-        </div>
-
-        <p class="important">If the comments drift into long imaginative stories, you treat them as Story in the same way as before: "That's a story; let's park it on the side," and bring them back to the main shapes.</p>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>How Often to Use Stage VI</h2>
-        <p>Stage VI takes more time and energy than the other stages. You do not need to use it for every target.</p>
-
-        <p>You might:</p>
-        <ul>
-          <li>Use Stage VI on <strong>one target per session</strong>, or</li>
-          <li>Reserve it for <strong>"special" targets</strong> when you want a deeper dive</li>
-        </ul>
-
-        <p>Stage VI works best when:</p>
-        <ul>
-          <li>The child has given a decent set of Stage I–III words</li>
-          <li>The sketch is reasonably clear</li>
-          <li>The child is still engaged and not tired</li>
-        </ul>
-      </div>
-
-      <div class="content-block stage2">
-        <h2>Feedback with Stage VI</h2>
-        <p>When you finally show the target picture, you can now look at:</p>
-        <ul>
-          <li>Stage I–IV notes</li>
-          <li>Stage V answer, if used</li>
-          <li>The Stage III sketch and Stage VI model</li>
-        </ul>
-
-        <p>You can ask:</p>
-        <div class="example-box">
-          <p>"How does your model match this picture?"</p>
-          <p>"Do we see a tall thing where you built one?"</p>
-          <p>"Is this flat or sloping like you made it?"</p>
-          <p>"Does this feel more closed in or open, like you said?"</p>
-        </div>
-
-        <p>Again, you highlight what fits, what fits nearby, and what cannot be checked, without turning it into a scored test.</p>
-      </div>
-    </div>
-
-  </div>
-
-  <script>
-    let currentStage = 'stage1';
-
-    function switchStage(stage) {
-      currentStage = stage;
-
-      // Update toggle buttons
-      ['stage1', 'stage2', 'stage3', 'stage4', 'stage5', 'stage6'].forEach(s => {
-        document.getElementById('toggle-' + s).classList.remove('active');
-      });
-      document.getElementById('toggle-' + stage).classList.add('active');
-
-      // Update nav containers
-      ['stage1', 'stage2', 'stage3', 'stage4', 'stage5', 'stage6'].forEach(s => {
-        document.getElementById('nav-' + s).classList.add('hidden');
-      });
-      document.getElementById('nav-' + stage).classList.remove('hidden');
-
-      // Remove active from all nav buttons
-      const navButtons = document.querySelectorAll('.nav-btn');
-      navButtons.forEach(button => button.classList.remove('active'));
-
-      // Show default section for that stage and activate its button
-      showSectionDirect(stage + '-overview');
-      document.querySelector('#nav-' + stage + ' .nav-btn:first-child').classList.add('active');
-    }
-
-    function showSectionDirect(sectionId) {
-      // Hide all sections
-      const sections = document.querySelectorAll('.section');
-      sections.forEach(section => section.classList.remove('active'));
-
-      // Show selected section
-      document.getElementById(sectionId).classList.add('active');
-
-      // Scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function showSection(sectionId) {
-      // Hide all sections
-      const sections = document.querySelectorAll('.section');
-      sections.forEach(section => section.classList.remove('active'));
-
-      // Remove active from all nav buttons
-      const navButtons = document.querySelectorAll('.nav-btn');
-      navButtons.forEach(button => button.classList.remove('active'));
-
-      // Show selected section
-      document.getElementById(sectionId).classList.add('active');
-
-      // Activate the clicked button
-      event.target.classList.add('active');
-
-      // Scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
 </body>
 </html>
